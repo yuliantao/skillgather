@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylt.skillgather.system.dao.PermissionRoleMapper">
+  <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.domain.PermissionRole">
+    <id column="RoleCode" jdbcType="VARCHAR" property="rolecode" />
+    <result column="RoleName" jdbcType="VARCHAR" property="rolename" />
+    <result column="RoleDescription" jdbcType="VARCHAR" property="roledescription" />
+    <result column="GroupCodes" jdbcType="VARCHAR" property="groupcodes" />
+    <result column="PermitCodes" jdbcType="VARCHAR" property="permitcodes" />
+    <result column="ParentRole" jdbcType="VARCHAR" property="parentrole" />
+    <result column="IsDelete" jdbcType="BIT" property="isdelete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_role
+    where RoleCode = #{rolecode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ylt.skillgather.system.domain.PermissionRole">
+    insert into permission_role (RoleCode, RoleName, RoleDescription, 
+      GroupCodes, PermitCodes, ParentRole, 
+      IsDelete)
+    values (#{rolecode,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, #{roledescription,jdbcType=VARCHAR}, 
+      #{groupcodes,jdbcType=VARCHAR}, #{permitcodes,jdbcType=VARCHAR}, #{parentrole,jdbcType=VARCHAR}, 
+      #{isdelete,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ylt.skillgather.system.domain.PermissionRole">
+    update permission_role
+    set RoleName = #{rolename,jdbcType=VARCHAR},
+      RoleDescription = #{roledescription,jdbcType=VARCHAR},
+      GroupCodes = #{groupcodes,jdbcType=VARCHAR},
+      PermitCodes = #{permitcodes,jdbcType=VARCHAR},
+      ParentRole = #{parentrole,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=BIT}
+    where RoleCode = #{rolecode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select RoleCode, RoleName, RoleDescription, GroupCodes, PermitCodes, ParentRole, 
+    IsDelete
+    from permission_role
+    where RoleCode = #{rolecode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select RoleCode, RoleName, RoleDescription, GroupCodes, PermitCodes, ParentRole, 
+    IsDelete
+    from permission_role
+  </select>
+</mapper>

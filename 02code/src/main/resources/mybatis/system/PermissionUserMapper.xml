@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylt.skillgather.system.dao.PermissionUserMapper">
+  <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.domain.PermissionUser">
+    <id column="UserId" jdbcType="INTEGER" property="userid" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="TrueName" jdbcType="VARCHAR" property="truename" />
+    <result column="IsDelete" jdbcType="BIT" property="isdelete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from permission_user
+    where UserId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ylt.skillgather.system.domain.PermissionUser">
+    insert into permission_user (UserId, UserName, Password, 
+      TrueName, IsDelete)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{truename,jdbcType=VARCHAR}, #{isdelete,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ylt.skillgather.system.domain.PermissionUser">
+    update permission_user
+    set UserName = #{username,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      TrueName = #{truename,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=BIT}
+    where UserId = #{userid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select UserId, UserName, Password, TrueName, IsDelete
+    from permission_user
+    where UserId = #{userid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select UserId, UserName, Password, TrueName, IsDelete
+    from permission_user
+  </select>
+  <select id="login" resultMap="BaseResultMap">
+    select UserId, UserName, Password, TrueName, IsDelete
+    from permission_user
+    where username = #{username} and  password=#{password}
+  </select>
+</mapper>

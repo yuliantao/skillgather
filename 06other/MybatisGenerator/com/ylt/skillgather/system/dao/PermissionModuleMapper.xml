@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylt.skillgather.system.dao.PermissionModuleMapper">
+  <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.domain.PermissionModule">
+    <id column="ModuleCode" jdbcType="VARCHAR" property="modulecode" />
+    <result column="ModuleName" jdbcType="VARCHAR" property="modulename" />
+    <result column="ModuleValue" jdbcType="VARCHAR" property="modulevalue" />
+    <result column="LinkUrl" jdbcType="VARCHAR" property="linkurl" />
+    <result column="ParentModule" jdbcType="VARCHAR" property="parentmodule" />
+    <result column="ModuleDescription" jdbcType="VARCHAR" property="moduledescription" />
+    <result column="IsDelete" jdbcType="BIT" property="isdelete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_module
+    where ModuleCode = #{modulecode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ylt.skillgather.system.domain.PermissionModule">
+    insert into permission_module (ModuleCode, ModuleName, ModuleValue, 
+      LinkUrl, ParentModule, ModuleDescription, 
+      IsDelete)
+    values (#{modulecode,jdbcType=VARCHAR}, #{modulename,jdbcType=VARCHAR}, #{modulevalue,jdbcType=VARCHAR}, 
+      #{linkurl,jdbcType=VARCHAR}, #{parentmodule,jdbcType=VARCHAR}, #{moduledescription,jdbcType=VARCHAR}, 
+      #{isdelete,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ylt.skillgather.system.domain.PermissionModule">
+    update permission_module
+    set ModuleName = #{modulename,jdbcType=VARCHAR},
+      ModuleValue = #{modulevalue,jdbcType=VARCHAR},
+      LinkUrl = #{linkurl,jdbcType=VARCHAR},
+      ParentModule = #{parentmodule,jdbcType=VARCHAR},
+      ModuleDescription = #{moduledescription,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=BIT}
+    where ModuleCode = #{modulecode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ModuleCode, ModuleName, ModuleValue, LinkUrl, ParentModule, ModuleDescription, 
+    IsDelete
+    from permission_module
+    where ModuleCode = #{modulecode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ModuleCode, ModuleName, ModuleValue, LinkUrl, ParentModule, ModuleDescription, 
+    IsDelete
+    from permission_module
+  </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylt.skillgather.system.dao.PermissionActionMapper">
+  <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.domain.PermissionAction">
+    <id column="ActionCode" jdbcType="VARCHAR" property="actioncode" />
+    <result column="ActionName" jdbcType="VARCHAR" property="actionname" />
+    <result column="ActionValue" jdbcType="VARCHAR" property="actionvalue" />
+    <result column="IsDelete" jdbcType="BIT" property="isdelete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_action
+    where ActionCode = #{actioncode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ylt.skillgather.system.domain.PermissionAction">
+    insert into permission_action (ActionCode, ActionName, ActionValue, 
+      IsDelete)
+    values (#{actioncode,jdbcType=VARCHAR}, #{actionname,jdbcType=VARCHAR}, #{actionvalue,jdbcType=VARCHAR}, 
+      #{isdelete,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ylt.skillgather.system.domain.PermissionAction">
+    update permission_action
+    set ActionName = #{actionname,jdbcType=VARCHAR},
+      ActionValue = #{actionvalue,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=BIT}
+    where ActionCode = #{actioncode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ActionCode, ActionName, ActionValue, IsDelete
+    from permission_action
+    where ActionCode = #{actioncode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ActionCode, ActionName, ActionValue, IsDelete
+    from permission_action
+  </select>
+</mapper>

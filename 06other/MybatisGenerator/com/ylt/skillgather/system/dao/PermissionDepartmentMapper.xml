@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylt.skillgather.system.dao.PermissionDepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.domain.PermissionDepartment">
+    <id column="DepartmentCode" jdbcType="VARCHAR" property="departmentcode" />
+    <result column="DepartmentName" jdbcType="VARCHAR" property="departmentname" />
+    <result column="ParentDepartment" jdbcType="VARCHAR" property="parentdepartment" />
+    <result column="DepartmentDescription" jdbcType="VARCHAR" property="departmentdescription" />
+    <result column="CompanyCode" jdbcType="VARCHAR" property="companycode" />
+    <result column="IsDelete" jdbcType="BIT" property="isdelete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_department
+    where DepartmentCode = #{departmentcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ylt.skillgather.system.domain.PermissionDepartment">
+    insert into permission_department (DepartmentCode, DepartmentName, ParentDepartment, 
+      DepartmentDescription, CompanyCode, IsDelete
+      )
+    values (#{departmentcode,jdbcType=VARCHAR}, #{departmentname,jdbcType=VARCHAR}, #{parentdepartment,jdbcType=VARCHAR}, 
+      #{departmentdescription,jdbcType=VARCHAR}, #{companycode,jdbcType=VARCHAR}, #{isdelete,jdbcType=BIT}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ylt.skillgather.system.domain.PermissionDepartment">
+    update permission_department
+    set DepartmentName = #{departmentname,jdbcType=VARCHAR},
+      ParentDepartment = #{parentdepartment,jdbcType=VARCHAR},
+      DepartmentDescription = #{departmentdescription,jdbcType=VARCHAR},
+      CompanyCode = #{companycode,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=BIT}
+    where DepartmentCode = #{departmentcode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select DepartmentCode, DepartmentName, ParentDepartment, DepartmentDescription, CompanyCode, 
+    IsDelete
+    from permission_department
+    where DepartmentCode = #{departmentcode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select DepartmentCode, DepartmentName, ParentDepartment, DepartmentDescription, CompanyCode, 
+    IsDelete
+    from permission_department
+  </select>
+</mapper>

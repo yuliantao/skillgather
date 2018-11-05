@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylt.skillgather.system.dao.PermissionPermitGroupMapper">
+  <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.domain.PermissionPermitGroup">
+    <id column="GroupCode" jdbcType="VARCHAR" property="groupcode" />
+    <result column="GroupName" jdbcType="VARCHAR" property="groupname" />
+    <result column="PermitCodes" jdbcType="VARCHAR" property="permitcodes" />
+    <result column="IsDelete" jdbcType="BIT" property="isdelete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_permit_group
+    where GroupCode = #{groupcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ylt.skillgather.system.domain.PermissionPermitGroup">
+    insert into permission_permit_group (GroupCode, GroupName, PermitCodes, 
+      IsDelete)
+    values (#{groupcode,jdbcType=VARCHAR}, #{groupname,jdbcType=VARCHAR}, #{permitcodes,jdbcType=VARCHAR}, 
+      #{isdelete,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ylt.skillgather.system.domain.PermissionPermitGroup">
+    update permission_permit_group
+    set GroupName = #{groupname,jdbcType=VARCHAR},
+      PermitCodes = #{permitcodes,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=BIT}
+    where GroupCode = #{groupcode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select GroupCode, GroupName, PermitCodes, IsDelete
+    from permission_permit_group
+    where GroupCode = #{groupcode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select GroupCode, GroupName, PermitCodes, IsDelete
+    from permission_permit_group
+  </select>
+</mapper>

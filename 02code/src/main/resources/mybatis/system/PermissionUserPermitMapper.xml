@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylt.skillgather.system.dao.PermissionUserPermitMapper">
+  <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.domain.PermissionUserPermit">
+    <id column="UserId" jdbcType="INTEGER" property="userid" />
+    <result column="RoleCodes" jdbcType="VARCHAR" property="rolecodes" />
+    <result column="GroupCodes" jdbcType="VARCHAR" property="groupcodes" />
+    <result column="PermitCodes" jdbcType="VARCHAR" property="permitcodes" />
+    <result column="IsDelete" jdbcType="BIT" property="isdelete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from permission_user_permit
+    where UserId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ylt.skillgather.system.domain.PermissionUserPermit">
+    insert into permission_user_permit (UserId, RoleCodes, GroupCodes, 
+      PermitCodes, IsDelete)
+    values (#{userid,jdbcType=INTEGER}, #{rolecodes,jdbcType=VARCHAR}, #{groupcodes,jdbcType=VARCHAR}, 
+      #{permitcodes,jdbcType=VARCHAR}, #{isdelete,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ylt.skillgather.system.domain.PermissionUserPermit">
+    update permission_user_permit
+    set RoleCodes = #{rolecodes,jdbcType=VARCHAR},
+      GroupCodes = #{groupcodes,jdbcType=VARCHAR},
+      PermitCodes = #{permitcodes,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=BIT}
+    where UserId = #{userid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select UserId, RoleCodes, GroupCodes, PermitCodes, IsDelete
+    from permission_user_permit
+    where UserId = #{userid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select UserId, RoleCodes, GroupCodes, PermitCodes, IsDelete
+    from permission_user_permit
+  </select>
+</mapper>

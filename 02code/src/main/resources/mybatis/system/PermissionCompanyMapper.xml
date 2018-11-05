@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylt.skillgather.system.dao.PermissionCompanyMapper">
+  <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.domain.PermissionCompany">
+    <id column="CompanyCode" jdbcType="VARCHAR" property="companycode" />
+    <result column="CompanyName" jdbcType="VARCHAR" property="companyname" />
+    <result column="IsDelete" jdbcType="BIT" property="isdelete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_company
+    where CompanyCode = #{companycode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ylt.skillgather.system.domain.PermissionCompany">
+    insert into permission_company (CompanyCode, CompanyName, IsDelete
+      )
+    values (#{companycode,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, #{isdelete,jdbcType=BIT}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ylt.skillgather.system.domain.PermissionCompany">
+    update permission_company
+    set CompanyName = #{companyname,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=BIT}
+    where CompanyCode = #{companycode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select CompanyCode, CompanyName, IsDelete
+    from permission_company
+    where CompanyCode = #{companycode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select CompanyCode, CompanyName, IsDelete
+    from permission_company
+  </select>
+</mapper>

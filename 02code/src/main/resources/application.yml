@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    include: druid
+  thymeleaf:
+    cache: false
+  mvc:
+    date-format: yyyy-MM-dd
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/*/*.xml

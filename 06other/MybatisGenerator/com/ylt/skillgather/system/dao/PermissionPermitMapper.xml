@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylt.skillgather.system.dao.PermissionPermitMapper">
+  <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.domain.PermissionPermit">
+    <id column="PermitCode" jdbcType="VARCHAR" property="permitcode" />
+    <result column="ModuleCode" jdbcType="VARCHAR" property="modulecode" />
+    <result column="ActionCode" jdbcType="VARCHAR" property="actioncode" />
+    <result column="PermitValue" jdbcType="VARCHAR" property="permitvalue" />
+    <result column="IsDelete" jdbcType="BIT" property="isdelete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_permit
+    where PermitCode = #{permitcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ylt.skillgather.system.domain.PermissionPermit">
+    insert into permission_permit (PermitCode, ModuleCode, ActionCode, 
+      PermitValue, IsDelete)
+    values (#{permitcode,jdbcType=VARCHAR}, #{modulecode,jdbcType=VARCHAR}, #{actioncode,jdbcType=VARCHAR}, 
+      #{permitvalue,jdbcType=VARCHAR}, #{isdelete,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ylt.skillgather.system.domain.PermissionPermit">
+    update permission_permit
+    set ModuleCode = #{modulecode,jdbcType=VARCHAR},
+      ActionCode = #{actioncode,jdbcType=VARCHAR},
+      PermitValue = #{permitvalue,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=BIT}
+    where PermitCode = #{permitcode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select PermitCode, ModuleCode, ActionCode, PermitValue, IsDelete
+    from permission_permit
+    where PermitCode = #{permitcode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select PermitCode, ModuleCode, ActionCode, PermitValue, IsDelete
+    from permission_permit
+  </select>
+</mapper>
