@@ -14,7 +14,9 @@ import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 
 import javax.swing.plaf.synth.Region;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class CodeGenerator {
@@ -29,8 +31,8 @@ public class CodeGenerator {
         //dsc.setDbType();//一般不用设置
         // dsc.setSchemaName("public");//一般不设置
         //dsc.setTypeConvert();//一般不设置,默认由 dbType 类型决定选择对应数据库内置实现
-        dsc.setUrl("jdbc:mysql://localhost:3306/skillgather?useUnicode=true&useSSL=false&characterEncoding=utf8");
-        dsc.setDriverName("com.mysql.jdbc.Driver");
+        dsc.setUrl("jdbc:mysql://localhost:3306/skillgather?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8");
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("123456");
         mpg.setDataSource(dsc);
@@ -86,8 +88,10 @@ public class CodeGenerator {
 
         //region  ***  模板配置(待研究)  ***
 
-        TemplateConfig templateConfig= new  TemplateConfig();
+       /* TemplateConfig templateConfig= new  TemplateConfig();
+        templateConfig.setController("/controller.java.vm");
 
+        mpg.setTemplate(templateConfig);*/
         //endregion
 
         // region  ***  全局配置  ***
@@ -101,7 +105,7 @@ public class CodeGenerator {
         gc.setEnableCache(false);//是否在xml中添加二级缓存配置
         gc.setKotlin(false);//是否开启 Kotlin 模式（多平台应用中可编译成Java字节码，也可编译成JavaScript，方便在没有JVM的设备上运行）
         gc.setSwagger2(false);//取消生成自动文档生成模式，待以后软件成熟了在开启
-        gc.setActiveRecord(false);//是否生成领域模型，java语言中意义不大，JavaScript和其它动态语言比较流行
+        gc.setActiveRecord(true);//是否生成领域模型，java语言中意义不大，JavaScript和其它动态语言比较流行
         gc.setBaseResultMap(true);//设置在xml的mapper配置文件中是否生成默认的返回类型（根据表返回字段）
         gc.setBaseColumnList(true);//设置基础的列
         gc.setDateType(DateType.TIME_PACK);//设置时间策略
@@ -118,13 +122,17 @@ public class CodeGenerator {
 
         //region  ***  injectionConfig配置  ***
 
+        // 注入自定义配置，可以在 VM 中使用 cfg.abc 【可无】  ${cfg.abc}
         InjectionConfig cfg = new InjectionConfig() {
             @Override
             public void initMap() {
-                // to do nothing
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
+                this.setMap(map);
             }
         };
-        List<FileOutConfig> focList = new ArrayList<>();
+
+/*        List<FileOutConfig> focList = new ArrayList<>();
         focList.add(new FileOutConfig("/templates/mapper.xml.ftl") {
             @Override
             public String outputFile(TableInfo tableInfo) {
@@ -133,13 +141,24 @@ public class CodeGenerator {
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
+        */
+
+        // 自定义 xxListIndex.html 生成
+        List<FileOutConfig> focList = new ArrayList<>();
+        focList.add(new FileOutConfig("/list.html.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输入文件名称
+                return "D://test//html//" + tableInfo.getEntityName() + "ListIndex.html";
+            }
+        });
         cfg.setFileOutConfigList(focList);
-        //mpg.setCfg(cfg);
+        mpg.setCfg(cfg);
 
         //endregion
 
-        //mpg.setTemplate(new TemplateConfig().setXml(null));
-        mpg.setTemplateEngine(new FreemarkerTemplateEngine());
+        mpg.setTemplate(new TemplateConfig().setXml(null));
+        mpg.setTemplateEngine(new VelocityTemplateEngine());
 
         mpg.execute();
     }
