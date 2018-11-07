@@ -4,12 +4,12 @@ package ${package.Controller};
 #if(${restControllerStyle})
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
- #else
- import org.springframework.stereotype.Controller;
- #end
- #if(${superControllerClassPackage})
- import ${superControllerClassPackage};
- #end
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
 import com.alibaba.fastjson.JSON;
 import com.dcy.constant.Constant;
 import com.dcy.model.BootStrapTable;

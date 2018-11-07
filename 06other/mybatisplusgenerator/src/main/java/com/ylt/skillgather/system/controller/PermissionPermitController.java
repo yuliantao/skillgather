@@ -3,7 +3,7 @@ package com.ylt.skillgather.system.controller;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
- import com.baomidou.ant.common.BaseController;
+import com.baomidou.ant.common.BaseController;
 import com.alibaba.fastjson.JSON;
 import com.dcy.constant.Constant;
 import com.dcy.model.BootStrapTable;
