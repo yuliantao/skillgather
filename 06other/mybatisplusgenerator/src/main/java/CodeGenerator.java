@@ -32,7 +32,8 @@ public class CodeGenerator {
         // dsc.setSchemaName("public");//一般不设置
         //dsc.setTypeConvert();//一般不设置,默认由 dbType 类型决定选择对应数据库内置实现
         dsc.setUrl("jdbc:mysql://localhost:3306/skillgather?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8");
-        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
+        dsc.setDriverName("com.mysql.jdbc.Driver");
+        //dsc.setDriverName("com.mysql.cj.jdbc.Driver");//mysql 8以上驱动
         dsc.setUsername("root");
         dsc.setPassword("123456");
         mpg.setDataSource(dsc);
@@ -86,12 +87,20 @@ public class CodeGenerator {
 
         //endregion
 
-        //region  ***  模板配置(待研究)  ***
+        //region  ***  模板配置  ***
 
-       /* TemplateConfig templateConfig= new  TemplateConfig();
-        templateConfig.setController("/controller.java.vm");
+        //根据需求制定生成模板，如果为null则不生成,可以拷贝jar中的模板进行修改，主要修改controller
+        TemplateConfig tc = new TemplateConfig();
+        tc.setController("/controller.java.vm");
+/*      tc.setEntity(null);
+        tc.setEntityKt(null);
+        tc.setMapper(null);
+        tc.setXml(null);
+        tc.setService(null);
+        tc.setServiceImpl(null);*/
 
-        mpg.setTemplate(templateConfig);*/
+        mpg.setTemplate(tc);
+
         //endregion
 
         // region  ***  全局配置  ***
@@ -105,7 +114,7 @@ public class CodeGenerator {
         gc.setEnableCache(false);//是否在xml中添加二级缓存配置
         gc.setKotlin(false);//是否开启 Kotlin 模式（多平台应用中可编译成Java字节码，也可编译成JavaScript，方便在没有JVM的设备上运行）
         gc.setSwagger2(false);//取消生成自动文档生成模式，待以后软件成熟了在开启
-        gc.setActiveRecord(true);//是否生成领域模型，java语言中意义不大，JavaScript和其它动态语言比较流行
+        gc.setActiveRecord(false);//是否生成领域模型，java语言中意义不大，JavaScript和其它动态语言比较流行
         gc.setBaseResultMap(true);//设置在xml的mapper配置文件中是否生成默认的返回类型（根据表返回字段）
         gc.setBaseColumnList(true);//设置基础的列
         gc.setDateType(DateType.TIME_PACK);//设置时间策略
@@ -132,24 +141,14 @@ public class CodeGenerator {
             }
         };
 
-/*        List<FileOutConfig> focList = new ArrayList<>();
-        focList.add(new FileOutConfig("/templates/mapper.xml.ftl") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                // 自定义输入文件名称
-                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
-                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
-            }
-        });
-        */
-
-        // 自定义 xxListIndex.html 生成
+        // 自定义模板生成，可以生成各层级别的文件，但主要是生成html（增删改查），以下生成查看为例
         List<FileOutConfig> focList = new ArrayList<>();
         focList.add(new FileOutConfig("/list.html.vm") {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
-                return "D://test//html//" + tableInfo.getEntityName() + "ListIndex.html";
+                return projectPath+"/src/main/resources/templates/"+ pc.getModuleName()+ "/" + tableInfo.getEntityName() + "list.html";
+
             }
         });
         cfg.setFileOutConfigList(focList);
@@ -157,34 +156,6 @@ public class CodeGenerator {
 
         //endregion
 
-        mpg.setTemplate(new TemplateConfig().setXml(null));
-        mpg.setTemplateEngine(new VelocityTemplateEngine());
-
         mpg.execute();
     }
-
-
-    /**
-     * 自定义生成文件
-     */
-/*    private static InjectionConfig customerConfig() {
-        InjectionConfig config = new InjectionConfig() {
-            @Override
-            public void initMap() {
-
-            }
-        };
-        List<FileOutConfig> files = new ArrayList<FileOutConfig>();
-        files.add(new FileOutConfig("/template.java.vm") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                String expand = CODE_FACTORY_OUT_PATH + "/" + "expand";
-                String entityFile = String.format((expand + File.separator + "%s" + ".java"), tableInfo.getControllerName());
-                return entityFile;
-            }
-        });
-        config.setFileOutConfigList(files);
-        return config;
-    }*/
-
 }

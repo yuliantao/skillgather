@@ -1,12 +1,11 @@
 package com.ylt.skillgather.system.controller;
 
-import com.ylt.skillgather.system.dao.PermissionActionMapper;
-import com.ylt.skillgather.system.domain.PermissionAction;
+import com.ylt.skillgather.system.mapper.PermissionActionMapper;
+import com.ylt.skillgather.system.entity.PermissionAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
