@@ -18,6 +18,7 @@ public class PermissionActionControler {
     @GetMapping(value = "/action/{actioncode}")
     public PermissionAction getPermissionAction(@PathVariable(value = "actioncode") String actioncode)
     {
-        return permissionactionmapper.selectByPrimaryKey(actioncode);
+        return null;
+        //return permissionactionmapper.selectByPrimaryKey(actioncode);
     }
 }
