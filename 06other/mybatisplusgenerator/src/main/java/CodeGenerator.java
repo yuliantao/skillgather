@@ -148,7 +148,6 @@ public class CodeGenerator {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
                 return projectPath+"/src/main/resources/templates/"+ pc.getModuleName()+ "/" + tableInfo.getEntityName() + "list.html";
-
             }
         });
         cfg.setFileOutConfigList(focList);

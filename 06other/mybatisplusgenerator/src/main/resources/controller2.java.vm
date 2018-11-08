@@ -1,13 +1,13 @@
 package ${package.Controller};
 import org.springframework.web.bind.annotation.RequestMapping;
-    #if(${restControllerStyle})
-    import org.springframework.web.bind.annotation.RestController;
-    #else
-    import org.springframework.stereotype.Controller;
-    #end
-    #if(${superControllerClassPackage})
-    import ${superControllerClassPackage};
-    #end
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.RestController;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
 import ${package.Service}.${table.serviceName};
 import ${package.Entity}.${entity};
 import com.baomidou.mybatisplus.plugins.Page;
