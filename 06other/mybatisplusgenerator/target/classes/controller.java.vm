@@ -1,6 +1,5 @@
 package ${package.Controller};
 
-
 #if(${restControllerStyle})
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,8 +58,9 @@ public ${table.serviceName} i${entity}Service;
  * @return
  */
 @RequestMapping(method= RequestMethod.GET,value = {"/${table.entityPath}Index"})
-public String index(HttpServletRequest request, Model model) {
-        return "${table.entityPath}ListIndex";
+public String index(HttpServletRequest request, Model model)
+        {
+             return "${table.entityPath}ListIndex";
         }
 
 /**
@@ -75,12 +75,12 @@ public String index(HttpServletRequest request, Model model) {
 public Map<String, Object> get${entity}List(BootStrapTable<${entity}> bootStrapTable,${entity} ${table.entityPath}) {
         Map<String,Object> result = new HashMap<String,Object>();
         try {
-        result = bootStrapTable.setRows(i${entity}Service.selectPage(bootStrapTable,${table.entityPath}));
-        } catch (Exception e) {
-        logger.error("get${entity}List -=- {}",e.toString());
-        result.put(Constant.BOOTSTAP_TABLE_ROWS, new ArrayList<>());
-        result.put(Constant.BOOTSTRAP_TABLE_TOTAL, 0);
-        }
+                result = bootStrapTable.setRows(i${entity}Service.selectPage(bootStrapTable,${table.entityPath}));
+            } catch (Exception e) {
+                logger.error("get${entity}List -=- {}",e.toString());
+                result.put(Constant.BOOTSTAP_TABLE_ROWS, new ArrayList<>());
+                result.put(Constant.BOOTSTRAP_TABLE_TOTAL, 0);
+            }
         return result;
         }
 
