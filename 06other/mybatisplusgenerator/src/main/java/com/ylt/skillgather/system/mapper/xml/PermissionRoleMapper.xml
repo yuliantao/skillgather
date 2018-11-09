@@ -4,7 +4,8 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.entity.PermissionRole">
-        <id column="RoleCode" property="RoleCode" />
+        <id column="ID" property="id" />
+        <result column="RoleCode" property="RoleCode" />
         <result column="RoleName" property="RoleName" />
         <result column="RoleDescription" property="RoleDescription" />
         <result column="GroupCodes" property="GroupCodes" />
@@ -15,7 +16,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        RoleCode, RoleName, RoleDescription, GroupCodes, PermitCodes, ParentRole, IsDelete
+        ID, RoleCode, RoleName, RoleDescription, GroupCodes, PermitCodes, ParentRole, IsDelete
     </sql>
 
 </mapper>

@@ -4,7 +4,8 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.entity.PermissionDepartment">
-        <id column="DepartmentCode" property="DepartmentCode" />
+        <id column="ID" property="id" />
+        <result column="DepartmentCode" property="DepartmentCode" />
         <result column="DepartmentName" property="DepartmentName" />
         <result column="ParentDepartment" property="ParentDepartment" />
         <result column="DepartmentDescription" property="DepartmentDescription" />
@@ -14,7 +15,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        DepartmentCode, DepartmentName, ParentDepartment, DepartmentDescription, CompanyCode, IsDelete
+        ID, DepartmentCode, DepartmentName, ParentDepartment, DepartmentDescription, CompanyCode, IsDelete
     </sql>
 
 </mapper>

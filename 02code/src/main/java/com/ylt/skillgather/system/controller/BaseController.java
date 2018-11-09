@@ -1,5 +1,6 @@
 package com.ylt.skillgather.system.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ylt.skillgather.common.utils.ClassUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,11 +50,11 @@ public abstract class BaseController <PO> {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public String findListByPage(@RequestParam(name = "page", defaultValue = "1") int pageIndex, @RequestParam(name = "rows", defaultValue = "20") int step) {
+    public List<PO>  findListByPage() {
 //            Page page = new Page(pageIndex,step);
 //            targetService.selectPage(page);
 //            return BaseResponse.onSuccess(page);
-        return "";
+        return  getService().list(null);
     }
 
 
@@ -62,10 +63,10 @@ public abstract class BaseController <PO> {
      */
     @RequestMapping("/all")
     @ResponseBody
-    public String findAll() {
+    public List<PO> findAll() {
         /*        List<${entity}> models = targetService.selectList(null);
                 return BaseResponse.onSuccess(models);*/
-        return "";
+          return  getService().list(null);
     }
 
 
@@ -73,13 +74,14 @@ public abstract class BaseController <PO> {
      * 根据ID查找数据
      */
     @RequestMapping("/find")
-    public String find(@RequestParam("id") Long id) {
+    @ResponseBody
+    public PO find(@RequestParam("id") Long id) {
         /*        ${entity} ${entity} = targetService.selectById(id);
                 if(${entity}==null){
                 return BaseResponse.onFail("尚未查询到此ID");
                 }
                 return BaseResponse.onSuccess(${entity});*/
-        return "";
+        return  getService().getOne(new QueryWrapper<PO>().eq("ID",id));
     }
 
 
@@ -87,13 +89,14 @@ public abstract class BaseController <PO> {
      * 添加数据
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addItem(@RequestBody PO po) {
+    @ResponseBody
+    public boolean addItem(@RequestBody PO po) {
     /*        boolean isOk = targetService.insert(${entity});
             if(isOk){
             return BaseResponse.onSuccess("数据添加成功！");
             }
             return BaseResponse.onFail("数据添加失败");*/
-        return "";
+        return  getService().save(po);
     }
 
 
@@ -101,13 +104,14 @@ public abstract class BaseController <PO> {
      * 更新数据
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateItem(@RequestBody PO po) {
+    @ResponseBody
+    public boolean updateItem(@RequestBody PO po) {
         /*        boolean isOk = targetService.updateAllColumnById(${entity});
                 if(isOk){
                 return BaseResponse.onSuccess("数据更改成功！");
                 }
                 return BaseResponse.onFail("数据更改失败");*/
-        return "";
+        return getService().updateById(po);
     }
 
 
@@ -115,14 +119,15 @@ public abstract class BaseController <PO> {
      * 删除数据
      */
     @RequestMapping("/del")
-    public String deleteItems(@RequestParam("ids") List<Long> ids) {
+    @ResponseBody
+    public boolean deleteItems(@RequestParam("ids") List<Long> ids) {
 /*            boolean isOk = targetService.deleteBatchIds(ids);
             if(isOk){
             return BaseResponse.onSuccess("数据删除成功！");
             }
             return BaseResponse.onFail("数据删除失败");
             }*/
-        return "";
+        return getService().removeByIds(ids);
     }
 }
 

@@ -1,3 +1,4 @@
+/*
 package com.ylt.skillgather.system.controller;
 
 import com.alibaba.fastjson.JSON;
@@ -22,13 +23,15 @@ import java.util.Date;
 import java.util.List;
 
 
+*/
 /**
  * 通用控制器,此控制器实现了通用的增删改查功能
  * 需要提供一个实现了{@link IService}接口的实现类
  *
  * @author sunhan
  * @since 2017年02月15日
- */
+ *//*
+
 public abstract class GenericController<PO,PK extends Serializable> {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -42,21 +45,27 @@ public abstract class GenericController<PO,PK extends Serializable> {
     @Autowired
     protected ServletContext application;
 
-    /**
+    */
+/**
      * 获取此Controller需要的服务类,由子类实现
      *
      * @return 通用服务类
-     */
+     *//*
+
     protected abstract IService<PO> getService();
 
 
 
-    /**
+    */
+/**
      * 查询列表,并返回查询结果
-     */
-    /**
+     *//*
+
+    */
+/**
      * 查询列表,并返回查询结果
-     */
+     *//*
+
     @PostMapping(value = "page")
     @PreAuthorize("hasAuthority('view')")
     public DataTablesPo<PO> page(PO po) {
@@ -64,13 +73,15 @@ public abstract class GenericController<PO,PK extends Serializable> {
         return getTablesData(page);
 
     }
-    /**
+    */
+/**
      * 根据id（主键）查询数据
      *
      * @param id 主键
      * @return 请求结果
      * @throws NotFoundException 要查询的数据不存在
-     */
+     *//*
+
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('view')")
     public ResponseMessage info(@PathVariable("id") PK id) {
@@ -81,12 +92,14 @@ public abstract class GenericController<PO,PK extends Serializable> {
     }
 
 
-    /**
+    */
+/**
      * 根据查询条件，查询数据数量
      *
      * @param po 查询条件
      * @return 请求结果
-     */
+     *//*
+
     @GetMapping(value = "/total")
     @PreAuthorize("hasAuthority('view')")
     public ResponseMessage total(PO po) {
@@ -95,13 +108,15 @@ public abstract class GenericController<PO,PK extends Serializable> {
         return ok(getService().selectCount(wrapper));
     }
 
-    /**
+    */
+/**
      * 请求添加数据，请求必须以POST方式
      *
      * @param po 请求添加的对象
      * @return 被添加数据的主键值
      * @throws javax.validation.ValidationException 验证数据格式错误
-     */
+     *//*
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('edit')")
@@ -110,13 +125,15 @@ public abstract class GenericController<PO,PK extends Serializable> {
         return created(po);
     }
 
-    /**
+    */
+/**
      * 请求删除指定id的数据，请求方式为DELETE，使用rest风格，如请求 /delete/1 ，将删除id为1的数据
      *
      * @param id 要删除的id标识
      * @return 删除结果
      * @throws NotFoundException 要删除的数据不存在
-     */
+     *//*
+
     @DeleteMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('edit')")
     public ResponseMessage delete(@PathVariable("id") PK id) {
@@ -133,14 +150,16 @@ public abstract class GenericController<PO,PK extends Serializable> {
         return ok();
     }
 
-    /**
+    */
+/**
      * 根据主键修改数据
      *
      * @param id     要修改数据的主键值
      * @param object 要修改的数据
      * @return 请求结果
      * @throws NotFoundException 要修改的数据不存在
-     */
+     *//*
+
     @PutMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('edit')")
     public ResponseMessage update(@PathVariable("id") Integer id, PO object) {
@@ -153,13 +172,15 @@ public abstract class GenericController<PO,PK extends Serializable> {
         return ok(b);
     }
 
-    /**
+    */
+/**
      * 批量修改数据.
      *
      * @param json 请求修改的数据 json格式
      * @return 被修改数据的条数
      * @throws BusinessException 请求的数据格式错误
-     */
+     *//*
+
     @PutMapping()
     @PreAuthorize("hasAuthority('edit')")
     public ResponseMessage update(String json) {
@@ -177,24 +198,28 @@ public abstract class GenericController<PO,PK extends Serializable> {
 
 
 
-    /**
+    */
+/**
      * 判断对象是否为空,如果为空将抛出 {@link NotFoundException}
      *
      * @param obj 要判断的对象
      * @param msg 为null时异常消息
-     */
+     *//*
+
     public void assertFound(Object obj, String msg) {
         if (obj == null) throw new NotFoundException(msg);
     }
 
-    /**
+    */
+/**
      * <p>
      * 转换为 bootstrap-table 需要的分页格式 JSON
      * </p>
      *
      * @param page 分页对象
      * @return
-     */
+     *//*
+
     protected DataTablesPo<PO> getTablesData(Page<PO> page) {
         DataTablesPo<PO> bo = new DataTablesPo<>();
         bo.setData(page.getRecords());
@@ -205,14 +230,16 @@ public abstract class GenericController<PO,PK extends Serializable> {
     }
 
 
-    /**
+    */
+/**
      * <p>
      * 转换为 bootstrap-table 需要的分页格式 JSON
      * </p>
      *
      * @param data 分页对象
      * @return
-     */
+     *//*
+
     protected DataTablesPo<PO> getTablesDataUnPage(List<PO> data) {
         DataTablesPo<PO> bo = new DataTablesPo<>();
         bo.setData(data);
@@ -222,13 +249,15 @@ public abstract class GenericController<PO,PK extends Serializable> {
         return bo;
     }
 
-    /**
+    */
+/**
      * <p>
      * 获取分页对象
      * </p>
      *
      * @return
-     */
+     *//*
+
     protected <T> Page<T> getPage() {
         int start = 0;
         int length = 10;
@@ -249,12 +278,14 @@ public abstract class GenericController<PO,PK extends Serializable> {
         return ew;
     }
 
-    /**
+    */
+/**
      * 获取当前登录者对象
      *
      * @param <U> the type parameter
      * @return the current user
-     */
+     *//*
+
     @SuppressWarnings("unchecked")
     public static <U extends UserDetails> U getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -262,13 +293,15 @@ public abstract class GenericController<PO,PK extends Serializable> {
     }
 
 
-    /**
+    */
+/**
      * 初始化数据绑定
      * 1. 将所有传递进来的String进行HTML编码，防止XSS攻击
      * 2. 将字段中Date类型转换为String类型
      *
      * @param binder the binder
-     */
+     *//*
+
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         // String类型转换，将所有传递进来的String进行HTML编码，防止XSS攻击
@@ -277,3 +310,4 @@ public abstract class GenericController<PO,PK extends Serializable> {
         binder.registerCustomEditor(Date.class, new DateEditor());
     }
 }
+*/

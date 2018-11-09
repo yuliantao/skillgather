@@ -4,7 +4,8 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.entity.PermissionPermitGroup">
-        <id column="GroupCode" property="GroupCode" />
+        <id column="ID" property="id" />
+        <result column="GroupCode" property="GroupCode" />
         <result column="GroupName" property="GroupName" />
         <result column="PermitCodes" property="PermitCodes" />
         <result column="IsDelete" property="IsDelete" />
@@ -12,7 +13,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        GroupCode, GroupName, PermitCodes, IsDelete
+        ID, GroupCode, GroupName, PermitCodes, IsDelete
     </sql>
 
 </mapper>

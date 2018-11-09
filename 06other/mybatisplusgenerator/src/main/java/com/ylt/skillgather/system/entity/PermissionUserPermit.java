@@ -1,5 +1,6 @@
 package com.ylt.skillgather.system.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
@@ -10,13 +11,16 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-08
+ * @since 2018-11-09
  */
 public class PermissionUserPermit implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("UserId")
+    @TableId(value = "ID", type = IdType.AUTO)
+    private Integer id;
+
+    @TableField("UserId")
     private Integer UserId;
 
     @TableField("RoleCodes")
@@ -31,6 +35,14 @@ public class PermissionUserPermit implements Serializable {
     @TableField("IsDelete")
     private Boolean IsDelete;
 
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getUserId() {
         return UserId;
@@ -75,7 +87,8 @@ public class PermissionUserPermit implements Serializable {
     @Override
     public String toString() {
         return "PermissionUserPermit{" +
-        "UserId=" + UserId +
+        "id=" + id +
+        ", UserId=" + UserId +
         ", RoleCodes=" + RoleCodes +
         ", GroupCodes=" + GroupCodes +
         ", PermitCodes=" + PermitCodes +

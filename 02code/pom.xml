@@ -50,6 +50,12 @@
             <artifactId>bootstrap</artifactId>
             <version>4.1.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.51</version>
+        </dependency>
+
         <!--数据库-->
         <dependency>
             <groupId>mysql</groupId>
@@ -82,6 +88,16 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
 
 
         <dependency>
@@ -95,6 +111,8 @@
             <version>2.4</version>
         </dependency>
     </dependencies>
+
+
 
     <build>
         <plugins>

@@ -4,7 +4,7 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.ylt.skillgather.system.entity.PermissionUser">
-        <id column="UserId" property="UserId" />
+        <id column="ID" property="id" />
         <result column="UserName" property="UserName" />
         <result column="Password" property="Password" />
         <result column="TrueName" property="TrueName" />
@@ -13,7 +13,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        UserId, UserName, Password, TrueName, IsDelete
+        ID, UserName, Password, TrueName, IsDelete
     </sql>
 
 </mapper>
