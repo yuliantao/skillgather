@@ -54,15 +54,15 @@ public class CodeGenerator {
         //strategy.setSuperMapperClass();//不用设置默认已经设置苞米豆的父类
         //strategy.setSuperServiceClass();//不用设置默认已经设置苞米豆的父类
         //strategy.setSuperServiceImplClass()//不用设置默认已经设置苞米豆的父类
-        strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");//设置controler集成父类
+        strategy.setSuperControllerClass("com.ylt.skillgather.system.controller.BaseController");//设置controler集成父类
         strategy.setInclude("[\\s\\S]*");//选择的表名，可以使用正则表达式
         //strategy.setExclude("");//排除的表和Include互斥
         //strategy.setEntityColumnConstant(false);//是否生成字段常量，默认false
         strategy.setEntityBuilderModel(false);//【实体】是否为构建者模型（默认 false）
         strategy.setEntityLombokModel(false);//设置是否是取消get,set,tostring(）等模板方法，如果删除但启用Lombok在编译时会自动生成
         //strategy.setEntityBooleanColumnRemoveIsPrefix();//Boolean类型字段是否移除is前缀（默认 false）
-        strategy.setRestControllerStyle(true);//生成@RestController 控制器
-        strategy.setControllerMappingHyphenStyle(true);//驼峰转连字符
+        strategy.setRestControllerStyle(false);//生成@RestController 控制器
+        strategy.setControllerMappingHyphenStyle(false);//驼峰转连字符
         //strategy.entityTableFieldAnnotationEnable()//是否生成实体时，生成字段注解
         //strategy.setVersionFieldName();//乐观锁属性名称
         //strategy.setLogicDeleteFieldName();//逻辑删除属性名称
@@ -91,8 +91,10 @@ public class CodeGenerator {
 
         //根据需求制定生成模板，如果为null则不生成,可以拷贝jar中的模板进行修改，主要修改controller
         TemplateConfig tc = new TemplateConfig();
-        tc.setController("/controller.java.vm");
-/*      tc.setEntity(null);
+
+        tc.setController("/controllerEmpty.java.vm");
+
+        /*tc.setEntity(null);
         tc.setEntityKt(null);
         tc.setMapper(null);
         tc.setXml(null);

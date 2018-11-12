@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-07
+ * @since 2018-11-09
  */
 public class PermissionUser implements Serializable {
 
@@ -20,8 +20,8 @@ public class PermissionUser implements Serializable {
     /**
      * 自动生成用户ID号，递增模式
      */
-    @TableId(value = "UserId", type = IdType.AUTO)
-    private Integer UserId;
+    @TableId(value = "ID", type = IdType.AUTO)
+    private Integer id;
 
     @TableField("UserName")
     private String UserName;
@@ -36,12 +36,12 @@ public class PermissionUser implements Serializable {
     private Boolean IsDelete;
 
 
-    public Integer getUserId() {
-        return UserId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer UserId) {
-        this.UserId = UserId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -79,7 +79,7 @@ public class PermissionUser implements Serializable {
     @Override
     public String toString() {
         return "PermissionUser{" +
-        "UserId=" + UserId +
+        "id=" + id +
         ", UserName=" + UserName +
         ", Password=" + Password +
         ", TrueName=" + TrueName +
