@@ -27,7 +27,8 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         //此处可以不考虑静态资源，springboot已经配置好了，以前配置拦截器需要设置静态资源放行
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
-                excludePathPatterns("/user/login","system/login","/index.html","/","/error/**","/webjars/**","/asserts/**","**/favicon.ico");
+                excludePathPatterns("/user/login","system/login","/index.html","/",
+                        "/error/**","/webjars/**","/asserts/**","**/favicon.ico");
     }
 
     /*
@@ -42,6 +43,7 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
         registry.addViewController("/main.html").setViewName("system/dashboard");
         registry.addViewController("/er4").setViewName("error/4xx.html");
         registry.addViewController("/er5").setViewName("error/5xx.html");
+        registry.addViewController("/index2.html").setViewName("gentelella/production/index2");
     }
 
 
