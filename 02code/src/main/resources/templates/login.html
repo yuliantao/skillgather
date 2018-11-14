@@ -1,9 +1,11 @@
 
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
-<title>行业智慧能力平台</title>
-<link rel="stylesheet" type="text/css" href="css/style2.0.css">
+<title>智慧平台</title>
+<link rel="stylesheet" type="text/css" th:href="@{/loginfile/css/style2.0.css}">
 <style type="text/css">
 	ul li{font-size: 30px;color:#2ec0f6;}
 	.tyg-div{z-index:-1000;float:left;position:absolute;left:5%;top:20%;}
@@ -25,10 +27,18 @@
 		color:#2ec0f6;
 	}
 	.tyg-div-form form {padding:10px;}
-	.tyg-div-form form input[type="text"]{
+	.tyg-div-form form input[type="text"] {
 		width: 270px;
 	    height: 30px;
 	    margin: 25px 10px 0px 0px;
+	}
+
+
+
+	.tyg-div-form form input[type="password"] {
+		width: 270px;
+		height: 30px;
+		margin: 25px 10px 0px 0px;
 	}
 	.tyg-div-form form button {
 	    cursor: pointer;
@@ -64,58 +74,53 @@
 <body>
 <div class="tyg-div">
 	<ul>
-    	<li>让</li>
-    	<li><div style="margin-left:20px;">数</div></li>
-    	<li><div style="margin-left:40px;">据</div></li>
+    	<!--<li>让</li>-->
+    	<li><div style="margin-left:20px;">懒</div></li>
+    	<li><div style="margin-left:40px;">人</div></li>
     	<li><div style="margin-left:60px;">改</div></li>
     	<li><div style="margin-left:80px;">变</div></li>
-    	<li><div style="margin-left:100px;">生</div></li>
-    	<li><div style="margin-left:120px;">活</div></li>
+    	<li><div style="margin-left:100px;">世</div></li>
+    	<li><div style="margin-left:120px;">界</div></li>
     </ul>
 </div> 
 <div id="contPar" class="contPar">
 	<div id="page1"  style="z-index:1;">
-		<div class="title0">行业智慧能力平台</div>
+		<div class="title0">智慧平台</div>
 		<div class="title1">旅游、交通、气象、公共安全、大数据</div>
 		<div class="imgGroug">
 			<ul>
-				<img alt="" class="img0 png" src="./img/page1_0.png">
-				<img alt="" class="img1 png" src="./img/page1_1.png">
-				<img alt="" class="img2 png" src="./img/page1_2.png">
+				<img alt="" class="img0 png" th:src="@{/loginfile/img/page1_0.png}">
+				<img alt="" class="img1 png" th:src="@{/loginfile/img/page1_1.png}">
+				<img alt="" class="img2 png" th:src="@{/loginfile/img/page1_2.png}">
 			</ul>
 		</div>
-		<img alt="" class="img3 png" src="./img/page1_3.jpg">
+		<img alt="" class="img3 png" th:src="@{/loginfile/img/page1_3.jpg}">
 	</div>
+
 </div>
+<p>《的点点滴滴多多》</p>
 <div class="tyg-div-denglv">
 	<div class="tyg-div-form">
-		<form action="">
-			<h2>登录</h2><p class="tyg-p">欢迎访问  智慧能力</p>
+		<form th:action="@{/user/login}" method="post">
+			<h2>登录</h2><p class="tyg-p">欢迎访问  智慧平台</p>
 			<div style="margin:5px 0px;">
-				<input type="text" placeholder="请输入账号..."/>
+				<input type="text" name="username" required="" placeholder="请输入账号..."/>
 			</div>
 			<div style="margin:5px 0px;">
-				<input type="text" placeholder="请输入密码..."/>
+				<input type="password" name="password" required="required" placeholder="请输入密码..."/>
 			</div>
-			<div style="margin:5px 0px;">
+			<p style="color: red ;width: 270px; height: 30px; margin: 25px 10px 0px 0px;"  th:text="${msg}" th:if="${ not #strings.isEmpty(msg)}"></p>
+	<!--		<div style="margin:5px 0px;">
 				<input type="text" style="width:150px;" placeholder="请输入验证码..."/>
-				<img src="./img/1.png" style="vertical-align:bottom;" alt="验证码"/>
-			</div>
+				<img th:src="@{loginfile/img/1.png}" style="vertical-align:bottom;" alt="验证码"/>
+			</div>-->
 			<button type="submit" >登<span style="width:20px;"></span>录</button>
 		</form>
 	</div>
 </div>
 
-More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-<script type="text/javascript" src="./js/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="./js/com.js"></script>
-<!--[if IE 6]>
-<script language="javascript" type="text/javascript" src="./script/ie6_png.js"></script>
-<script language="javascript" type="text/javascript">
-DD_belatedPNG.fix(".png");
-</script>
-<![endif]-->
-
+<script type="text/javascript" th:src="@{/loginfile/js/jquery-1.8.0.min.js}"></script>
+<script type="text/javascript" th:src="@{/loginfile/js/com.js}"></script>
 
 </body>
 </html>

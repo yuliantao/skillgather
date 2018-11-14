@@ -27,9 +27,10 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         //此处可以不考虑静态资源，springboot已经配置好了，以前配置拦截器需要设置静态资源放行
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
-                excludePathPatterns("/user/login","system/login","/index.html","/",
+                excludePathPatterns("/user/login","/login.html","/index.html","/",
                         "/error/**","**/favicon.ico",
-                        "/webjars/**","/asserts/**","/gentelella/**");
+                        "/webjars/**","/asserts/**","/gentelella/**"
+                        ,"/loginfile/**");
     }
 
     /*
@@ -37,12 +38,13 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("system/login");
-        registry.addViewController("/index.html").setViewName("system/login");
-        registry.addViewController("/main.html").setViewName("system/dashboard");
+        registry.addViewController("/").setViewName("login");
+        registry.addViewController("/login.html").setViewName("login");
+        registry.addViewController("/index.html").setViewName("login");
+        registry.addViewController("/main.html").setViewName("gentelella/production/home");
+        registry.addViewController("/home.html").setViewName("gentelella/production/home");
         registry.addViewController("/er4").setViewName("error/4xx");
         registry.addViewController("/er5").setViewName("error/5xx");
-        registry.addViewController("/home.html").setViewName("gentelella/production/home");
     }
 
 
