@@ -29,7 +29,7 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
                 excludePathPatterns("/user/login","/login.html","/index.html","/",
                         "/error/**","**/favicon.ico",
-                        "/webjars/**","/asserts/**","/gentelella/**"
+                        "/webjars/**","/asserts/**","/gentelella/**","/jqgrid/**"
                         ,"/loginfile/**");
     }
 
@@ -45,6 +45,10 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
         registry.addViewController("/home.html").setViewName("gentelella/production/home");
         registry.addViewController("/er4").setViewName("error/4xx");
         registry.addViewController("/er5").setViewName("error/5xx");
+
+        //region -- 页面展示映射 --
+        registry.addViewController("/userinfo").setViewName("gentelella/production/userinfo");
+        //endregion
     }
 
 
