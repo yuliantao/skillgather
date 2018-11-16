@@ -29,7 +29,7 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
                 excludePathPatterns("/user/login","/login.html","/index.html","/",
                         "/error/**","**/favicon.ico",
-                        "/webjars/**","/asserts/**","/gentelella/**","/jqgrid/**"
+                        "/webjars/**","/asserts/**","/gentelella/**"
                         ,"/loginfile/**");
     }
 
@@ -41,13 +41,17 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("login");
         registry.addViewController("/login.html").setViewName("login");
         registry.addViewController("/index.html").setViewName("login");
-        registry.addViewController("/main.html").setViewName("gentelella/production/home");
-        registry.addViewController("/home.html").setViewName("gentelella/production/home");
+        registry.addViewController("/main.html").setViewName("aceplus/home");
+        registry.addViewController("/home.html").setViewName("aceplus/home");
         registry.addViewController("/er4").setViewName("error/4xx");
         registry.addViewController("/er5").setViewName("error/5xx");
 
         //region -- 页面展示映射 --
-        registry.addViewController("/userinfo").setViewName("gentelella/production/userinfo2");
+        //ace风格
+        registry.addViewController("/userinfo").setViewName("aceplus/userinfo");
+
+        //gentelella风格
+        registry.addViewController("/userinfo2").setViewName("gentelella/production/userinfo2");
         //endregion
     }
 

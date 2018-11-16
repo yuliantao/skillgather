@@ -172,7 +172,7 @@
         })
 
         //if your grid is inside another element, for example a tab pane, you should use its parent's width:
-        /**
+
          $(window).on('resize.jqGrid', function () {
 					var parent_width = $(grid_selector).closest('.tab-pane').width();
 					$(grid_selector).jqGrid( 'setGridWidth', parent_width );
@@ -184,7 +184,7 @@
 					$(grid_selector).jqGrid( 'setGridWidth', parent_width );
 				  }
 				})
-         */
+
 
         jQuery(grid_selector).jqGrid({
             //direction: "rtl",
@@ -258,7 +258,7 @@
             editurl: "./dummy.php",//nothing is saved
             caption: "XXX数据内容"
 
-            //,autowidth: true,
+            ,autowidth: true,
 
             /**
              ,
