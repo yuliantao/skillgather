@@ -47,7 +47,7 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
         registry.addViewController("/er5").setViewName("error/5xx");
 
         //region -- 页面展示映射 --
-        registry.addViewController("/userinfo").setViewName("gentelella/production/userinfo");
+        registry.addViewController("/userinfo").setViewName("gentelella/production/userinfo2");
         //endregion
     }
 
