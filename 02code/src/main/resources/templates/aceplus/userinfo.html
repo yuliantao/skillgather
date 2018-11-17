@@ -123,7 +123,7 @@
 		<!-- page specific plugin scripts -->
 		<script th:src="@{/assets/js/bootstrap-datepicker.min.js}"></script>
 		<script th:src="@{/assets/js/jquery.jqGrid.min.js}"></script>
-		<script th:src="@{/assets/js/grid.locale-en.js}"></script>
+		<script th:src="@{/assets/js/grid.locale-cn.js}"></script>
 
 		<!-- ace scripts -->
 		<script th:src="@{/assets/js/ace-elements.min.js}"></script>
@@ -131,50 +131,11 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-			var grid_data = 
-			[ 
-				{id:"1",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
-				{id:"2",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
-				{id:"3",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-				{id:"4",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"},
-				{id:"5",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2007-12-03"},
-				{id:"6",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-				{id:"7",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2007-12-03"},
-				{id:"8",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-				{id:"9",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-				{id:"10",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
-				{id:"11",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
-				{id:"12",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-				{id:"13",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"},
-				{id:"14",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2007-12-03"},
-				{id:"15",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-				{id:"16",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2007-12-03"},
-				{id:"17",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-				{id:"18",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-				{id:"19",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-				{id:"20",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
-				{id:"21",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
-				{id:"22",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-				{id:"23",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"}
-			];
-			
-			var subgrid_data = 
-			[
-			 {id:"1", name:"sub grid item 1", qty: 11},
-			 {id:"2", name:"sub grid item 2", qty: 3},
-			 {id:"3", name:"sub grid item 3", qty: 12},
-			 {id:"4", name:"sub grid item 4", qty: 5},
-			 {id:"5", name:"sub grid item 5", qty: 2},
-			 {id:"6", name:"sub grid item 6", qty: 9},
-			 {id:"7", name:"sub grid item 7", qty: 3},
-			 {id:"8", name:"sub grid item 8", qty: 8}
-			];
-			
+
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
-				
-				
+
 				var parent_column = $(grid_selector).closest('[class*="col-"]');
 				//resize to fit page size
 				$(window).on('resize.jqGrid', function () {
@@ -205,39 +166,11 @@
 				  }
 				})
 				*/
-
 			
 				jQuery(grid_selector).jqGrid({
-					//direction: "rtl",
-			
-					//subgrid options
-					subGrid : false,
-					//subGridModel: [{ name : ['No','Item Name','Qty'], width : [55,200,80] }],
-					//datatype: "xml",
-					subGridOptions : {
-						plusicon : "ace-icon fa fa-plus center bigger-110 blue",
-						minusicon  : "ace-icon fa fa-minus center bigger-110 blue",
-						openicon : "ace-icon fa fa-chevron-right center orange"
-					},
-					//for this example we are using local data
-					subGridRowExpanded: function (subgridDivId, rowId) {
-						var subgridTableId = subgridDivId + "_t";
-						$("#" + subgridDivId).html("<table id='" + subgridTableId + "'></table>");
-						$("#" + subgridTableId).jqGrid({
-							datatype: 'local',
-							data: subgrid_data,
-							colNames: ['No','Item Name','Qty'],
-							colModel: [
-								{ name: 'id', width: 50 },
-								{ name: 'name', width: 150 },
-								{ name: 'qty', width: 50 }
-							]
-						});
-					},
+                    regional: 'cn',
                     url:"/system/permissionUser/list",
-					//data: grid_data,
                     datatype: "json",
-					//datatype: "local",
 					height: 490,
                     colNames: ["ID", "用户名", "密码", "真实姓名", "是否删除"],
        				colModel:[
@@ -250,8 +183,7 @@
 								//editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
 							}
 						},
-						// { name: "id", width: 55 },
-                        { name: "userName",index:'userName', width: 230 ,align: "center",sorttype:"string",editable: true ,editoptions:{size:"20",maxlength:"30"}},
+                        { name: "userName",index:'userName',resize:false, width: 230 ,align: "center",sorttype:"string",editable: true ,editoptions:{size:"20",maxlength:"30"}},
                         { name: "password",index:'password', width: 200, align: "center" ,editable: true,editoptions:{size:"20",maxlength:"30"}},
                         { name: "trueName", width: 200, align: "center",editable: true  },
                         { name: "isDelete", width: 240, sortable: false ,editable: true  }
@@ -306,10 +238,7 @@
 			
 					editurl: "./dummy.php",//nothing is saved
 					caption: "用户信息"
-			
 					,autowidth: true,
-			
-			
 					/**
 					,
 					grouping:true, 
@@ -324,14 +253,11 @@
 			
 				});
 				$(window).triggerHandler('resize.jqGrid');//trigger window resize to make the grid get the correct size
-				
-				
-			
+
 				//enable search/filter toolbar
 				//jQuery(grid_selector).jqGrid('filterToolbar',{defaultSearch:true,stringResult:true})
 				//jQuery(grid_selector).filterToolbar({});
-			
-			
+
 				//switch element when editing inline
 				function aceSwitch( cellvalue, options, cell ) {
 					setTimeout(function(){
@@ -347,7 +273,6 @@
 							.datepicker({format:'yyyy-mm-dd' , autoclose:true}); 
 					}, 0);
 				}
-			
 			
 				//navButtons
 				jQuery(grid_selector).jqGrid('navGrid',pager_selector,
@@ -395,7 +320,6 @@
 						beforeShowForm : function(e) {
 							var form = $(e[0]);
 							if(form.data('styled')) return false;
-							
 							form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 							style_delete_form(form);
 							
