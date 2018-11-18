@@ -88,7 +88,7 @@ public abstract class BaseController <PO> {
     /**
      * 添加数据
      */
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add")
     @ResponseBody
     public boolean addItem(@RequestBody PO po) {
     /*        boolean isOk = targetService.insert(${entity});
@@ -103,7 +103,7 @@ public abstract class BaseController <PO> {
     /**
      * 更新数据
      */
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update")
     @ResponseBody
     public boolean updateItem(@RequestBody PO po) {
         /*        boolean isOk = targetService.updateAllColumnById(${entity});

@@ -171,6 +171,7 @@
                     regional: 'cn',
                     url:"/system/permissionUser/list",
                     datatype: "json",
+                    mtype:"POST",
 					height: 490,
                     colNames: ["ID", "用户名", "密码", "真实姓名", "是否删除"],
        				colModel:[
@@ -188,7 +189,7 @@
                         { name: "trueName", width: 200, align: "center",editable: true  },
                         { name: "isDelete", width: 240, sortable: false ,editable: true  }
 
-						/*,
+						/*,edittype
 						{name:'userName',index:'sdate',width:90, editable:true, sorttype:"date",unformat: pickDate},
 						{name:'password',index:'name', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
 						{name:'trueName',index:'stock', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"},unformat: aceSwitch},
@@ -236,7 +237,7 @@
 						}, 0);
 					},
 			
-					editurl: "./dummy.php",//nothing is saved
+					editurl: "http://localhost:8080/system/permissionUser/update",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**
