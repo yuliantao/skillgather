@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -105,13 +106,22 @@ public abstract class BaseController <PO> {
      */
     @RequestMapping(value = "/update")
     @ResponseBody
-    public boolean updateItem(@RequestBody PO po) {
-        /*        boolean isOk = targetService.updateAllColumnById(${entity});
-                if(isOk){
-                return BaseResponse.onSuccess("数据更改成功！");
-                }
-                return BaseResponse.onFail("数据更改失败");*/
-        return getService().updateById(po);
+    public boolean updateItem(PO po, HttpServletRequest request) {
+
+        String oper= request.getParameter("oper");
+        switch (oper)
+        {
+            case "edit":
+                return getService().updateById(po);
+            case "del":
+                Integer id=Integer.valueOf(request.getParameter("id"));
+                return getService().removeById(id);
+            case "add":
+                return getService().save(po);
+                default:
+                    return  false;
+        }
+
     }
 
 

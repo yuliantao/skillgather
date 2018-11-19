@@ -58,4 +58,13 @@ public class LoginControler {
         session.removeAttribute("loginUser");
         return "redirect:/login.html";
     }
+
+    @RequestMapping("/test")
+    @ResponseBody
+    public String test(HttpServletRequest request,PermissionUser permissionUser )
+    {
+        System.out.println(request.getParameter("password"));
+        return "1";
+    }
+
 }
