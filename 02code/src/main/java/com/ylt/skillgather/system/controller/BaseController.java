@@ -107,21 +107,7 @@ public abstract class BaseController <PO> {
     @RequestMapping(value = "/update")
     @ResponseBody
     public boolean updateItem(PO po, HttpServletRequest request) {
-
-        String oper= request.getParameter("oper");
-        switch (oper)
-        {
-            case "edit":
-                return getService().updateById(po);
-            case "del":
-                Integer id=Integer.valueOf(request.getParameter("id"));
-                return getService().removeById(id);
-            case "add":
-                return getService().save(po);
-                default:
-                    return  false;
-        }
-
+        return getService().updateById(po);
     }
 
 
@@ -138,6 +124,39 @@ public abstract class BaseController <PO> {
             return BaseResponse.onFail("数据删除失败");
             }*/
         return getService().removeByIds(ids);
+    }
+
+
+    /**
+     * 更新数据
+     */
+    @RequestMapping(value = "/jqgridedite")
+    @ResponseBody
+    public boolean jqgridEdite(PO po, HttpServletRequest request) {
+
+        String oper= request.getParameter("oper");
+        switch (oper)
+        {
+            case "edit":
+                return getService().updateById(po);
+            case "del":
+                Integer id=Integer.valueOf(request.getParameter("id"));
+                return getService().removeById(id);
+            case "add":
+                return getService().save(po);
+            default:
+                return  false;
+        }
+
+    }
+
+    /**
+     * 获取数据列表
+     */
+    @RequestMapping("/jqgridlist")
+    @ResponseBody
+    public List<PO>  jqgridlist(HttpServletRequest request) {
+        return  getService().list(null);
     }
 }
 

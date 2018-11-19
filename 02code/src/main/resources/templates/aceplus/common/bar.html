@@ -16,10 +16,10 @@
         </button>
 
         <div class="navbar-header pull-left">
-            <a href="index.html" class="navbar-brand">
+            <a th:href="@{/userinfo}" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
-                    指挥平台 Admin
+                    智慧平台 Admin
                 </small>
             </a>
         </div>
@@ -34,14 +34,14 @@
                     <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
                         <li class="dropdown-header">
                             <i class="ace-icon fa fa-check"></i>
-                            4 Tasks to complete
+                            4个任务
                         </li>
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar">
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-                                            <span class="pull-left">Software Update</span>
+                                            <span class="pull-left">报废管理</span>
                                             <span class="pull-right">65%</span>
                                         </div>
 
@@ -53,7 +53,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-                                            <span class="pull-left">Hardware Upgrade</span>
+                                            <span class="pull-left">待修入库</span>
                                             <span class="pull-right">35%</span>
                                         </div>
 
@@ -65,7 +65,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-                                            <span class="pull-left">Unit Testing</span>
+                                            <span class="pull-left">单据打印</span>
                                             <span class="pull-right">15%</span>
                                         </div>
                                         <div class="progress progress-mini">
@@ -76,7 +76,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-                                            <span class="pull-left">Bug Fixes</span>
+                                            <span class="pull-left">油料准备</span>
                                             <span class="pull-right">90%</span>
                                         </div>
 
@@ -89,7 +89,7 @@
                         </li>
                         <li class="dropdown-footer">
                             <a href="#">
-                                See tasks with details
+                                查看任务详细信息
                                 <i class="ace-icon fa fa-arrow-right"></i>
                             </a>
                         </li>
@@ -103,7 +103,7 @@
                     <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
                         <li class="dropdown-header">
                             <i class="ace-icon fa fa-exclamation-triangle"></i>
-                            8 Notifications
+                            8个通知
                         </li>
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar navbar-pink">
@@ -112,7 +112,7 @@
                                         <div class="clearfix">
 													<span class="pull-left">
 														<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-														New Comments
+														4点准备入场
 													</span>
                                             <span class="pull-right badge badge-info">+12</span>
                                         </div>
@@ -121,7 +121,7 @@
                                 <li>
                                     <a href="#">
                                         <i class="btn btn-xs btn-primary fa fa-user"></i>
-                                        Bob just signed up as an editor ...
+                                        周一领导检查
                                     </a>
                                 </li>
                                 <li>
@@ -129,7 +129,7 @@
                                         <div class="clearfix">
 													<span class="pull-left">
 														<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-														New Orders
+														18号业务训练
 													</span>
                                             <span class="pull-right badge badge-success">+8</span>
                                         </div>
@@ -140,7 +140,7 @@
                                         <div class="clearfix">
 													<span class="pull-left">
 														<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-														Followers
+														下月技能考核
 													</span>
                                             <span class="pull-right badge badge-info">+11</span>
                                         </div>
@@ -150,7 +150,7 @@
                         </li>
                         <li class="dropdown-footer">
                             <a href="#">
-                                See all notifications
+                                查看更多通知
                                 <i class="ace-icon fa fa-arrow-right"></i>
                             </a>
                         </li>
@@ -164,7 +164,7 @@
                     <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
                         <li class="dropdown-header">
                             <i class="ace-icon fa fa-envelope-o"></i>
-                            5 Messages
+                            5条信息
                         </li>
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar">
@@ -173,13 +173,13 @@
                                         <img src="assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
                                         <span class="msg-body">
 													<span class="msg-title">
-														<span class="blue">Alex:</span>
-														Ciao sociis natoque penatibus et auctor ...
+														<span class="blue">罗助理:</span>
+														请检查库存信息...
 													</span>
 
 													<span class="msg-time">
 														<i class="ace-icon fa fa-clock-o"></i>
-														<span>a moment ago</span>
+														<span>刚才</span>
 													</span>
 												</span>
                                     </a>
@@ -189,13 +189,13 @@
                                         <img src="assets/images/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
                                         <span class="msg-body">
 													<span class="msg-title">
-														<span class="blue">Susan:</span>
-														Vestibulum id ligula porta felis euismod ...
+														<span class="blue">张站长:</span>
+														新版册序号是否更新
 													</span>
 
 													<span class="msg-time">
 														<i class="ace-icon fa fa-clock-o"></i>
-														<span>20 minutes ago</span>
+														<span>20 分钟前</span>
 													</span>
 												</span>
                                     </a>
@@ -205,13 +205,13 @@
                                         <img src="assets/images/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
                                         <span class="msg-body">
 													<span class="msg-title">
-														<span class="blue">Bob:</span>
-														Nullam quis risus eget urna mollis ornare ...
+														<span class="blue">胡助理:</span>
+														上周要求准备的螺栓是否ok ...
 													</span>
 
 													<span class="msg-time">
 														<i class="ace-icon fa fa-clock-o"></i>
-														<span>3:15 pm</span>
+														<span>下午 3:15</span>
 													</span>
 												</span>
                                     </a>
@@ -221,13 +221,13 @@
                                         <img src="assets/images/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
                                         <span class="msg-body">
 													<span class="msg-title">
-														<span class="blue">Kate:</span>
-														Ciao sociis natoque eget urna mollis ornare ...
+														<span class="blue">汪主任:</span>
+														周末准备车辆驻训设备 ...
 													</span>
 
 													<span class="msg-time">
 														<i class="ace-icon fa fa-clock-o"></i>
-														<span>1:33 pm</span>
+														<span>下午 1:33</span>
 													</span>
 												</span>
                                     </a>
@@ -237,13 +237,13 @@
                                         <img src="assets/images/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
                                         <span class="msg-body">
 													<span class="msg-title">
-														<span class="blue">Fred:</span>
-														Vestibulum id penatibus et auctor  ...
+														<span class="blue">彭高工:</span>
+														年度计划方案准备  ...
 													</span>
 
 													<span class="msg-time">
 														<i class="ace-icon fa fa-clock-o"></i>
-														<span>10:09 am</span>
+														<span>上午 10:09 </span>
 													</span>
 												</span>
                                     </a>
@@ -252,7 +252,7 @@
                         </li>
                         <li class="dropdown-footer">
                             <a href="inbox.html">
-                                See all messages
+                                查看所有信息
                                 <i class="ace-icon fa fa-arrow-right"></i>
                             </a>
                         </li>
@@ -262,8 +262,8 @@
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
                         <span class="user-info">
-									<small>Welcome,</small>
-									Jason
+									<small>欢迎</small>
+									yu
 								</span>
 
                         <i class="ace-icon fa fa-caret-down"></i>
@@ -333,7 +333,7 @@
 
     <ul class="nav nav-list">
         <li class="active">
-            <a href="index.html">
+            <a th:href="@{/userinfo}">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text"> 系统主页 </span>
             </a>

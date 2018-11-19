@@ -169,9 +169,9 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/system/permissionUser/list",
+                    url:"/system/permissionUser/jqgridlist",
                     datatype: "json",
-                     mtype:"GET",
+                     mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID", "用户名", "密码", "真实姓名", "是否删除"],
        				colModel:[
@@ -238,8 +238,7 @@
 						}, 0);
 					},
 
-                    //editurl:"http://localhost:8080/test3",
-					editurl: "http://localhost:8080/system/permissionUser/update",//nothing is saved
+ 					editurl: "http://localhost:8080/system/permissionUser/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**
