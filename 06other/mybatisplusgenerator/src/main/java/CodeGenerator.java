@@ -43,10 +43,11 @@ public class CodeGenerator {
         //region   ***  策略配置(数据表配置)  ***
 
         StrategyConfig strategy = new StrategyConfig();
-        //strategy.setCapitalMode(false);//是否大写命名,默认false
+        strategy.setCapitalMode(false);//是否大写命名,默认false
         strategy.setSkipView(false);//跳过视图
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);//数据库表字段映射到实体的命名策略, 未指定按照 naming 执行
+
         //strategy.setTablePrefix("ta_");//一般不用
         //strategy.setFieldPrefix("");//字段前缀
         //strategy.setSuperEntityClass("com.baomidou.ant.common.BaseEntity");//自定义继承的Entity类全称，带包名()
@@ -93,8 +94,9 @@ public class CodeGenerator {
         TemplateConfig tc = new TemplateConfig();
 
         tc.setController("/controllerEmpty.java.vm");
+        tc.setEntity("/entity.java.vm");
 
-        /*tc.setEntity(null);
+     /*   tc.setEntity(null);
         tc.setEntityKt(null);
         tc.setMapper(null);
         tc.setXml(null);
@@ -138,14 +140,16 @@ public class CodeGenerator {
             @Override
             public void initMap() {
                 Map<String, Object> map = new HashMap<String, Object>();
-                map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
+                map.put("menu", "系统管理");
                 this.setMap(map);
             }
         };
-
+//   String f="ss".split("a")[0];
+//f.substring(3);
+//f.length()
         // 自定义模板生成，可以生成各层级别的文件，但主要是生成html（增删改查），以下生成查看为例
         List<FileOutConfig> focList = new ArrayList<>();
-        focList.add(new FileOutConfig("/list.html.vm") {
+        focList.add(new FileOutConfig("/templateview.html.vm") {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称

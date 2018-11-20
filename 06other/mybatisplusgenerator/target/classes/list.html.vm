@@ -77,6 +77,12 @@ $(function () {
         buttonsAlign: "right",  //按钮位置
         toolbar: "#toolbar",// 指定工具栏
         uniqueId: "id", // 每一行的唯一标识
+        ${table.comment} test ${cfg.menu} tet ${table.comment.length()}
+
+        test ${table.comment.split("a")[0]}
+            ${table.comment.substring(0)}
+
+
         columns: [
             {checkbox : true},
             #foreach($field in ${table.fields})

@@ -1,19 +1,17 @@
 package com.ylt.skillgather.system.controller;
 
-import org.springframework.stereotype.Controller;
-import com.ylt.skillgather.system.controller.BaseController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.ylt.skillgather.system.service.IPermissionActionService;
 import com.ylt.skillgather.system.entity.PermissionAction;
+import com.ylt.skillgather.system.service.IPermissionActionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author yuliantao
- * @since 2018-11-09
+ * @since 2018-11-20
  */
 @Controller
 @RequestMapping("/system/permissionAction")

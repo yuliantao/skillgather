@@ -55,7 +55,7 @@
 								<a href="#">主页</a>
 							</li>
 							<li>
-								<a href="#">系统管理</a>
+								<a href="#">${cfg.menu}</a>
 							</li>
 							<li class="active">用户管理</li>
 						</ul><!-- /.breadcrumb -->
@@ -80,7 +80,7 @@
 								用户
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									
+									${table.comment}
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -168,15 +168,17 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/system/permissionCompany/jqgridlist",
+                    url:"#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end/jqgridlist",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID"
 
-						,""
-						,""
-						,""
+					#foreach($field in ${table.fields})
+					#if(!${field.keyFlag})
+						,"${field.comment}"
+					#end
+					#end
 								],
 
                 colModel:[
@@ -188,9 +190,11 @@
 							}
 						},
                     { name: "id",  width: 200, align: "center",editable: true,hidden:true  }
-                		,{ name: "CompanyCode",index:'CompanyCode', width: 230 ,align: "center",editable: true }
-                		,{ name: "CompanyName",index:'CompanyName', width: 230 ,align: "center",editable: true }
-                		,{ name: "IsDelete",index:'IsDelete', width: 230 ,align: "center",editable: true }
+					#foreach($field in ${table.fields})
+					#if(!${field.keyFlag})
+                		,{ name: "${field.propertyName}",index:'${field.propertyName}', width: 230 ,align: "center",editable: true }
+					#end
+					#end
 						],
                     viewrecords : true,
 					rowNum:15,
@@ -213,7 +217,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080/system/permissionCompany/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**

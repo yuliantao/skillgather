@@ -32,5 +32,4 @@ private final Logger logger = LoggerFactory.getLogger(PermissionUserController.c
         return permissionUserService;
     }
 
-
 }

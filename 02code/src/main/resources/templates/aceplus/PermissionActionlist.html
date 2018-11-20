@@ -80,7 +80,7 @@
 								用户
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									
+									操作
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -168,16 +168,15 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/system/permissionCompany/jqgridlist",
+                    url:"/system/permissionAction/jqgridlist",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID"
-
-						,""
-						,""
-						,""
-								],
+						,"操作码"
+						,"操作名称"
+						,"操作值"
+						,"是否删除"	],
 
                 colModel:[
 						{ width:80, fixed:true, sortable:false, resize:false,
@@ -187,9 +186,10 @@
 								delOptions:{recreateForm: true, beforeShowForm:beforeDeleteCallback},
 							}
 						},
-                    { name: "id",  width: 200, align: "center",editable: true,hidden:true  }
-                		,{ name: "CompanyCode",index:'CompanyCode', width: 230 ,align: "center",editable: true }
-                		,{ name: "CompanyName",index:'CompanyName', width: 230 ,align: "center",editable: true }
+                    { name: "ID",  width: 200, align: "center",editable: true,hidden:true  }
+                		,{ name: "ActionCode",index:'ActionCode', width: 230 ,align: "center",editable: true }
+                		,{ name: "ActionName",index:'ActionName', width: 230 ,align: "center",editable: true }
+                		,{ name: "ActionValue",index:'ActionValue', width: 230 ,align: "center",editable: true }
                 		,{ name: "IsDelete",index:'IsDelete', width: 230 ,align: "center",editable: true }
 						],
                     viewrecords : true,
@@ -213,7 +213,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080/system/permissionCompany/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080/system/permissionAction/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**

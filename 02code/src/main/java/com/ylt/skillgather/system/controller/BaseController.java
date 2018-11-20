@@ -3,23 +3,13 @@ package com.ylt.skillgather.system.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ylt.skillgather.common.utils.ClassUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.net.Proxy;
 import java.util.List;
 
-import static com.ylt.skillgather.common.utils.ClassUtils.getGenericType;
 
 /**
  * @author yuliantao
@@ -43,7 +33,6 @@ public abstract class BaseController <PO> {
      */
     protected final Class<PO> getPOType() {
         return (Class<PO>) ClassUtils.getGenericType(this.getClass(), 0);
-
     }
 
     /**
@@ -52,9 +41,6 @@ public abstract class BaseController <PO> {
     @RequestMapping("/list")
     @ResponseBody
     public List<PO>  findListByPage() {
-//            Page page = new Page(pageIndex,step);
-//            targetService.selectPage(page);
-//            return BaseResponse.onSuccess(page);
         return  getService().list(null);
     }
 
@@ -65,8 +51,6 @@ public abstract class BaseController <PO> {
     @RequestMapping("/all")
     @ResponseBody
     public List<PO> findAll() {
-        /*        List<${entity}> models = targetService.selectList(null);
-                return BaseResponse.onSuccess(models);*/
           return  getService().list(null);
     }
 
@@ -77,12 +61,7 @@ public abstract class BaseController <PO> {
     @RequestMapping("/find")
     @ResponseBody
     public PO find(@RequestParam("id") Long id) {
-        /*        ${entity} ${entity} = targetService.selectById(id);
-                if(${entity}==null){
-                return BaseResponse.onFail("尚未查询到此ID");
-                }
-                return BaseResponse.onSuccess(${entity});*/
-        return  getService().getOne(new QueryWrapper<PO>().eq("ID",id));
+         return  getService().getOne(new QueryWrapper<PO>().eq("ID",id));
     }
 
 
@@ -117,12 +96,6 @@ public abstract class BaseController <PO> {
     @RequestMapping("/del")
     @ResponseBody
     public boolean deleteItems(@RequestParam("ids") List<Long> ids) {
-/*            boolean isOk = targetService.deleteBatchIds(ids);
-            if(isOk){
-            return BaseResponse.onSuccess("数据删除成功！");
-            }
-            return BaseResponse.onFail("数据删除失败");
-            }*/
         return getService().removeByIds(ids);
     }
 
@@ -134,7 +107,7 @@ public abstract class BaseController <PO> {
     @ResponseBody
     public boolean jqgridEdite(PO po, HttpServletRequest request) {
 
-        String oper= request.getParameter("oper");
+         String oper= request.getParameter("oper");
         switch (oper)
         {
             case "edit":
@@ -147,7 +120,6 @@ public abstract class BaseController <PO> {
             default:
                 return  false;
         }
-
     }
 
     /**
@@ -156,8 +128,7 @@ public abstract class BaseController <PO> {
     @RequestMapping("/jqgridlist")
     @ResponseBody
     public List<PO>  jqgridlist(HttpServletRequest request) {
-        return  getService().list(null);
+         List<PO> lits= getService().list(null);
+        return lits;
     }
 }
-
-

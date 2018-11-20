@@ -1,8 +1,12 @@
 package com.ylt.skillgather.system.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 /**
@@ -17,22 +21,28 @@ public class PermissionAction implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("ID")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
+    @JsonProperty("ActionCode")
     @TableField("ActionCode")
     private String ActionCode;
 
+    @JsonProperty("ActionName")
     @TableField("ActionName")
     private String ActionName;
 
-    @TableField("ActionValue")
+    @JsonProperty("ActionValue")
+     @TableField("ActionValue")
     private String ActionValue;
 
+    @JsonProperty("IsDelete")
     @TableField("IsDelete")
     private Boolean IsDelete;
 
 
+    @JsonIgnore
     public Integer getId() {
         return id;
     }
@@ -41,6 +51,7 @@ public class PermissionAction implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     public String getActionCode() {
         return ActionCode;
     }
@@ -49,6 +60,7 @@ public class PermissionAction implements Serializable {
         this.ActionCode = ActionCode;
     }
 
+    @JsonIgnore
     public String getActionName() {
         return ActionName;
     }
@@ -57,6 +69,7 @@ public class PermissionAction implements Serializable {
         this.ActionName = ActionName;
     }
 
+    @JsonIgnore
     public String getActionValue() {
         return ActionValue;
     }
@@ -65,6 +78,7 @@ public class PermissionAction implements Serializable {
         this.ActionValue = ActionValue;
     }
 
+    @JsonIgnore
     public Boolean getIsDelete() {
         return IsDelete;
     }
