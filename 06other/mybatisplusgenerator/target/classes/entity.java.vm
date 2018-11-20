@@ -12,6 +12,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 #end
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
@@ -48,7 +50,7 @@ public class ${entity} implements Serializable {
 ## ----------  BEGIN 字段循环遍历  ----------
 #foreach($field in ${table.fields})
 
-@JsonProperty("${field.name}")
+
 #if(${field.keyFlag})
 #set($keyPropertyName=${field.propertyName})
 #end
@@ -61,9 +63,9 @@ public class ${entity} implements Serializable {
      */
      #end
 #end
+    @JsonProperty("${field.name}")
 #if(${field.keyFlag})
 ## 主键
-
 #if(${field.keyIdentityFlag})
     @TableId(value = "${field.name}", type = IdType.AUTO)
 #elseif(!$null.isNull(${idType}) && "$!idType" != "")
@@ -90,7 +92,6 @@ public class ${entity} implements Serializable {
 #if(${logicDeleteFieldName}==${field.name})
     @TableLogic
 #end
-
     private ${field.propertyType} ${field.propertyName};
 #end
 ## ----------  END 字段循环遍历  ----------
@@ -102,6 +103,7 @@ public class ${entity} implements Serializable {
 #else
 #set($getprefix="get")
 #end
+
     @JsonIgnore
     public ${field.propertyType} ${getprefix}${field.capitalName}() {
         return ${field.propertyName};

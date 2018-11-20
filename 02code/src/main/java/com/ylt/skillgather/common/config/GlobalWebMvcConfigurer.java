@@ -49,7 +49,7 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
         //region -- 页面展示映射 --
         //ace风格
         registry.addViewController("/userinfo").setViewName("aceplus/userinfo");
-        registry.addViewController("/action").setViewName("aceplus/PermissionActionlist");
+        registry.addViewController("/action").setViewName("aceplus/PermissionAction");
 
         //gentelella风格
         registry.addViewController("/userinfo2").setViewName("gentelella/production/userinfo2");

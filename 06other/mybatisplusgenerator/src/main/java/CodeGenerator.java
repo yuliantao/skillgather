@@ -153,7 +153,7 @@ public class CodeGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
-                return projectPath+"/src/main/resources/templates/"+ pc.getModuleName()+ "/" + tableInfo.getEntityName() + "list.html";
+                return projectPath+"/src/main/resources/templates/"+ pc.getModuleName()+ "/" + tableInfo.getEntityName() + ".html";
             }
         });
         cfg.setFileOutConfigList(focList);

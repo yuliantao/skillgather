@@ -1,9 +1,8 @@
 package com.ylt.skillgather.system.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,32 +10,52 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * 操作
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-09
+ * @since 2018-11-20
  */
 public class PermissionAction implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+    /**
+     * ID
+     */
     @JsonProperty("ID")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
+
+    /**
+     * 操作码
+     */
     @JsonProperty("ActionCode")
     @TableField("ActionCode")
     private String ActionCode;
 
+
+    /**
+     * 操作名
+     */
     @JsonProperty("ActionName")
     @TableField("ActionName")
     private String ActionName;
 
+
+    /**
+     * 操作值
+     */
     @JsonProperty("ActionValue")
-     @TableField("ActionValue")
+    @TableField("ActionValue")
     private String ActionValue;
 
+
+    /**
+     * 是否删除
+     */
     @JsonProperty("IsDelete")
     @TableField("IsDelete")
     private Boolean IsDelete;

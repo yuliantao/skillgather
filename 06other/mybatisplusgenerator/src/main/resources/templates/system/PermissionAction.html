@@ -80,7 +80,7 @@
 								用户
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									
+									操作
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -168,16 +168,16 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/system/permissionUser/jqgridlist",
+                    url:"/system/permissionAction/jqgridlist",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID"
 
-						,""
-						,""
-						,""
-						,""
+						,"操作码"
+						,"操作名"
+						,"操作值"
+						,"是否删除"
 								],
 
                 colModel:[
@@ -189,9 +189,9 @@
 							}
 						},
                     { name: "id",  width: 200, align: "center",editable: true,hidden:true  }
-                		,{ name: "UserName",index:'UserName', width: 230 ,align: "center",editable: true }
-                		,{ name: "Password",index:'Password', width: 230 ,align: "center",editable: true }
-                		,{ name: "TrueName",index:'TrueName', width: 230 ,align: "center",editable: true }
+                		,{ name: "ActionCode",index:'ActionCode', width: 230 ,align: "center",editable: true }
+                		,{ name: "ActionName",index:'ActionName', width: 230 ,align: "center",editable: true }
+                		,{ name: "ActionValue",index:'ActionValue', width: 230 ,align: "center",editable: true }
                 		,{ name: "IsDelete",index:'IsDelete', width: 230 ,align: "center",editable: true }
 						],
                     viewrecords : true,
@@ -215,7 +215,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080/system/permissionUser/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080/system/permissionAction/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**
@@ -335,9 +335,7 @@
 						}
 					}
 				)
-			
-			
-				
+
 				function style_edit_form(form) {
 					//enable datepicker on "sdate" field and switches for "stock" field
 					form.find('input[name=sdate]').datepicker({format:'yyyy-mm-dd' , autoclose:true})
@@ -345,8 +343,7 @@
 					form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
 							   //don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
 							  //.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
-			
-							
+
 					//update buttons classes
 					var buttons = form.next().find('.EditButton .fm-button');
 					buttons.addClass('btn btn-sm').find('[class*="-icon"]').hide();//ui-icon, s-icon
@@ -386,7 +383,6 @@
 					
 					form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 					style_delete_form(form);
-					
 					form.data('styled', true);
 				}
 				
@@ -395,8 +391,6 @@
 					form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 					style_edit_form(form);
 				}
-			
-			
 			
 				//it causes some flicker when reloading or navigating grid
 				//it may be possible to have some custom formatter to do this as the grid is being created to prevent this
