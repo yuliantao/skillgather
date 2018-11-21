@@ -80,7 +80,7 @@
 								用户
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									操作
+									请求链接映射视图地址
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -168,16 +168,14 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/system/permissionAction/jqgridlist",
+                    url:"/system/coreUrlMaping/jqgridlist",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID"
 
-						,"操作码"
-						,"操作名"
-						,"操作值"
-						,"是否删除"
+						,"请求链接"
+						,"映射Url"
 								],
 
                 colModel:[
@@ -189,10 +187,8 @@
 							}
 						},
                     { name: "id",  width: 200, align: "center",editable: true,hidden:true  }
-                		,{ name: "ActionCode",index:'ActionCode', width: 230 ,align: "center",editable: true }
-                		,{ name: "ActionName",index:'ActionName', width: 230 ,align: "center",editable: true }
-                		,{ name: "ActionValue",index:'ActionValue', width: 230 ,align: "center",editable: true }
-                		,{ name: "IsDelete",index:'IsDelete', width: 230 ,align: "center",editable: true }
+                		,{ name: "RequestUrl",index:'RequestUrl', width: 230 ,align: "center",editable: true }
+                		,{ name: "ViewUrl",index:'ViewUrl', width: 230 ,align: "center",editable: true }
 						],
                     viewrecords : true,
 					rowNum:15,
@@ -215,7 +211,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080/system/permissionAction/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080/system/coreUrlMaping/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**

@@ -297,18 +297,9 @@
 </div>
 
 <!--通用JavaScript代码-->
-            <script th:fragment="javascrpt" type="text/javascript">
-                var url="/system/coreUrlMaping/jqgridlist";
-                $.post(url,{name:"test",city:"test"},
-                    function(data,status){
-                        //datas=JSON.stringify(data);
-                        //JSON.parse(datas);
-                        new Vue({
-                            el: '#sidebar',
-                            data:{datas:data}// $.parseJSON( datas )
-                        })
-                    });
-            </script>
+<script th:fragment="javascrpt" type="text/javascript">
+
+</script>
 
 <!--左边导航-->
 <div id="sidebar" class="sidebar  responsive ace-save-state" th:fragment="leftbar">
@@ -345,11 +336,10 @@
 
     <ul class="nav nav-list">
         <li class="active">
-            <a th:href="@{/userinfo}">
+            <a th:href="@{/aceplus/userinfo}">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text"> 系统主页 </span>
             </a>
-
             <b class="arrow"></b>
         </li>
 
@@ -542,15 +532,15 @@
         <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">{{datas[0].RequestUrl}} </span>
+                <span class="menu-text">test </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                <li class="">
-                    <a href="tables.html">
+                <li class="" th:each="item : ${items}">
+                    <a th:href="${item.RequestUrl}">
                         <i class="menu-icon fa fa-caret-right"></i>
-                        {{datas[0].RequestUrl}}
+                        [[item.RequestUrl]]
                     </a>
                     <b class="arrow"></b>
                 </li>
