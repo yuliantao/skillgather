@@ -39,13 +39,11 @@
 	<div th:replace="/aceplus/common/bar::topbar"></div>
 
 		<div class="main-container ace-save-state" id="main-container">
-
-			<div th:replace="/aceplus/common/bar::javascrpt"></div>
-			<script  type="text/javascript">
+			<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
 			</script>
 
-			<!--插入左边导航-->
+			<!--插入右边导航-->
 			<div th:replace="/aceplus/common/bar::leftbar"></div>
 
 			<div class="main-content">
@@ -59,7 +57,7 @@
 							<li>
 								<a href="#">系统管理</a>
 							</li>
-							<li class="active">用户信息</li>
+							<li class="active">用户管理</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -82,7 +80,7 @@
 								用户
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									实现用户动态的新增、修改、删除、查看、查询等基本功能！
+									
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -108,7 +106,6 @@
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->
-
 		<!--[if !IE]> -->
 		<script  th:src="@{/assets/js/jquery-2.1.4.min.js}"></script>
 
@@ -171,54 +168,34 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/system/permissionUser/jqgridlist",
+                    url:"/system/permissionUserPermit/jqgridlist",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
-                    colNames: ["操作","ID", "用户名", "密码", "真实姓名", "是否删除"],
-       				colModel:[
+                    colNames: ["操作","ID"
+
+						,""
+						,""
+						,""
+						,""
+						,""
+								],
+
+                colModel:[
 						{ width:80, fixed:true, sortable:false, resize:false,
 							formatter:'actions', 
 							formatoptions:{ 
 								keys:true,
-								//delbutton: false,//disable delete button
 								delOptions:{recreateForm: true, beforeShowForm:beforeDeleteCallback},
-								//editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
 							}
 						},
-                        { name: "id",  width: 200, align: "center",editable: true,hidden:true  },
-                        { name: "userName",index:'userName', width: 230 ,align: "center",editable: true ,editoptions:{size:"20",maxlength:"30"}},
-                        { name: "password",index:'password', width: 200, align: "center" ,editable: true,editoptions:{size:"20",maxlength:"30"}},
-                        { name: "trueName", width: 200, align: "center",editable: true  },
-                        { name: "isDelete", width: 240, sortable: false ,editable: false  }
-
-						/*,edittype
-						{name:'userName',index:'sdate',width:90, editable:true, sorttype:"date",unformat: pickDate},
-						{name:'password',index:'name', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
-						{name:'trueName',index:'stock', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"},unformat: aceSwitch},
-						{name:'isDelete',index:'ship', width:90, editable: true,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}},
-						{name:'note',index:'note', width:150, sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}}
-					*/],
-/*                    colModel:[
-                        {name:'myac',index:'', width:80, fixed:true, sortable:false, resize:false,
-                            formatter:'actions',
-                            formatoptions:{
-                                keys:true,
-                                //delbutton: false,//disable delete button
-
-                                delOptions:{recreateForm: true, beforeShowForm:beforeDeleteCallback},
-                                //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
-                            }
-                        },
-                        {name:'id',index:'id', width:60, sorttype:"int", editable: true},
-                        {name:'sdate',index:'sdate',width:90, editable:true, sorttype:"date",unformat: pickDate},
-                        {name:'name',index:'name', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
-                        {name:'stock',index:'stock', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"},unformat: aceSwitch},
-                        {name:'ship',index:'ship', width:90, editable: true,edittype:"select",editoptions:{value:"FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}},
-                        {name:'note',index:'note', width:150, sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}}
-                    ],*/
-
-
+                    { name: "id",  width: 200, align: "center",editable: true,hidden:true  }
+                		,{ name: "UserId",index:'UserId', width: 230 ,align: "center",editable: true }
+                		,{ name: "RoleCodes",index:'RoleCodes', width: 230 ,align: "center",editable: true }
+                		,{ name: "GroupCodes",index:'GroupCodes', width: 230 ,align: "center",editable: true }
+                		,{ name: "PermitCodes",index:'PermitCodes', width: 230 ,align: "center",editable: true }
+                		,{ name: "IsDelete",index:'IsDelete', width: 230 ,align: "center",editable: true }
+						],
                     viewrecords : true,
 					rowNum:15,
 					rowList:[20,40,60],
@@ -240,7 +217,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080/system/permissionUser/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080/system/permissionUserPermit/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**
@@ -360,9 +337,7 @@
 						}
 					}
 				)
-			
-			
-				
+
 				function style_edit_form(form) {
 					//enable datepicker on "sdate" field and switches for "stock" field
 					form.find('input[name=sdate]').datepicker({format:'yyyy-mm-dd' , autoclose:true})
@@ -370,8 +345,7 @@
 					form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
 							   //don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
 							  //.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
-			
-							
+
 					//update buttons classes
 					var buttons = form.next().find('.EditButton .fm-button');
 					buttons.addClass('btn btn-sm').find('[class*="-icon"]').hide();//ui-icon, s-icon
@@ -411,7 +385,6 @@
 					
 					form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 					style_delete_form(form);
-					
 					form.data('styled', true);
 				}
 				
@@ -420,8 +393,6 @@
 					form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 					style_edit_form(form);
 				}
-			
-			
 			
 				//it causes some flicker when reloading or navigating grid
 				//it may be possible to have some custom formatter to do this as the grid is being created to prevent this

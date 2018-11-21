@@ -1,6 +1,11 @@
 package com.ylt.skillgather.common.config;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ylt.skillgather.common.component.LoginHandlerInterceptor;
+import com.ylt.skillgather.system.entity.CoreUrlMaping;
+import com.ylt.skillgather.system.service.ICoreUrlMapingService;
+import com.ylt.skillgather.system.service.IPermissionActionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
@@ -9,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.List;
+
 /*
 此类配合springboot默认的配置联合使用（实现WebMvcConfigurer类，应用java8 功能）
 还有一种配合springboot完成：在容器中添加相应的类，spring发现已经有该类就不继续默认配置
@@ -16,6 +23,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
+
+    @Autowired
+    private ICoreUrlMapingService iCoreUrlMapingService;;
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
@@ -47,9 +57,14 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
         registry.addViewController("/er5").setViewName("error/5xx");
 
         //region -- 页面展示映射 --
-        //ace风格
-        registry.addViewController("/userinfo").setViewName("aceplus/userinfo");
-        registry.addViewController("/action").setViewName("aceplus/PermissionAction");
+        //ace风格，动态获取url匹配到映射
+        List<CoreUrlMaping> list = iCoreUrlMapingService.list(null);
+        for (CoreUrlMaping coreUrlMaping:list) {
+            registry.addViewController("aceplus/"+coreUrlMaping.getRequestUrl()).setViewName("aceplus/"+coreUrlMaping.getViewUrl());
+        }
+
+//        registry.addViewController("/userinfo").setViewName("aceplus/userinfo");
+//        registry.addViewController("/action").setViewName("aceplus/PermissionAction");
 
         //gentelella风格
         registry.addViewController("/userinfo2").setViewName("gentelella/production/userinfo2");

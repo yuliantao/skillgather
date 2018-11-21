@@ -30,6 +30,8 @@
 		<script th:src="@{/assets/js/html5shiv.min.js}"></script>
 		<script th:src="@{/assets/js/respond.min.js}"></script>
 		<![endif]-->
+		<script th:src="@{/webjars/jquery/3.3.1/jquery.js}"></script>
+		<script th:src="@{/webjars/vue/2.5.17/dist/vue.js}"></script>
 	</head>
 
 	<body class="no-skin">
@@ -38,7 +40,7 @@
 		<div th:replace="/aceplus/common/bar::topbar"></div>
 
 		<div class="main-container ace-save-state" id="main-container">
-			<script type="text/javascript">
+			<script th:replace="/aceplus/common/bar::javascrpt" type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
 			</script>
 
