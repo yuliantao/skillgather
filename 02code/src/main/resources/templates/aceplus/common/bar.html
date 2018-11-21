@@ -537,10 +537,11 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                <li class="" th:each="item : ${items}">
-                    <a th:href="${item.RequestUrl}">
+                <li class="" th:each="item : ${session.urllist}">
+                    <a th:href="${item.id}">
                         <i class="menu-icon fa fa-caret-right"></i>
-                        [[item.RequestUrl]]
+                        [[${item.RequestUrl}]]
+
                     </a>
                     <b class="arrow"></b>
                 </li>

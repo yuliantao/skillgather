@@ -3,9 +3,11 @@ package com.ylt.skillgather.system.controller;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
+import com.ylt.skillgather.system.entity.CoreUrlMaping;
 import com.ylt.skillgather.system.entity.PermissionAction;
 import com.ylt.skillgather.system.entity.PermissionUser;
 import com.ylt.skillgather.system.mapper.PermissionActionMapper;
+import com.ylt.skillgather.system.service.ICoreUrlMapingService;
 import com.ylt.skillgather.system.service.IPermissionUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -23,6 +26,9 @@ public class LoginControler {
 
     @Autowired
     IPermissionUserService iPermissionUserService;
+
+    @Autowired
+    ICoreUrlMapingService iCoreUrlMapingService;
 
     @PostMapping(value = "/user/login")
     public String login(@RequestParam("username") String username,
@@ -36,6 +42,9 @@ public class LoginControler {
             if (permissionUser != null) {
                 //登陆成功，防止表单重复提交，可以重定向到主页
                 session.setAttribute("loginUser", username);
+                //获取菜单列表
+                List<CoreUrlMaping> list = iCoreUrlMapingService.list(null);
+                session.setAttribute("urllist",list);
                 return "redirect:/main.html";
             }
             else {
