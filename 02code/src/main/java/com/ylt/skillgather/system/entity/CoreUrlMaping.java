@@ -28,6 +28,10 @@ public class CoreUrlMaping implements Serializable {
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
+    @JsonProperty("ParentID")
+    @TableId(value = "ParentID")
+    private Integer ParentID;
+
 
     /**
      * 请求链接
@@ -44,6 +48,14 @@ public class CoreUrlMaping implements Serializable {
     @TableField("ViewUrl")
     private String ViewUrl;
 
+    @JsonIgnore
+    public Integer getParentID() {
+        return ParentID;
+    }
+
+    public void setParentID(Integer parentID) {
+        ParentID = parentID;
+    }
 
     @JsonIgnore
     public Integer getId() {
