@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 操作 服务实现类
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-09
+ * @since 2018-11-23
  */
 @Service
 public class PermissionActionServiceImpl extends ServiceImpl<PermissionActionMapper, PermissionAction> implements IPermissionActionService {

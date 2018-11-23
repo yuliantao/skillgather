@@ -5,11 +5,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
- *  Mapper 接口
+ * 实现用户动态的新增、修改、删除、查看、查询等基本功能！ Mapper 接口
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-09
+ * @since 2018-11-23
  */
 public interface PermissionUserMapper extends BaseMapper<PermissionUser> {
 

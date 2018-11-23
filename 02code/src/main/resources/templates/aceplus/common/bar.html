@@ -304,20 +304,18 @@
 <!--左边导航-->
 <div id="sidebar" class="sidebar  responsive ace-save-state" th:fragment="leftbar">
 
+    <!--快捷键-->
     <div class="sidebar-shortcuts" id="sidebar-shortcuts">
         <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
             <button class="btn btn-success">
                 <i class="ace-icon fa fa-signal"></i>
             </button>
-
             <button class="btn btn-info">
                 <i class="ace-icon fa fa-pencil"></i>
             </button>
-
             <button class="btn btn-warning">
                 <i class="ace-icon fa fa-users"></i>
             </button>
-
             <button class="btn btn-danger">
                 <i class="ace-icon fa fa-cogs"></i>
             </button>
@@ -325,15 +323,13 @@
 
         <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
             <span class="btn btn-success"></span>
-
             <span class="btn btn-info"></span>
-
             <span class="btn btn-warning"></span>
-
             <span class="btn btn-danger"></span>
         </div>
-    </div><!-- /.sidebar-shortcuts -->
+    </div>
 
+    <!--菜单列表-->
     <ul class="nav nav-list">
         <li class="active">
             <a th:href="@{/aceplus/userinfo}">
@@ -341,6 +337,24 @@
                 <span class="menu-text"> 系统主页 </span>
             </a>
             <b class="arrow"></b>
+        </li>
+
+        <li class="" th:each="item:${session.urllist}" th:if="${not #lists.isEmpty(session.urllist)}">
+            <a href="#" class="dropdown-toggle">
+                <i th:class="${item.getIco()}"  th:if="${not #strings.isEmpty(item.getIco())}"></i>
+                <span class="menu-text">[[${item.getName()}]] </span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+               <li class="" th:each="chitem : ${item.getLists()}" th:if="${not #lists.isEmpty(item.getLists())}">
+                    <a th:href="${chitem.getUrl()}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        [[${chitem.getName()}]]
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
         </li>
 
         <li class="">
@@ -525,25 +539,6 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
-            </ul>
-        </li>
-
-        <li class="">
-            <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">test </span>
-                <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-                <li class="" th:each="item : ${session.urllist}">
-                    <a th:href="${item.id}">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        [[${item.RequestUrl}]]
-
-                    </a>
-                    <b class="arrow"></b>
                 </li>
             </ul>
         </li>
@@ -751,7 +746,7 @@
         </li>
 
         <li class="">
-            <a href="#" class="dropdown-toggle">
+            <a href="#" class="dropdown-togglyphicon-homegle">
                 <i class="menu-icon fa fa-file-o"></i>
                 <span class="menu-text">
 								组织架构管理
@@ -810,7 +805,7 @@
             </ul>
         </li>
 
-    </ul><!-- /.nav-list -->
+    </ul>
 
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
         <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

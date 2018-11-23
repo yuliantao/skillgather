@@ -1,12 +1,11 @@
 package com.ylt.skillgather.system.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
+import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.io.Serializable;
 
 /**
  * <p>
@@ -14,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-20
+ * @since 2018-11-23
  */
 public class PermissionAction implements Serializable {
 

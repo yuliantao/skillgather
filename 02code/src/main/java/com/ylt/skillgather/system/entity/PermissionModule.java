@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
@@ -11,37 +13,54 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-09
+ * @since 2018-11-23
  */
 public class PermissionModule implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+    @JsonProperty("ID")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
+
+    @JsonProperty("ModuleCode")
     @TableField("ModuleCode")
     private String ModuleCode;
 
+
+    @JsonProperty("ModuleName")
     @TableField("ModuleName")
     private String ModuleName;
 
+
+    @JsonProperty("ModuleValue")
     @TableField("ModuleValue")
     private String ModuleValue;
 
+
+    @JsonProperty("LinkUrl")
     @TableField("LinkUrl")
     private String LinkUrl;
 
+
+    @JsonProperty("ParentModule")
     @TableField("ParentModule")
     private String ParentModule;
 
+
+    @JsonProperty("ModuleDescription")
     @TableField("ModuleDescription")
     private String ModuleDescription;
 
+
+    @JsonProperty("IsDelete")
     @TableField("IsDelete")
     private Boolean IsDelete;
 
 
+    @JsonIgnore
     public Integer getId() {
         return id;
     }
@@ -50,6 +69,7 @@ public class PermissionModule implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     public String getModuleCode() {
         return ModuleCode;
     }
@@ -58,6 +78,7 @@ public class PermissionModule implements Serializable {
         this.ModuleCode = ModuleCode;
     }
 
+    @JsonIgnore
     public String getModuleName() {
         return ModuleName;
     }
@@ -66,6 +87,7 @@ public class PermissionModule implements Serializable {
         this.ModuleName = ModuleName;
     }
 
+    @JsonIgnore
     public String getModuleValue() {
         return ModuleValue;
     }
@@ -74,6 +96,7 @@ public class PermissionModule implements Serializable {
         this.ModuleValue = ModuleValue;
     }
 
+    @JsonIgnore
     public String getLinkUrl() {
         return LinkUrl;
     }
@@ -82,6 +105,7 @@ public class PermissionModule implements Serializable {
         this.LinkUrl = LinkUrl;
     }
 
+    @JsonIgnore
     public String getParentModule() {
         return ParentModule;
     }
@@ -90,6 +114,7 @@ public class PermissionModule implements Serializable {
         this.ParentModule = ParentModule;
     }
 
+    @JsonIgnore
     public String getModuleDescription() {
         return ModuleDescription;
     }
@@ -98,6 +123,7 @@ public class PermissionModule implements Serializable {
         this.ModuleDescription = ModuleDescription;
     }
 
+    @JsonIgnore
     public Boolean getIsDelete() {
         return IsDelete;
     }

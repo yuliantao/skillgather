@@ -1,14 +1,11 @@
 package com.ylt.skillgather.system.controller;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.api.R;
-import com.ylt.skillgather.system.entity.CoreUrlMaping;
-import com.ylt.skillgather.system.entity.PermissionAction;
+import com.ylt.skillgather.common.utils.ListToJsonTree;
+import com.ylt.skillgather.system.entity.Ex.SystemMenuEx;
 import com.ylt.skillgather.system.entity.PermissionUser;
-import com.ylt.skillgather.system.mapper.PermissionActionMapper;
-import com.ylt.skillgather.system.service.ICoreUrlMapingService;
 import com.ylt.skillgather.system.service.IPermissionUserService;
+import com.ylt.skillgather.system.service.ISystemMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -28,7 +25,7 @@ public class LoginControler {
     IPermissionUserService iPermissionUserService;
 
     @Autowired
-    ICoreUrlMapingService iCoreUrlMapingService;
+    ISystemMenuService iSystemMenuService;
 
     @PostMapping(value = "/user/login")
     public String login(@RequestParam("username") String username,
@@ -43,7 +40,7 @@ public class LoginControler {
                 //登陆成功，防止表单重复提交，可以重定向到主页
                 session.setAttribute("loginUser", username);
                 //获取菜单列表
-                List<CoreUrlMaping> list = iCoreUrlMapingService.list(null);
+                List<SystemMenuEx> list= ListToJsonTree.listCoreUrlMaping(iSystemMenuService.list(null));
                 session.setAttribute("urllist",list);
                 return "redirect:/main.html";
             }

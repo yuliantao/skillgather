@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
@@ -11,37 +13,54 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-09
+ * @since 2018-11-23
  */
 public class PermissionRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+    @JsonProperty("ID")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
+
+    @JsonProperty("RoleCode")
     @TableField("RoleCode")
     private String RoleCode;
 
+
+    @JsonProperty("RoleName")
     @TableField("RoleName")
     private String RoleName;
 
+
+    @JsonProperty("RoleDescription")
     @TableField("RoleDescription")
     private String RoleDescription;
 
+
+    @JsonProperty("GroupCodes")
     @TableField("GroupCodes")
     private String GroupCodes;
 
+
+    @JsonProperty("PermitCodes")
     @TableField("PermitCodes")
     private String PermitCodes;
 
+
+    @JsonProperty("ParentRole")
     @TableField("ParentRole")
     private String ParentRole;
 
+
+    @JsonProperty("IsDelete")
     @TableField("IsDelete")
     private Boolean IsDelete;
 
 
+    @JsonIgnore
     public Integer getId() {
         return id;
     }
@@ -50,6 +69,7 @@ public class PermissionRole implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     public String getRoleCode() {
         return RoleCode;
     }
@@ -58,6 +78,7 @@ public class PermissionRole implements Serializable {
         this.RoleCode = RoleCode;
     }
 
+    @JsonIgnore
     public String getRoleName() {
         return RoleName;
     }
@@ -66,6 +87,7 @@ public class PermissionRole implements Serializable {
         this.RoleName = RoleName;
     }
 
+    @JsonIgnore
     public String getRoleDescription() {
         return RoleDescription;
     }
@@ -74,6 +96,7 @@ public class PermissionRole implements Serializable {
         this.RoleDescription = RoleDescription;
     }
 
+    @JsonIgnore
     public String getGroupCodes() {
         return GroupCodes;
     }
@@ -82,6 +105,7 @@ public class PermissionRole implements Serializable {
         this.GroupCodes = GroupCodes;
     }
 
+    @JsonIgnore
     public String getPermitCodes() {
         return PermitCodes;
     }
@@ -90,6 +114,7 @@ public class PermissionRole implements Serializable {
         this.PermitCodes = PermitCodes;
     }
 
+    @JsonIgnore
     public String getParentRole() {
         return ParentRole;
     }
@@ -98,6 +123,7 @@ public class PermissionRole implements Serializable {
         this.ParentRole = ParentRole;
     }
 
+    @JsonIgnore
     public Boolean getIsDelete() {
         return IsDelete;
     }

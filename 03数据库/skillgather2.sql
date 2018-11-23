@@ -10,27 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-11-21 17:32:33
+Date: 2018-11-23 17:29:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for core_url_maping
--- ----------------------------
-DROP TABLE IF EXISTS `core_url_maping`;
-CREATE TABLE `core_url_maping` (
-  `ID` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `RequestUrl` varchar(255) NOT NULL COMMENT '请求链接',
-  `ViewUrl` varchar(255) NOT NULL COMMENT '映射Url',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='请求链接映射视图地址';
-
--- ----------------------------
--- Records of core_url_maping
--- ----------------------------
-INSERT INTO `core_url_maping` VALUES ('00000000001', 'userinfo', 'userinfo');
-INSERT INTO `core_url_maping` VALUES ('00000000002', 'PermissionAction', 'PermissionAction');
 
 -- ----------------------------
 -- Table structure for permission_action
@@ -197,3 +180,50 @@ CREATE TABLE `permission_user_permit` (
 -- ----------------------------
 -- Records of permission_user_permit
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for system_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `system_menu`;
+CREATE TABLE `system_menu` (
+  `ID` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `Name` varchar(255) DEFAULT '' COMMENT '菜单名',
+  `Parentid` int(11) NOT NULL DEFAULT '-1' COMMENT '父ID',
+  `Url` varchar(255) NOT NULL COMMENT '请求链接',
+  `Ico` varchar(255) NOT NULL COMMENT '菜单图标',
+  `BadgeIco` varchar(255) NOT NULL DEFAULT '' COMMENT '徽章',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='菜单的动态管理';
+
+-- ----------------------------
+-- Records of system_menu
+-- ----------------------------
+INSERT INTO `system_menu` VALUES ('00000000001', '入库管理', '-1', 'userinfo', 'menu-icon fa fa-list', '');
+INSERT INTO `system_menu` VALUES ('00000000002', '出库管理', '-1', 'PermissionAction', 'menu-icon fa fa-desktop', '');
+INSERT INTO `system_menu` VALUES ('00000000003', '入库记账', '1', 'test', 'test', '');
+INSERT INTO `system_menu` VALUES ('00000000004', '待修入库', '1', 'test2', 'test2', '');
+INSERT INTO `system_menu` VALUES ('00000000005', '待修出库', '2', 'test3', 'test3', '');
+INSERT INTO `system_menu` VALUES ('00000000006', '出库上报', '2', 'test4', 'test4', '');
+INSERT INTO `system_menu` VALUES ('00000000007', '出库明细', '-1', 'PermissionAction', 'menu-icon fa fa-desktop', '');
+
+-- ----------------------------
+-- Table structure for system_urltoview
+-- ----------------------------
+DROP TABLE IF EXISTS `system_urltoview`;
+CREATE TABLE `system_urltoview` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `ShowUrl` varchar(255) NOT NULL DEFAULT '' COMMENT '访问链接',
+  `MapingUrl` varchar(255) NOT NULL DEFAULT '' COMMENT '映射链接',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of system_urltoview
+-- ----------------------------
+INSERT INTO `system_urltoview` VALUES ('1', '/', 'login');
+INSERT INTO `system_urltoview` VALUES ('2', '/login.html', 'login');
+INSERT INTO `system_urltoview` VALUES ('3', '/index.html', 'login');
+INSERT INTO `system_urltoview` VALUES ('4', '/main.html', 'aceplus/home');
+INSERT INTO `system_urltoview` VALUES ('5', '/home.html', 'aceplus/home');
+INSERT INTO `system_urltoview` VALUES ('6', '/er4', 'error/4xx');
+INSERT INTO `system_urltoview` VALUES ('7', '/er5', 'error/5xx');

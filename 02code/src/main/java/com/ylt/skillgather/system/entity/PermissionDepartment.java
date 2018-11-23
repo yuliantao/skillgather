@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
@@ -11,34 +13,70 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-09
+ * @since 2018-11-23
  */
 public class PermissionDepartment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+    /**
+     * ID
+     */
+    @JsonProperty("ID")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
+
+    /**
+     * 部门编号
+     */
+    @JsonProperty("DepartmentCode")
     @TableField("DepartmentCode")
     private String DepartmentCode;
 
+
+    /**
+     * 部门名称
+     */
+    @JsonProperty("DepartmentName")
     @TableField("DepartmentName")
     private String DepartmentName;
 
+
+    /**
+     * 父级部门
+     */
+    @JsonProperty("ParentDepartment")
     @TableField("ParentDepartment")
     private String ParentDepartment;
 
+
+    /**
+     * 部门描述
+     */
+    @JsonProperty("DepartmentDescription")
     @TableField("DepartmentDescription")
     private String DepartmentDescription;
 
+
+    /**
+     * 公司代码
+     */
+    @JsonProperty("CompanyCode")
     @TableField("CompanyCode")
     private String CompanyCode;
 
+
+    /**
+     * 是否删除
+     */
+    @JsonProperty("IsDelete")
     @TableField("IsDelete")
     private Boolean IsDelete;
 
 
+    @JsonIgnore
     public Integer getId() {
         return id;
     }
@@ -47,6 +85,7 @@ public class PermissionDepartment implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     public String getDepartmentCode() {
         return DepartmentCode;
     }
@@ -55,6 +94,7 @@ public class PermissionDepartment implements Serializable {
         this.DepartmentCode = DepartmentCode;
     }
 
+    @JsonIgnore
     public String getDepartmentName() {
         return DepartmentName;
     }
@@ -63,6 +103,7 @@ public class PermissionDepartment implements Serializable {
         this.DepartmentName = DepartmentName;
     }
 
+    @JsonIgnore
     public String getParentDepartment() {
         return ParentDepartment;
     }
@@ -71,6 +112,7 @@ public class PermissionDepartment implements Serializable {
         this.ParentDepartment = ParentDepartment;
     }
 
+    @JsonIgnore
     public String getDepartmentDescription() {
         return DepartmentDescription;
     }
@@ -79,6 +121,7 @@ public class PermissionDepartment implements Serializable {
         this.DepartmentDescription = DepartmentDescription;
     }
 
+    @JsonIgnore
     public String getCompanyCode() {
         return CompanyCode;
     }
@@ -87,6 +130,7 @@ public class PermissionDepartment implements Serializable {
         this.CompanyCode = CompanyCode;
     }
 
+    @JsonIgnore
     public Boolean getIsDelete() {
         return IsDelete;
     }

@@ -80,7 +80,7 @@
 								用户
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									
+									菜单的动态管理
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -168,16 +168,17 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/system/permissionPermitGroup/jqgridlist",
+                    url:"/system/systemMenu/jqgridlist",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID"
 
-						,""
-						,""
-						,""
-						,""
+						,"菜单名"
+						,"父ID"
+						,"请求链接"
+						,"菜单图标"
+						,"徽章"
 								],
 
                 colModel:[
@@ -189,10 +190,11 @@
 							}
 						},
                     { name: "id",  width: 200, align: "center",editable: true,hidden:true  }
-                		,{ name: "GroupCode",index:'GroupCode', width: 230 ,align: "center",editable: true }
-                		,{ name: "GroupName",index:'GroupName', width: 230 ,align: "center",editable: true }
-                		,{ name: "PermitCodes",index:'PermitCodes', width: 230 ,align: "center",editable: true }
-                		,{ name: "IsDelete",index:'IsDelete', width: 230 ,align: "center",editable: true }
+                		,{ name: "Name",index:'Name', width: 230 ,align: "center",editable: true }
+                		,{ name: "Parentid",index:'Parentid', width: 230 ,align: "center",editable: true }
+                		,{ name: "Url",index:'Url', width: 230 ,align: "center",editable: true }
+                		,{ name: "Ico",index:'Ico', width: 230 ,align: "center",editable: true }
+                		,{ name: "BadgeIco",index:'BadgeIco', width: 230 ,align: "center",editable: true }
 						],
                     viewrecords : true,
 					rowNum:15,
@@ -215,7 +217,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080/system/permissionPermitGroup/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080/system/systemMenu/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**

@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
@@ -11,28 +13,39 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-09
+ * @since 2018-11-23
  */
 public class PermissionPermitGroup implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+    @JsonProperty("ID")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
+
+    @JsonProperty("GroupCode")
     @TableField("GroupCode")
     private String GroupCode;
 
+
+    @JsonProperty("GroupName")
     @TableField("GroupName")
     private String GroupName;
 
+
+    @JsonProperty("PermitCodes")
     @TableField("PermitCodes")
     private String PermitCodes;
 
+
+    @JsonProperty("IsDelete")
     @TableField("IsDelete")
     private Boolean IsDelete;
 
 
+    @JsonIgnore
     public Integer getId() {
         return id;
     }
@@ -41,6 +54,7 @@ public class PermissionPermitGroup implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     public String getGroupCode() {
         return GroupCode;
     }
@@ -49,6 +63,7 @@ public class PermissionPermitGroup implements Serializable {
         this.GroupCode = GroupCode;
     }
 
+    @JsonIgnore
     public String getGroupName() {
         return GroupName;
     }
@@ -57,6 +72,7 @@ public class PermissionPermitGroup implements Serializable {
         this.GroupName = GroupName;
     }
 
+    @JsonIgnore
     public String getPermitCodes() {
         return PermitCodes;
     }
@@ -65,6 +81,7 @@ public class PermissionPermitGroup implements Serializable {
         this.PermitCodes = PermitCodes;
     }
 
+    @JsonIgnore
     public Boolean getIsDelete() {
         return IsDelete;
     }

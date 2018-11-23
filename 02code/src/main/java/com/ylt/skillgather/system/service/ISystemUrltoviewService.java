@@ -1,6 +1,6 @@
 package com.ylt.skillgather.system.service;
 
-import com.ylt.skillgather.system.entity.PermissionPermitGroup;
+import com.ylt.skillgather.system.entity.SystemUrltoview;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author yuliantao
  * @since 2018-11-23
  */
-public interface IPermissionPermitGroupService extends IService<PermissionPermitGroup> {
+public interface ISystemUrltoviewService extends IService<SystemUrltoview> {
 
 }

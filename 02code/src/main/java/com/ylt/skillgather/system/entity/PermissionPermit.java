@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
@@ -11,31 +13,44 @@ import java.io.Serializable;
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-09
+ * @since 2018-11-23
  */
 public class PermissionPermit implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+    @JsonProperty("ID")
     @TableId(value = "ID", type = IdType.AUTO)
     private Integer id;
 
+
+    @JsonProperty("PermitCode")
     @TableField("PermitCode")
     private String PermitCode;
 
+
+    @JsonProperty("ModuleCode")
     @TableField("ModuleCode")
     private String ModuleCode;
 
+
+    @JsonProperty("ActionCode")
     @TableField("ActionCode")
     private String ActionCode;
 
+
+    @JsonProperty("PermitValue")
     @TableField("PermitValue")
     private String PermitValue;
 
+
+    @JsonProperty("IsDelete")
     @TableField("IsDelete")
     private Boolean IsDelete;
 
 
+    @JsonIgnore
     public Integer getId() {
         return id;
     }
@@ -44,6 +59,7 @@ public class PermissionPermit implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     public String getPermitCode() {
         return PermitCode;
     }
@@ -52,6 +68,7 @@ public class PermissionPermit implements Serializable {
         this.PermitCode = PermitCode;
     }
 
+    @JsonIgnore
     public String getModuleCode() {
         return ModuleCode;
     }
@@ -60,6 +77,7 @@ public class PermissionPermit implements Serializable {
         this.ModuleCode = ModuleCode;
     }
 
+    @JsonIgnore
     public String getActionCode() {
         return ActionCode;
     }
@@ -68,6 +86,7 @@ public class PermissionPermit implements Serializable {
         this.ActionCode = ActionCode;
     }
 
+    @JsonIgnore
     public String getPermitValue() {
         return PermitValue;
     }
@@ -76,6 +95,7 @@ public class PermissionPermit implements Serializable {
         this.PermitValue = PermitValue;
     }
 
+    @JsonIgnore
     public Boolean getIsDelete() {
         return IsDelete;
     }
