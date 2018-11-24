@@ -7,4 +7,6 @@ spring:
     date-format: yyyy-MM-dd
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
-  mapper-locations: classpath:mybatis/**/*.xml
+  mapper-locations:
+    - classpath:/**/xml/*.xml
+      classpath:/mybatis/**/*.xml

@@ -80,7 +80,7 @@ public class StringUtils extends org.apache.commons.lang.StringUtils {
         StringBuilder sb = new StringBuilder();
         char[] chars = str.toCharArray();
         boolean hitUnderScore = false;
-        sb.append(chars[0]);
+        sb.append(Character.toUpperCase(chars[0]));
         for (int i = 1; i < chars.length; i++) {
             char c = chars[i];
             if (c == '_') {

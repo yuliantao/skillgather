@@ -2,9 +2,9 @@ package com.ylt.skillgather.common.config;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ylt.skillgather.common.component.LoginHandlerInterceptor;
-import com.ylt.skillgather.system.entity.SystemUrltoview;
-import com.ylt.skillgather.system.service.IPermissionActionService;
-import com.ylt.skillgather.system.service.ISystemUrltoviewService;
+
+import com.ylt.skillgather.coreframe.entity.CoreframeUrltoview;
+import com.ylt.skillgather.coreframe.service.ICoreframeUrltoviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,7 @@ import java.util.List;
 public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
 
     @Autowired
-    private ISystemUrltoviewService iSystemUrltoviewService;
+    private ICoreframeUrltoviewService iCoreframeUrltoviewService;
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
@@ -48,18 +48,11 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-/*        registry.addViewController("/").setViewName("login");
-        registry.addViewController("/login.html").setViewName("login");
-        registry.addViewController("/index.html").setViewName("login");
-        registry.addViewController("/main.html").setViewName("aceplus/home");
-        registry.addViewController("/home.html").setViewName("aceplus/home");
-        registry.addViewController("/er4").setViewName("error/4xx");
-        registry.addViewController("/er5").setViewName("error/5xx");*/
 
         //region -- 页面展示映射 --
         //ace风格，动态获取url匹配到映射
-        List<SystemUrltoview> list = iSystemUrltoviewService.list(null);
-        for (SystemUrltoview systemUrltoview:list) {
+        List<CoreframeUrltoview> list = iCoreframeUrltoviewService.list(null);
+        for (CoreframeUrltoview systemUrltoview:list) {
             registry.addViewController(systemUrltoview.getShowUrl()).setViewName(systemUrltoview.getMapingUrl());
         }
 

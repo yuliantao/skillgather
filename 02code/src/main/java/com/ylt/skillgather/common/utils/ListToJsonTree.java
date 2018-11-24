@@ -1,28 +1,29 @@
 package com.ylt.skillgather.common.utils;
 
-import com.ylt.skillgather.system.entity.Ex.SystemMenuEx;
-import com.ylt.skillgather.system.entity.SystemMenu;
+
+import com.ylt.skillgather.coreframe.entity.CoreframeMenu;
+import com.ylt.skillgather.coreframe.entity.Ex.CoreframeMenuEx;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListToJsonTree{
 
-    public static List<SystemMenuEx> listCoreUrlMaping(List<SystemMenu> list)
+    public static List<CoreframeMenuEx> listCoreUrlMaping(List<CoreframeMenu> list)
     {
-        List<SystemMenuEx> lists=new ArrayList<>();
-        for (SystemMenu systemMenu: list) {
-            SystemMenuEx systemMenuEx=entityToEx(systemMenu);
+        List<CoreframeMenuEx> lists=new ArrayList<>();
+        for (CoreframeMenu systemMenu: list) {
+            CoreframeMenuEx systemMenuEx=entityToEx(systemMenu);
             if (systemMenuEx.getParentid()==-1)
             {
                 lists.add(systemMenuEx);
             }
-            for (SystemMenu systemMenu2: list) {
+            for (CoreframeMenu systemMenu2: list) {
                 if (systemMenu2.getParentid()==systemMenuEx.getId())
                 {
                     if (systemMenuEx.getLists()==null)
                     {
-                        List<SystemMenuEx> lis=new ArrayList<>();
+                        List<CoreframeMenuEx> lis=new ArrayList<>();
                         systemMenuEx.setLists(lis);
                     }
                     systemMenuEx.getLists().add(entityToEx(systemMenu2));
@@ -32,9 +33,9 @@ public class ListToJsonTree{
         return  lists;
     }
 
-    public  static SystemMenuEx entityToEx(SystemMenu systemMenu)
+    public  static CoreframeMenuEx entityToEx(CoreframeMenu systemMenu)
     {
-        SystemMenuEx systemMenuEx = new SystemMenuEx();
+        CoreframeMenuEx systemMenuEx = new CoreframeMenuEx();
         systemMenuEx.setBadgeIco(systemMenu.getBadgeIco());
         systemMenuEx.setIco(systemMenu.getIco());
         systemMenuEx.setId(systemMenu.getId());
