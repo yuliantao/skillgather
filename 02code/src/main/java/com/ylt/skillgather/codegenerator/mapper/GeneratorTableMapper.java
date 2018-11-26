@@ -2,6 +2,7 @@ package com.ylt.skillgather.codegenerator.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ylt.skillgather.codegenerator.entity.GeneratorTable;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.ylt.skillgather.codegenerator.entity.GeneratorTable;
  */
 public interface GeneratorTableMapper extends BaseMapper<GeneratorTable> {
 
+    int excuteSql(String sql);
 }

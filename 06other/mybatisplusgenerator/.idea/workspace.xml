@@ -58,14 +58,14 @@
     <session id="1755616155">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.24" value="2" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.27" value="3" />
           <entry key="project.open.time.38" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -101,8 +101,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/CodeGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+            <state relative-caret-position="477">
+              <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -155,8 +155,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -168,7 +169,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -228,16 +228,18 @@
       <workItem from="1543025601702" duration="595000" />
       <workItem from="1543030751485" duration="16000" />
       <workItem from="1543031697261" duration="8757000" />
+      <workItem from="1543237045350" duration="816000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40746000" />
+    <option name="totallyTimeSpent" value="41562000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20631067" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19579288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -502,35 +504,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/controller/PermissionModuleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/entity/PermissionAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/controller/PermissionModuleController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/entity/PermissionAction.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/PermissionRolelist.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/controller/PermissionRoleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/controller/PermissionDepartmentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/controller/PermissionRoleController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/controller/PermissionDepartmentController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/controller/SystemMenuController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/controllerEmpty.java.vm">
       <provider selected="true" editor-type-id="text-editor">
@@ -546,13 +524,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/controller/SystemUrltoviewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/controller/SystemUrltoviewController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/list.html.vm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -565,13 +537,7 @@
         <state relative-caret-position="-270" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/entity/SystemGeneratortable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-768">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ylt/skillgather/system/entity/SystemGeneratortable.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/controller.java.vm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1440" />
@@ -586,8 +552,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+        <state relative-caret-position="477">
+          <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
         </state>
       </provider>
     </entry>

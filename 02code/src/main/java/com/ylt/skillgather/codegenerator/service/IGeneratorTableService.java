@@ -12,5 +12,5 @@ import com.ylt.skillgather.codegenerator.entity.GeneratorTable;
  * @since 2018-11-24
  */
 public interface IGeneratorTableService extends IService<GeneratorTable> {
-
+    int excuteSql(String sql);
 }

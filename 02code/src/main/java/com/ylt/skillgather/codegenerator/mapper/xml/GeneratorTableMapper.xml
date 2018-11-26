@@ -15,4 +15,9 @@
         ID, TableName, MenuName, IsCreat
     </sql>
 
+    <select id="excuteSql" parameterType="java.lang.String"   resultType="java.lang.Integer">
+      ${sql}
+    </select>
+
+
 </mapper>

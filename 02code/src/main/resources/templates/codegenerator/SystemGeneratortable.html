@@ -78,7 +78,9 @@
 						<div class="page-header">
 							<input type="text" id="menuname" placeholder="菜单名，如：系统管理"/>
 							<input type="text" id="mouldname" placeholder="模块名，如：sytemmange"/>
-							<button id="crateCode">生成</button>
+							<button id="crateCode" class="btn btn-info btn-sm btn-primary">
+								<i class="ace-icon fa  fa-check-square-o  align-top bigger-125 icon-on-right"></i>
+								创建</button>
 						</div><!-- /.page-header -->
 
 						<div class="row">
@@ -198,7 +200,7 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/codegenerator/generatorTable/jqgridlist",
+                    url:"/codegenerator/generatorTable/jqCondition",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
