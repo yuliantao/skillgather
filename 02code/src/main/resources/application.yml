@@ -1,10 +1,24 @@
+#tomcate配置
+server:
+  port: 8080
+#数据库配置
 spring:
   profiles:
     include: druid
+#模板引擎配置
   thymeleaf:
     cache: false
+#mvc配置
   mvc:
     date-format: yyyy-MM-dd
+#mybatisplus配置
 mybatis-plus:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/*/*.xml
+
+#日志记录
+logging:
+  level:
+    com: debug
+
+

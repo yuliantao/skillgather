@@ -55,7 +55,7 @@
 								<a href="#">主页</a>
 							</li>
 							<li>
-								<a href="#">系统管理</a>
+								<a href="#">aa</a>
 							</li>
 							<li class="active">用户管理</li>
 						</ul><!-- /.breadcrumb -->
@@ -76,14 +76,13 @@
 						<div th:replace="/aceplus/common/bar::rightbar"></div>
 
 						<div class="page-header">
-							<input type="text" id="menuname" placeholder="菜单,如：系统管理"/>
-							<input type="text" id="mouldname" placeholder="模块,如：sytemmange"/>
-							<button id="crateCode" class="btn btn-info btn-sm btn-primary">
-								<i class="ace-icon fa  fa-check-square-o  align-top bigger-125 icon-on-right"></i>
-								创建</button>
-							<button id="refreshTable" class="btn btn-info btn-sm btn-primary">
-								<i class="ace-icon fa  fa-exchange  align-top bigger-125 icon-on-right"></i>
-								刷新</button>
+							<h1>
+								用户
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									操作
+								</small>
+							</h1>
 						</div><!-- /.page-header -->
 
 						<div class="row">
@@ -132,54 +131,6 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 
-			<!--添加自定义事件-->
-            $(document).ready(function(){
-                $("#crateCode").click(function(){
-                    var createobj=new Object();
-                    createobj.menuname= $("#menuname").val();
-                    createobj.mouldname=$("#mouldname").val();
-
-                    var ids=$("#grid-table").jqGrid("getGridParam","selarrrow");
-                    if(ids.length>0){
-                        var arrayObj = new Array();
-                        for (var i = 0; i <ids.length ; i++) {
-                            var item=new Object();
-                            item.TableName=$("#grid-table").jqGrid('getRowData',ids[i]).TableName;
-                            item.MenuName=$("#grid-table").jqGrid('getRowData',ids[i]).MenuName;
-                            arrayObj.push(item);
-                        }
-                        createobj.items=arrayObj;
-                    }else{
-                        alert("你没有选取数据，不允许进入下一级");
-                        return;
-                    }
-                    //alert(JSON.stringify(createobj));
-					//准备工作完成，发起创建请求
-                    $.post(
-                        "/codegenerator/creat",
-						{dates:JSON.stringify(createobj)},
-                        function(data,status){
-                            alert("Data: " + data + "\nStatus: " + status);
-                        });
-                });
-
-                $("#refreshTable").click(function () {
-                    $.post(
-                        "/common/excuteSql",
-                        {sql:"INSERT INTO generator_table(TableName,MenuName,IsCreat) " +
-								"select TABLE_NAME,'',0 from information_schema.`TABLES` t1" +
-								" WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='skillgather' " +
-								"AND not EXISTS (SELECT TableName from generator_table t2 " +
-								"WHERE t1.TABLE_NAME=t2.TableName ) "},
-                        function(data,status){
-                            if(status=="success")
-							{
-                                $("#grid-table").jqGrid().trigger("reloadGrid");
-							}
-                        });
-                });
-            });
-
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
@@ -217,15 +168,16 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/codegenerator/generatorTable/jqCondition",
+                    url:"/aa/permissionAction/jqgridlist",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID"
 
-						,"表名"
-						,"菜单名"
-						,"已生成"
+						,"操作码"
+						,"操作名"
+						,"操作值"
+						,"是否删除"
 								],
 
                 colModel:[
@@ -236,10 +188,11 @@
 								delOptions:{recreateForm: true, beforeShowForm:beforeDeleteCallback},
 							}
 						},
-                    { name: "ID",  width: 200, align: "center",editable: true  }
-                		,{ name: "TableName",index:'TableName', width: 230 ,align: "center",editable: true }
-                		,{ name: "MenuName",index:'MenuName', width: 230 ,align: "center",editable: true }
-                		,{ name: "IsCreat",index:'IsCreat', width: 230 ,align: "center",editable: true }
+                    { name: "id",  width: 200, align: "center",editable: true,hidden:true  }
+                		,{ name: "ActionCode",index:'ActionCode', width: 230 ,align: "center",editable: true }
+                		,{ name: "ActionName",index:'ActionName', width: 230 ,align: "center",editable: true }
+                		,{ name: "ActionValue",index:'ActionValue', width: 230 ,align: "center",editable: true }
+                		,{ name: "IsDelete",index:'IsDelete', width: 230 ,align: "center",editable: true }
 						],
                     viewrecords : true,
 					rowNum:15,
@@ -262,7 +215,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080/codegenerator/generatorTable/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080/aa/permissionAction/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**
