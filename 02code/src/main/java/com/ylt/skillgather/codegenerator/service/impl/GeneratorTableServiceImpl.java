@@ -16,8 +16,4 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class GeneratorTableServiceImpl extends ServiceImpl<GeneratorTableMapper, GeneratorTable> implements IGeneratorTableService {
-    public int excuteSql(String sql)
-    {
-        return super.baseMapper.excuteSql(sql);
-    }
 }

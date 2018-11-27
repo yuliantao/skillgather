@@ -5,15 +5,20 @@ import com.ylt.skillgather.common.component.LoginHandlerInterceptor;
 
 import com.ylt.skillgather.coreframe.entity.CoreframeUrltoview;
 import com.ylt.skillgather.coreframe.service.ICoreframeUrltoviewService;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.sql.DataSource;
+import java.io.IOException;
 import java.util.List;
 
 /*
@@ -79,4 +84,5 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
     {
         return new MyErrorAttributes();
     }*/
+
 }

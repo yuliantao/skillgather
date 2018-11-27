@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 学习库
-Source Server Version : 80012
+Source Server         : 知识库
+Source Server Version : 50717
 Source Host           : 127.0.0.1:3306
 Source Database       : skillgather
 
 Target Server Type    : MYSQL
-Target Server Version : 80012
+Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-11-27 00:08:29
+Date: 2018-11-27 17:33:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,11 +21,11 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `coreframe_menu`;
 CREATE TABLE `coreframe_menu` (
   `ID` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `Name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '菜单名',
+  `Name` varchar(255) NOT NULL DEFAULT '' COMMENT '菜单名',
   `Parentid` int(11) NOT NULL DEFAULT '-1' COMMENT '父ID',
-  `Url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '请求链接',
-  `Ico` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '菜单图标',
-  `BadgeIco` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '徽章',
+  `Url` varchar(255) DEFAULT '' COMMENT '请求链接',
+  `Ico` varchar(255) DEFAULT '' COMMENT '菜单图标',
+  `BadgeIco` varchar(255) DEFAULT '' COMMENT '徽章',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='菜单的动态管理';
 
@@ -39,10 +39,6 @@ INSERT INTO `coreframe_menu` VALUES ('00000000004', '待修入库', '1', 'test2'
 INSERT INTO `coreframe_menu` VALUES ('00000000005', '待修出库', '2', 'test3', 'test3', '');
 INSERT INTO `coreframe_menu` VALUES ('00000000006', '出库上报', '2', 'test4', 'test4', '');
 INSERT INTO `coreframe_menu` VALUES ('00000000007', '出库明细', '-1', 'PermissionAction', 'menu-icon fa fa-desktop', '');
-INSERT INTO `coreframe_menu` VALUES ('00000000036', 'ee', '-1', '', 'menu-icon fafa-lemon-o', '');
-INSERT INTO `coreframe_menu` VALUES ('00000000037', 'permission_action', '36', '/eee/PermissionAction', '', '');
-INSERT INTO `coreframe_menu` VALUES ('00000000038', 'permission_company', '36', '/eee/PermissionCompany', '', '');
-INSERT INTO `coreframe_menu` VALUES ('00000000039', 'permission_department', '36', '/eee/PermissionDepartment', '', '');
 
 -- ----------------------------
 -- Table structure for coreframe_urltoview
@@ -66,9 +62,6 @@ INSERT INTO `coreframe_urltoview` VALUES ('5', '/home.html', 'aceplus/home');
 INSERT INTO `coreframe_urltoview` VALUES ('6', '/er4', 'error/4xx');
 INSERT INTO `coreframe_urltoview` VALUES ('7', '/er5', 'error/5xx');
 INSERT INTO `coreframe_urltoview` VALUES ('18', '/codegenerator/SystemGeneratortable', '/codegenerator/SystemGeneratortable');
-INSERT INTO `coreframe_urltoview` VALUES ('24', '/eee/PermissionAction', '/aceplus/eee/PermissionAction');
-INSERT INTO `coreframe_urltoview` VALUES ('25', '/eee/PermissionCompany', '/aceplus/eee/PermissionCompany');
-INSERT INTO `coreframe_urltoview` VALUES ('26', '/eee/PermissionDepartment', '/aceplus/eee/PermissionDepartment');
 
 -- ----------------------------
 -- Table structure for coreframe_user
@@ -97,25 +90,27 @@ DROP TABLE IF EXISTS `generator_table`;
 CREATE TABLE `generator_table` (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `TableName` varchar(255) NOT NULL DEFAULT '' COMMENT '表名',
-  `MenuName` varchar(255) NOT NULL DEFAULT '' COMMENT '菜单名',
+  `MenuName` varchar(255) DEFAULT '' COMMENT '菜单名',
   `IsCreat` bit(1) NOT NULL COMMENT '已生成',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='扫描到需要生产系统的表';
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COMMENT='扫描到需要生产系统的表';
 
 -- ----------------------------
 -- Records of generator_table
 -- ----------------------------
-INSERT INTO `generator_table` VALUES ('1', 'permission_action', 'permission_action', '');
-INSERT INTO `generator_table` VALUES ('2', 'permission_company', 'permission_company', '');
-INSERT INTO `generator_table` VALUES ('3', 'permission_department', 'permission_department', '');
-INSERT INTO `generator_table` VALUES ('4', 'permission_module', 'permission_module', '\0');
-INSERT INTO `generator_table` VALUES ('5', 'permission_permit', 'permission_permit', '\0');
-INSERT INTO `generator_table` VALUES ('6', 'permission_permit_group', 'permission_permit_group', '\0');
-INSERT INTO `generator_table` VALUES ('7', 'permission_role', 'permission_role', '\0');
-INSERT INTO `generator_table` VALUES ('8', 'permission_user', 'permission_user', '\0');
-INSERT INTO `generator_table` VALUES ('9', 'permission_user_permit', 'permission_user_permit', '\0');
-INSERT INTO `generator_table` VALUES ('10', 'system_generatortable', 'system_generatortable', '\0');
-INSERT INTO `generator_table` VALUES ('11', 'system_menu', 'system_menu', '\0');
+INSERT INTO `generator_table` VALUES ('83', 'coreframe_menu', '', '\0');
+INSERT INTO `generator_table` VALUES ('84', 'coreframe_urltoview', '', '\0');
+INSERT INTO `generator_table` VALUES ('85', 'coreframe_user', '', '\0');
+INSERT INTO `generator_table` VALUES ('86', 'generator_table', '', '\0');
+INSERT INTO `generator_table` VALUES ('87', 'permission_action', '', '\0');
+INSERT INTO `generator_table` VALUES ('88', 'permission_company', '', '\0');
+INSERT INTO `generator_table` VALUES ('89', 'permission_department', '', '\0');
+INSERT INTO `generator_table` VALUES ('90', 'permission_module', '', '\0');
+INSERT INTO `generator_table` VALUES ('91', 'permission_permit', '', '\0');
+INSERT INTO `generator_table` VALUES ('92', 'permission_permit_group', '', '\0');
+INSERT INTO `generator_table` VALUES ('93', 'permission_role', '', '\0');
+INSERT INTO `generator_table` VALUES ('94', 'permission_user_permit', '', '\0');
+INSERT INTO `generator_table` VALUES ('98', 'test', 'test', '\0');
 
 -- ----------------------------
 -- Table structure for permission_action

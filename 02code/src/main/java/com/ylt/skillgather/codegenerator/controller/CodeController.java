@@ -83,6 +83,7 @@ public class CodeController {
                 GeneratorTable generatorTable=new GeneratorTable();
                 generatorTable.setIsCreat(true);
                 Boolean flag= iGeneratorTableService.update(generatorTable,generatorTableUpdateWrapper);
+
                 //直接创建sql语句
              /*   String sql="update generator_table set IsCreat=1 where TableName in (";
                 for (CodeItemEntity codeItemEntity1:codeEntity.items)

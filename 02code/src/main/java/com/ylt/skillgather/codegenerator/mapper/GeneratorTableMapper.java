@@ -14,5 +14,4 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface GeneratorTableMapper extends BaseMapper<GeneratorTable> {
 
-    int excuteSql(String sql);
 }

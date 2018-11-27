@@ -76,11 +76,14 @@
 						<div th:replace="/aceplus/common/bar::rightbar"></div>
 
 						<div class="page-header">
-							<input type="text" id="menuname" placeholder="菜单名，如：系统管理"/>
-							<input type="text" id="mouldname" placeholder="模块名，如：sytemmange"/>
+							<input type="text" id="menuname" placeholder="菜单,如：系统管理"/>
+							<input type="text" id="mouldname" placeholder="模块,如：sytemmange"/>
 							<button id="crateCode" class="btn btn-info btn-sm btn-primary">
 								<i class="ace-icon fa  fa-check-square-o  align-top bigger-125 icon-on-right"></i>
 								创建</button>
+							<button id="refreshTable" class="btn btn-info btn-sm btn-primary">
+								<i class="ace-icon fa  fa-exchange  align-top bigger-125 icon-on-right"></i>
+								刷新</button>
 						</div><!-- /.page-header -->
 
 						<div class="row">
@@ -150,7 +153,7 @@
                         alert("你没有选取数据，不允许进入下一级");
                         return;
                     }
-                    alert(JSON.stringify(createobj));
+                    //alert(JSON.stringify(createobj));
 					//准备工作完成，发起创建请求
                     $.post(
                         "/codegenerator/creat",
@@ -158,11 +161,24 @@
                         function(data,status){
                             alert("Data: " + data + "\nStatus: " + status);
                         });
+                });
 
+                $("#refreshTable").click(function () {
+                    $.post(
+                        "/common/excuteSql",
+                        {sql:"INSERT INTO generator_table(TableName,MenuName,IsCreat) " +
+								"select TABLE_NAME,'',0 from information_schema.`TABLES` t1" +
+								" WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='skillgather' " +
+								"AND not EXISTS (SELECT TableName from generator_table t2 " +
+								"WHERE t1.TABLE_NAME=t2.TableName ) "},
+                        function(data,status){
+                            if(status=="success")
+							{
+                                $("#grid-table").jqGrid().trigger("reloadGrid");
+							}
+                        });
                 });
             });
-
-
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
@@ -245,7 +261,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080/system/systemGeneratortable/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080/codegenerator/generatorTable/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**
