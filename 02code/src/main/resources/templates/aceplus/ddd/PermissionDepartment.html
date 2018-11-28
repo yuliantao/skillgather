@@ -44,7 +44,7 @@
 			</script>
 
 			<!--插入左边导航-->
-			<div th:replace="/aceplus/common/bar::leftbar(active='${cfg.menu}')"></div>
+			<div th:replace="/aceplus/common/bar::leftbar(active='电瓶管理')"></div>
 
 			<div class="main-content">
 				<div class="main-content-inner">
@@ -55,7 +55,7 @@
 								<a href="#">主页</a>
 							</li>
 							<li>
-								<a href="#">${cfg.menu}</a>
+								<a href="#">电瓶管理</a>
 							</li>
 							<li class="active">用户管理</li>
 						</ul><!-- /.breadcrumb -->
@@ -80,7 +80,7 @@
 								用户
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									${table.comment}
+									
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -168,17 +168,18 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end/jqgridlist",
+                    url:"/ddd/permissionDepartment/jqgridlist",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID"
 
-					#foreach($field in ${table.fields})
-					#if(!${field.keyFlag})
-						,"${field.comment}"
-					#end
-					#end
+						,"部门编号"
+						,"部门名称"
+						,"父级部门"
+						,"部门描述"
+						,"公司代码"
+						,"是否删除"
 								],
 
                 colModel:[
@@ -190,11 +191,12 @@
 							}
 						},
                     { name: "id",  width: 200, align: "center",editable: true,hidden:true  }
-					#foreach($field in ${table.fields})
-					#if(!${field.keyFlag})
-                		,{ name: "${field.propertyName}",index:'${field.propertyName}', width: 230 ,align: "center",editable: true }
-					#end
-					#end
+                		,{ name: "DepartmentCode",index:'DepartmentCode', width: 230 ,align: "center",editable: true }
+                		,{ name: "DepartmentName",index:'DepartmentName', width: 230 ,align: "center",editable: true }
+                		,{ name: "ParentDepartment",index:'ParentDepartment', width: 230 ,align: "center",editable: true }
+                		,{ name: "DepartmentDescription",index:'DepartmentDescription', width: 230 ,align: "center",editable: true }
+                		,{ name: "CompanyCode",index:'CompanyCode', width: 230 ,align: "center",editable: true }
+                		,{ name: "IsDelete",index:'IsDelete', width: 230 ,align: "center",editable: true }
 						],
                     viewrecords : true,
 					rowNum:15,
@@ -217,7 +219,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080/ddd/permissionDepartment/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**

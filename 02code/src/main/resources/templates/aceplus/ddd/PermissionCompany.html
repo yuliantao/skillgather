@@ -43,8 +43,8 @@
 				try{ace.settings.loadState('main-container')}catch(e){}
 			</script>
 
-			<!--插入右边导航-->
-			<div th:replace="/aceplus/common/bar::leftbar"></div>
+			<!--插入左边导航-->
+			<div th:replace="/aceplus/common/bar::leftbar(active='电瓶管理')"></div>
 
 			<div class="main-content">
 				<div class="main-content-inner">
@@ -55,7 +55,7 @@
 								<a href="#">主页</a>
 							</li>
 							<li>
-								<a href="#">aa</a>
+								<a href="#">电瓶管理</a>
 							</li>
 							<li class="active">用户管理</li>
 						</ul><!-- /.breadcrumb -->
@@ -80,7 +80,7 @@
 								用户
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									操作
+									公司
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -168,15 +168,14 @@
 			
 				jQuery(grid_selector).jqGrid({
                     regional: 'cn',
-                    url:"/aa/permissionAction/jqgridlist",
+                    url:"/ddd/permissionCompany/jqgridlist",
                     datatype: "json",
                      mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID"
 
-						,"操作码"
-						,"操作名"
-						,"操作值"
+						,"公司编码"
+						,"公司名称"
 						,"是否删除"
 								],
 
@@ -189,9 +188,8 @@
 							}
 						},
                     { name: "id",  width: 200, align: "center",editable: true,hidden:true  }
-                		,{ name: "ActionCode",index:'ActionCode', width: 230 ,align: "center",editable: true }
-                		,{ name: "ActionName",index:'ActionName', width: 230 ,align: "center",editable: true }
-                		,{ name: "ActionValue",index:'ActionValue', width: 230 ,align: "center",editable: true }
+                		,{ name: "CompanyCode",index:'CompanyCode', width: 230 ,align: "center",editable: true }
+                		,{ name: "CompanyName",index:'CompanyName', width: 230 ,align: "center",editable: true }
                 		,{ name: "IsDelete",index:'IsDelete', width: 230 ,align: "center",editable: true }
 						],
                     viewrecords : true,
@@ -215,7 +213,7 @@
 						}, 0);
 					},
 
- 					editurl: "http://localhost:8080/aa/permissionAction/jqgridedite",//nothing is saved
+ 					editurl: "http://localhost:8080/ddd/permissionCompany/jqgridedite",//nothing is saved
 					caption: "用户信息"
 					,autowidth: true,
 					/**

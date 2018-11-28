@@ -3,12 +3,15 @@ package com.ylt.skillgather.coreframe.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ylt.skillgather.common.utils.ClassUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.lang.reflect.Field;
 import java.util.List;
 
 
@@ -107,6 +110,19 @@ public abstract class BaseController <PO> {
     @RequestMapping(value = "/jqgridedite")
     @ResponseBody
     public boolean jqgridEdite(PO po, HttpServletRequest request) {
+
+        //传递到后台的id有对象本身的ID和jqgrid的id，默认绑定的是id（小写），所以此处转换一次
+        if (!StringUtils.isEmpty(request.getParameter("ID")))
+        {
+            Class poClass=po.getClass();
+            try {
+                Field field = poClass.getDeclaredField("id");
+                field.setAccessible(true);
+                field.set(po,Integer.parseInt(request.getParameter("ID")));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
          String oper= request.getParameter("oper");
         switch (oper)

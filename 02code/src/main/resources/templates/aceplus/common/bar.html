@@ -331,26 +331,26 @@
 
     <!--菜单列表-->
     <ul class="nav nav-list">
-        <li class="active">
+        <li class="">
             <a th:href="@{/aceplus/userinfo}">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text"> 系统主页 </span>
             </a>
             <b class="arrow"></b>
         </li>
-
-        <li class="" th:each="item:${session.urllist}" th:if="${not #lists.isEmpty(session.urllist)}">
-            <a href="#" class="dropdown-toggle">
+        <!--   -->
+        <li th:class="${#strings.isEmpty(active)?'':(active==item.getName()?(#lists.isEmpty(item.getLists())?'active':'active open'):'')}" th:each="item:${session.urllist}" th:if="${not #lists.isEmpty(session.urllist)}">
+            <a th:href="${item.getUrl()}"  th:class="${#lists.isEmpty(item.getLists())?'':'dropdown-toggle'}">
                 <i th:class="${item.getIco()}"  th:if="${not #strings.isEmpty(item.getIco())}"></i>
                 <span class="menu-text">
                     [[${item.getName()}]]
                     <span th:class="${item.getBadgeIco()}" title="" data-original-title="2" th:if="${not #strings.isEmpty(item.getBadgeIco())}"></span>
                 </span>
-                <b class="arrow fa fa-angle-down"></b>
+                <b class="arrow fa fa-angle-down" th:if="${not #lists.isEmpty(item.getLists())}"></b>
             </a>
             <b class="arrow"></b>
-            <ul class="submenu">
-               <li class="" th:each="chitem : ${item.getLists()}" th:if="${not #lists.isEmpty(item.getLists())}">
+            <ul class="submenu" th:if="${not #lists.isEmpty(item.getLists())}">
+               <li class="" th:each="chitem : ${item.getLists()}">
                     <a th:href="${chitem.getUrl()}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         [[${chitem.getName()}]]

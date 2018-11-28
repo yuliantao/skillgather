@@ -1,4 +1,4 @@
-package com.ylt.skillgather.aa.entity;
+package com.ylt.skillgather.ddd.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -9,13 +9,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
- * 操作
+ * 公司
  * </p>
  *
  * @author yuliantao
- * @since 2018-11-27
+ * @since 2018-11-28
  */
-public class PermissionAction implements Serializable {
+public class PermissionCompany implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,27 +29,19 @@ public class PermissionAction implements Serializable {
 
 
     /**
-     * 操作码
+     * 公司编码
      */
-    @JsonProperty("ActionCode")
-    @TableField("ActionCode")
-    private String ActionCode;
+    @JsonProperty("CompanyCode")
+    @TableField("CompanyCode")
+    private String CompanyCode;
 
 
     /**
-     * 操作名
+     * 公司名称
      */
-    @JsonProperty("ActionName")
-    @TableField("ActionName")
-    private String ActionName;
-
-
-    /**
-     * 操作值
-     */
-    @JsonProperty("ActionValue")
-    @TableField("ActionValue")
-    private String ActionValue;
+    @JsonProperty("CompanyName")
+    @TableField("CompanyName")
+    private String CompanyName;
 
 
     /**
@@ -70,30 +62,21 @@ public class PermissionAction implements Serializable {
     }
 
     @JsonIgnore
-    public String getActionCode() {
-        return ActionCode;
+    public String getCompanyCode() {
+        return CompanyCode;
     }
 
-    public void setActionCode(String ActionCode) {
-        this.ActionCode = ActionCode;
-    }
-
-    @JsonIgnore
-    public String getActionName() {
-        return ActionName;
-    }
-
-    public void setActionName(String ActionName) {
-        this.ActionName = ActionName;
+    public void setCompanyCode(String CompanyCode) {
+        this.CompanyCode = CompanyCode;
     }
 
     @JsonIgnore
-    public String getActionValue() {
-        return ActionValue;
+    public String getCompanyName() {
+        return CompanyName;
     }
 
-    public void setActionValue(String ActionValue) {
-        this.ActionValue = ActionValue;
+    public void setCompanyName(String CompanyName) {
+        this.CompanyName = CompanyName;
     }
 
     @JsonIgnore
@@ -107,11 +90,10 @@ public class PermissionAction implements Serializable {
 
     @Override
     public String toString() {
-        return "PermissionAction{" +
+        return "PermissionCompany{" +
         "id=" + id +
-        ", ActionCode=" + ActionCode +
-        ", ActionName=" + ActionName +
-        ", ActionValue=" + ActionValue +
+        ", CompanyCode=" + CompanyCode +
+        ", CompanyName=" + CompanyName +
         ", IsDelete=" + IsDelete +
         "}";
     }

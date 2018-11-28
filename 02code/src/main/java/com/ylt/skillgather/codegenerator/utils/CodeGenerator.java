@@ -97,7 +97,7 @@ public class CodeGenerator {
 
         tc.setController("/vm/controllerEmpty.java.vm");
         tc.setEntity("/vm/entity.java.vm");
-
+        tc.setXml(null);//取消默认生成方式用自定义方式生成
      /*   tc.setEntity(null);
         tc.setEntityKt(null);
         tc.setMapper(null);
@@ -153,6 +153,13 @@ public class CodeGenerator {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
                 return projectPath+"/src/main/resources/templates/aceplus/"+ pc.getModuleName()+ "/" + tableInfo.getEntityName() + ".html";
+            }
+        });
+        focList.add(new FileOutConfig("/vm/mapper.xml.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输入文件名称
+                return projectPath+"/src/main/resources/mybatis/"+ pc.getModuleName()+ "/" + tableInfo.getEntityName() + "Mapper.xml";
             }
         });
         cfg.setFileOutConfigList(focList);

@@ -44,7 +44,8 @@
 			</script>
 
 			<!--插入右边导航-->
-			<div th:replace="/aceplus/common/bar::leftbar"></div>
+			<div th:replace="/aceplus/common/bar::leftbar(active='智能软件生成')"></div>
+
 
 			<div class="main-content">
 				<div class="main-content-inner">
@@ -222,7 +223,6 @@
                      mtype:"POST",
 					height: 490,
                     colNames: ["操作","ID"
-
 						,"表名"
 						,"菜单名"
 						,"已生成"
@@ -236,7 +236,7 @@
 								delOptions:{recreateForm: true, beforeShowForm:beforeDeleteCallback},
 							}
 						},
-                    { name: "ID",  width: 200, align: "center",editable: true  }
+                    { name: "ID",  width: 200, align: "center",editable: true,hidden:true  }
                 		,{ name: "TableName",index:'TableName', width: 230 ,align: "center",editable: true }
                 		,{ name: "MenuName",index:'MenuName', width: 230 ,align: "center",editable: true }
                 		,{ name: "IsCreat",index:'IsCreat', width: 230 ,align: "center",editable: true }
