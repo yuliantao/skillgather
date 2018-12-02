@@ -3,6 +3,7 @@ package com.ylt.skillgather.common.config;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ylt.skillgather.common.component.LoginHandlerInterceptor;
 
+import com.ylt.skillgather.common.utils.OtherUtils;
 import com.ylt.skillgather.coreframe.entity.CoreframeUrltoview;
 import com.ylt.skillgather.coreframe.service.ICoreframeUrltoviewService;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -40,12 +41,10 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
     //注册拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        //此处可以不考虑静态资源，springboot已经配置好了，以前配置拦截器需要设置静态资源放行
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
-                excludePathPatterns("/user/login","/login.html","/index.html","/",
-                        "/error/**","**/favicon.ico",
-                        "/webjars/**","/asserts/**","/gentelella/**"
-                        ,"/loginfile/**");
+                //放行的资源
+                excludePathPatterns(OtherUtils.getStaticSource());
+
     }
 
     /*

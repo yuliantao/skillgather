@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/skillgather?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: sa
+    password: 123456
+  session:
+    store-type: none
+  #临时设置用户名和密码
+  security:
+    user:
+      name: sa
+      password: 123
