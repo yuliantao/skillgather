@@ -15,8 +15,8 @@ public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers((String[]) OtherUtils.getStaticSource().toArray()).permitAll()//放行
-        .antMatchers()
+//        http.authorizeRequests()
+//                .antMatchers((String[]) OtherUtils.getStaticSource().toArray()).permitAll()//放行
+//        .antMatchers()
     }
 }
