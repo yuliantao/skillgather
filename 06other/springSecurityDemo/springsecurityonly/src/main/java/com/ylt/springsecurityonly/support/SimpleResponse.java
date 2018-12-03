@@ -4,8 +4,8 @@
 package com.ylt.springsecurityonly.support;
 
 /**
- * @author zhailiang
- *
+ * @author ylt
+ * 用户信息返回包装类
  */
 public class SimpleResponse {
 	
