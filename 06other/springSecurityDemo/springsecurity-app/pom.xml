@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.ylt</groupId>
             <artifactId>springsecurity-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${ylt.security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.session</groupId>

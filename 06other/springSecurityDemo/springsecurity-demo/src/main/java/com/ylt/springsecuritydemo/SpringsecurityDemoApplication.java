@@ -13,9 +13,4 @@ public class SpringsecurityDemoApplication {
         SpringApplication.run(SpringsecurityDemoApplication.class, args);
     }
 
-    @GetMapping("/hello")
-    public String hello()
-    {
-        return  "hello spring security";
-    }
 }

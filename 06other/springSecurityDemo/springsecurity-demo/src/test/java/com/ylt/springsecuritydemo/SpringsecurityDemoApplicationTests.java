@@ -1,5 +1,6 @@
 package com.ylt.springsecuritydemo;
 
+import com.ylt.springsecuritybrowser.MyUserDetailsService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +30,8 @@ public class SpringsecurityDemoApplicationTests {
 
     @Test
     public void contextLoads() {
-
+        MyUserDetailsService detailsService=(MyUserDetailsService) webApplicationContext.getBean(MyUserDetailsService.class);
+        System.out.println(detailsService);
     }
 
 }
