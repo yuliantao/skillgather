@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/skillgather?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+#此处可以定义自己的配置内容，方便开发框架后续使用
+#ylt.security.browser.loginPage: /hello
+ylt.security.browser.loginResponseType: REDIRECT

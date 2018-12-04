@@ -1,0 +1,11 @@
+server:
+  port: 8080
+#引入外部数据库资源druid
+spring:
+  profiles:
+    include: druid
+  jpa:
+    show-sql: true
+    #根据实体生成数据库表，如果是更新就直接更新
+    hibernate:
+      ddl-auto: update
