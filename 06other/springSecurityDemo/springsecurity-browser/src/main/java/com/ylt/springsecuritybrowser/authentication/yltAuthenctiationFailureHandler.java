@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ylt.springsecuritybrowser.support.SimpleResponse;
 import com.ylt.springsecuritycore.properties.LoginResponseType;
-import com.ylt.springsecuritycore.properties.SecurityProperties;
+import com.ylt.springsecuritycore.properties.MySecurityProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class yltAuthenctiationFailureHandler extends SimpleUrlAuthenticationFail
 	@Autowired
 	private ObjectMapper objectMapper;
 	@Autowired
-	private SecurityProperties securityProperties;
+	private MySecurityProperties mySecurityProperties;
 
 	
 	@Override
@@ -41,7 +41,7 @@ public class yltAuthenctiationFailureHandler extends SimpleUrlAuthenticationFail
 		
 		logger.info("登录失败");
 		
-		if (LoginResponseType.JSON.equals(securityProperties.getBrowser().getLoginResponseType())) {
+		if (LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginResponseType())) {
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			response.setContentType("application/json;charset=UTF-8");
 			response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(exception.getMessage())));

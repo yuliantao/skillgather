@@ -30,7 +30,7 @@ public class SpringsecurityDemoApplicationTests {
 
     @Test
     public void contextLoads() {
-        MyUserDetailsService detailsService=(MyUserDetailsService) webApplicationContext.getBean(MyUserDetailsService.class);
+        MyUserDetailsService detailsService= webApplicationContext.getBean(MyUserDetailsService.class);
         System.out.println(detailsService);
     }
 

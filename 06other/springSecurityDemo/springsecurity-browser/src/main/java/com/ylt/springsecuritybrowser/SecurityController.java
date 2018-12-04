@@ -1,7 +1,7 @@
 package com.ylt.springsecuritybrowser;
 
 import com.ylt.springsecuritybrowser.support.SimpleResponse;
-import com.ylt.springsecuritycore.properties.SecurityProperties;
+import com.ylt.springsecuritycore.properties.MySecurityProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +32,7 @@ public class SecurityController{
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Autowired
-    private SecurityProperties securityProperties;
+    private MySecurityProperties mySecurityProperties;
 
     /**
      * 需要身份认证时跳转到这里，可以判断是HTML跳转还是app方式
@@ -50,7 +49,7 @@ public class SecurityController{
             logger.info("引发跳转的请求是:" + targetUrl);
             if (!JudgeIsMoblie(request))//判断是否是手机发出，以后可以升级判断是不是app发出
             {
-                redirectStrategy.sendRedirect(request, response,securityProperties.getBrowser().getLoginPage());
+                redirectStrategy.sendRedirect(request, response, mySecurityProperties.getBrowser().getLoginPage());
             }
         }
         return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页");

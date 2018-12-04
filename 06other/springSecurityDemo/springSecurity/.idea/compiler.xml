@@ -9,6 +9,7 @@
         <module name="springsecurity-app" />
         <module name="springsecurity-browser" />
         <module name="springsecurity-core" />
+        <module name="springsecurity-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

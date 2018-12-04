@@ -1,7 +1,7 @@
 package com.ylt.springsecuritycore;
 
 
-import com.ylt.springsecuritycore.properties.SecurityProperties;
+import com.ylt.springsecuritycore.properties.MySecurityProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Configuration;
  * @description 功能描述
  */
 @Configuration
-@EnableConfigurationProperties(SecurityProperties.class)
+@EnableConfigurationProperties(MySecurityProperties.class)
 public class SecurityCoreConfig {
 }
