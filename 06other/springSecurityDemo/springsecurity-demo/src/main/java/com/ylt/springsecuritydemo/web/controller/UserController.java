@@ -1,7 +1,10 @@
 package com.ylt.springsecuritydemo.web.controller;
 
+import com.ylt.springsecuritybrowser.authentication.yltAuthenctiationFailureHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * @author yuliantao
@@ -23,4 +26,5 @@ public class UserController {
     {
         return "login";
     }
+
 }

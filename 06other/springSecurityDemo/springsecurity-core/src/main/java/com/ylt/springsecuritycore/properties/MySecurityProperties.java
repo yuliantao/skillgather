@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @ConfigurationProperties(prefix = "ylt.security")
 @Configuration
-public class SecurityProperties {
+public class MySecurityProperties {
     private BrowserProperties browser=new BrowserProperties();
 
     public BrowserProperties getBrowser() {

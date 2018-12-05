@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ylt.springsecuritycore.properties.LoginResponseType;
-import com.ylt.springsecuritycore.properties.SecurityProperties;
+import com.ylt.springsecuritycore.properties.MySecurityProperties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,13 +33,13 @@ public class yltAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
 	@Autowired
 	private ObjectMapper objectMapper;
 	@Autowired
-	private SecurityProperties securityProperties;
+	private MySecurityProperties mySecurityProperties;
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		logger.info("登录成功");
-		if (LoginResponseType.JSON.equals(securityProperties.getBrowser().getLoginResponseType())) {
+		if (LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginResponseType())) {
 			response.setContentType("application/json;charset=UTF-8");
 			response.getWriter().write(objectMapper.writeValueAsString(authentication));
 		} else {

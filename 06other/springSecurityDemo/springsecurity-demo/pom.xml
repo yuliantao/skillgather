@@ -3,19 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>springsecurity-demo</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>springsecurity-demo</name>
-    <modules>
-        <module>../test</module>
-    </modules>
-
     <parent>
         <groupId>com.ylt</groupId>
         <artifactId>springSecurity</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../springSecurity/pom.xml</relativePath>
     </parent>
-
     <dependencies>
         <dependency>
             <groupId>com.ylt</groupId>
@@ -26,7 +21,7 @@
 
     <build>
         <plugins>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <executions>
@@ -36,8 +31,22 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-        </plugins>
+            </plugin>-->
+                <!-- jar插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3.1</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+            </plugins>
         <finalName>demo123</finalName>
     </build>
 
