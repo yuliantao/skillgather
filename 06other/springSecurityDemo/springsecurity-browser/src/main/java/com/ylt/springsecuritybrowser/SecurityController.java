@@ -1,6 +1,7 @@
 package com.ylt.springsecuritybrowser;
 
 import com.ylt.springsecuritybrowser.support.SimpleResponse;
+import com.ylt.springsecuritycore.properties.LoginResponseType;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +51,8 @@ public class SecurityController{
         {
             String targetUrl = savedRequest.getRedirectUrl();
             logger.info("引发跳转的请求是:" + targetUrl);
-            if (!JudgeIsMoblie(request))//判断是否是手机发出，以后可以升级判断是不是app发出
+            //if (!JudgeIsMoblie(request))//判断是否是手机发出，以后可以升级判断是不是app发出
+            if (!LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginResponseType()))
             {
                 redirectStrategy.sendRedirect(request, response, mySecurityProperties.getBrowser().getLoginPage());
             }

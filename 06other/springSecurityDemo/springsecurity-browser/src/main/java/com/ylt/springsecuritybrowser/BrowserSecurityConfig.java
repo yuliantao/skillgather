@@ -31,12 +31,14 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .loginPage("/authentication/require")
+                .loginPage("/authentication/require")//此处跳转到一个自定义的control方法上，便于判断登录的客户端类型而给出不同的输出（json还是html）
                 .loginProcessingUrl("/authentication/form")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .successHandler(yltAuthenticationSuccessHandler)
                 .failureHandler(yltAuthenctiationFailureHandler)
+                .failureUrl("/authentication/require") //登录失败时的跳转链接，默认是/login?error
+                //.failureForwardUrl()//授权失败时的跳转链接
                 .and()
                 .authorizeRequests()
                 .antMatchers("/authentication/require",
