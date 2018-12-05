@@ -7,7 +7,7 @@ package com.ylt.springsecuritycore.properties;
  */
 public class BrowserProperties {
 
-    private String loginPage="/login";
+    private String loginPage="/authenticationlogin";
     private LoginResponseType loginResponseType=LoginResponseType.REDIRECT;
 
     public String getLoginPage() {

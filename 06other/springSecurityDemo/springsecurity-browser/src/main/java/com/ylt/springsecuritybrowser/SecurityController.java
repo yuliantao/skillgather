@@ -11,7 +11,9 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +26,7 @@ import java.io.IOException;
  * @create 2018-12-03 16:18
  * @description 功能描述
  */
-@RestController
+@Controller
 public class SecurityController{
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -38,6 +40,7 @@ public class SecurityController{
      * 需要身份认证时跳转到这里，可以判断是HTML跳转还是app方式
      */
     @RequestMapping("/authentication/require")
+    @ResponseBody
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws IOException
@@ -85,4 +88,9 @@ public class SecurityController{
         return isMoblie;
     }
 
+    @RequestMapping("/authenticationlogin")
+    public String login()
+    {
+        return "login";
+    }
 }

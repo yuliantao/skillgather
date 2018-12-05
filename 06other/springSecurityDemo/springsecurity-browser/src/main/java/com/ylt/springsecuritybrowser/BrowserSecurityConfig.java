@@ -33,17 +33,22 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")
+                .usernameParameter("username")
+                .passwordParameter("password")
                 .successHandler(yltAuthenticationSuccessHandler)
                 .failureHandler(yltAuthenctiationFailureHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/authentication/require","/",
-                        "/error/**","**/favicon.ico", mySecurityProperties.getBrowser().getLoginPage(),
-                        "/webjars/**","/asserts/**","/gentelella/**"
+                .antMatchers("/authentication/require",
+                        "/error/**","**/favicon.ico",
+                        mySecurityProperties.getBrowser().getLoginPage(),
+                        "/webjars/**","/asserts/**"
                         ,"/loginfile/**"
                 ).permitAll()
                 .anyRequest()
-                .authenticated();
+                .authenticated()
+                .and().csrf().disable();
+
     }
 
     @Autowired

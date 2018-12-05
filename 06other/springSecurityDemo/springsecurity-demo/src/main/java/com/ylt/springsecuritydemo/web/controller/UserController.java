@@ -3,6 +3,7 @@ package com.ylt.springsecuritydemo.web.controller;
 import com.ylt.springsecuritybrowser.authentication.yltAuthenctiationFailureHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -21,10 +22,11 @@ public class UserController {
         return "hello";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/s")
     public String login()
     {
-        return "login";
+        return "sss";
+
     }
 
 }

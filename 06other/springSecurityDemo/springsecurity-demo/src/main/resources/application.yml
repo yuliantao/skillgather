@@ -8,6 +8,11 @@ spring:
     store-type: none
   #临时设置用户名和密码
 #  security:
-#    user:
-#      name: sa
-#      password: 123
+##    user:
+##      name: sa
+##      password: 123
+#ylt:
+#  security:
+#    browser:
+#      loginPage: /login
+
