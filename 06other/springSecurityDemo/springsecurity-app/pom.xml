@@ -10,6 +10,7 @@
         <groupId>com.ylt</groupId>
         <artifactId>springSecurity</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../springSecurity/pom.xml</relativePath>
     </parent>
 
     <dependencies>
