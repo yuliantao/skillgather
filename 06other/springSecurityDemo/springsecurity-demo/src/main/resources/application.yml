@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/skillgather?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/skilldemo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: sa
     password: 123456
   session:
@@ -15,12 +15,13 @@ spring:
 #  security:
 #    browser:
 #      loginPage: /login
-ylt:
-  security:
-    code:
-      image:
-        width: 67
-        height: 23
-        length: 4
-        expirIn: 60
+#ylt:
+#  security:
+#    code:
+#      image:
+#        width: 67
+#        height: 23
+#        length: 4
+#        expirIn: 60
+#        url: /user*,/u
 

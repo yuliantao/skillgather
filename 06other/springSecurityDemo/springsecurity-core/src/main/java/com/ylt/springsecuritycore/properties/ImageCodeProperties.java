@@ -14,6 +14,7 @@ public class ImageCodeProperties {
 	private int height = 23;
 	private int length = 4;
 	private int expirIn = 60;
+	private String url;//用于判断链接是否需要进行验证码验证
 	
 	public int getWidth() {
 		return width;
@@ -45,5 +46,13 @@ public class ImageCodeProperties {
 
 	public void setExpirIn(int expirIn) {
 		this.expirIn = expirIn;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

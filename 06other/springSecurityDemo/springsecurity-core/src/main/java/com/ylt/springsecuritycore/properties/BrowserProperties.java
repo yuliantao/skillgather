@@ -9,6 +9,7 @@ public class BrowserProperties {
 
     private String loginPage="/authenticationlogin";
     private LoginResponseType loginResponseType=LoginResponseType.REDIRECT;
+    private int rememberMeSeconds=3600*24*7;
 
     public String getLoginPage() {
         return loginPage;
@@ -24,5 +25,13 @@ public class BrowserProperties {
 
     public void setLoginResponseType(LoginResponseType loginResponseType) {
         this.loginResponseType = loginResponseType;
+    }
+
+    public int getRememberMeSeconds() {
+        return rememberMeSeconds;
+    }
+
+    public void setRememberMeSeconds(int rememberMeSeconds) {
+        this.rememberMeSeconds = rememberMeSeconds;
     }
 }
