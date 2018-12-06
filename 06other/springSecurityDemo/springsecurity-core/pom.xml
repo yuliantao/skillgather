@@ -20,6 +20,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <dependency>
@@ -31,6 +35,35 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-web</artifactId>
+        </dependency>
+        <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
         <!--
       由于一些注解和API从spring security5.0中移除，所以需要导入下面的依赖包
        <dependency>
@@ -41,22 +74,6 @@
        <dependency>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-starter-data-redis</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.social</groupId>
-           <artifactId>spring-social-config</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.social</groupId>
-           <artifactId>spring-social-core</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.social</groupId>
-           <artifactId>spring-social-security</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.social</groupId>
-           <artifactId>spring-social-web</artifactId>
        </dependency>
        <dependency>
            <groupId>org.springframework.boot</groupId>

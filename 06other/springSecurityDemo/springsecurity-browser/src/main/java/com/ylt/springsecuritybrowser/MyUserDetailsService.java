@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @create 2018-12-03 13:41
  * @description 功能描述
  */
-@Service
+@Component
 public class MyUserDetailsService implements UserDetailsService {
 
     private Logger logger= LoggerFactory.getLogger(this.getClass());

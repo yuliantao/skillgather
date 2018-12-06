@@ -1,6 +1,7 @@
 package com.ylt.springsecuritybrowser;
 
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
+import com.ylt.springsecuritycore.validate.code.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @author yuliantao
@@ -30,7 +32,11 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin()
+        ValidateCodeFilter validateCodeFilter=new ValidateCodeFilter();
+        validateCodeFilter.setAuthenticationFailureHandler(yltAuthenctiationFailureHandler);
+
+        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)//添加验证码过滤器
+                .formLogin()
                 .loginPage("/authentication/require")//此处跳转到一个自定义的control方法上，便于判断登录的客户端类型而给出不同的输出（json还是html）
                 .loginProcessingUrl("/authentication/form")
                 .usernameParameter("username")
@@ -45,7 +51,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/error/**","**/favicon.ico",
                         mySecurityProperties.getBrowser().getLoginPage(),
                         "/webjars/**","/asserts/**"
-                        ,"/loginfile/**"
+                        ,"/loginfile/**","/code/image"
                 ).permitAll()
                 .anyRequest()
                 .authenticated()
