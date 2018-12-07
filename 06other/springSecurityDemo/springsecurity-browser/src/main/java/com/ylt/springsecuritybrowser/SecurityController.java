@@ -91,8 +91,10 @@ public class SecurityController{
     }
 
     @RequestMapping("/authenticationlogin")
-    public String login()
+    public String login(HttpServletRequest request,HttpServletResponse response)
     {
+        String date = request.getSession().getAttribute("errorinfo").toString();
+
         return "login";
     }
 }

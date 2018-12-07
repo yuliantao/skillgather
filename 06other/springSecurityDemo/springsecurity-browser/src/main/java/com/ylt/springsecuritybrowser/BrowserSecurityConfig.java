@@ -52,7 +52,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     {
         JdbcTokenRepositoryImpl tokenRepository=new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource(dataSource);
-        tokenRepository.setCreateTableOnStartup(true);
+        //tokenRepository.setCreateTableOnStartup(true);
         return tokenRepository;
     }
 
@@ -62,8 +62,8 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         validateCodeFilter.setAuthenticationFailureHandler(yltAuthenctiationFailureHandler);
         validateCodeFilter.setSecurityProperties(mySecurityProperties);
         validateCodeFilter.afterPropertiesSet();
-
-        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)//添加验证码过滤器
+        http
+                .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)//添加验证码过滤器
                 .formLogin()
                     .loginPage("/authentication/require")//此处跳转到一个自定义的control方法上，便于判断登录的客户端类型而给出不同的输出（json还是html）
                     .loginProcessingUrl("/authentication/form")
@@ -89,9 +89,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and().csrf().disable();
-
     }
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

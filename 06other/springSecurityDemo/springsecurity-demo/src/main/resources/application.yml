@@ -15,13 +15,15 @@ spring:
 #  security:
 #    browser:
 #      loginPage: /login
-#ylt:
-#  security:
-#    code:
-#      image:
-#        width: 67
-#        height: 23
-#        length: 4
-#        expirIn: 60
-#        url: /user*,/u
+ylt:
+  security:
+    code:
+      image:
+        width: 67
+        height: 23
+        length: 4
+        expirIn: 60
+        url: /user*,/u
+
+
 

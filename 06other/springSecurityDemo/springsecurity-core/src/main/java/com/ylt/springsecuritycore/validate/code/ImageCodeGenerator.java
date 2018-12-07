@@ -10,6 +10,8 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
@@ -65,7 +67,6 @@ public class ImageCodeGenerator implements ValidateCodeGenerator {
 		int b = fc + random.nextInt(bc - fc);
 		return new Color(r, g, b);
 	}
-
 	public MySecurityProperties getSecurityProperties() {
 		return securityProperties;
 	}
