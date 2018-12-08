@@ -3,6 +3,7 @@ package com.ylt.springsecuritybrowser;
 import com.ylt.springsecuritybrowser.support.SimpleResponse;
 import com.ylt.springsecuritycore.properties.LoginResponseType;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
+import com.ylt.springsecuritycore.properties.SecurityConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,16 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.social.connect.web.HttpSessionSessionStrategy;
+import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.ServletWebRequest;
+import org.springframework.web.context.request.WebRequest;
 
+import javax.jws.WebResult;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -52,7 +57,7 @@ public class SecurityController{
             String targetUrl = savedRequest.getRedirectUrl();
             logger.info("引发跳转的请求是:" + targetUrl);
             //if (!JudgeIsMoblie(request))//判断是否是手机发出，以后可以升级判断是不是app发出
-            if (!LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginResponseType()))
+            if (!LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginType()))
             {
                 redirectStrategy.sendRedirect(request, response, mySecurityProperties.getBrowser().getLoginPage());
             }
@@ -93,8 +98,14 @@ public class SecurityController{
     @RequestMapping("/authenticationlogin")
     public String login(HttpServletRequest request,HttpServletResponse response)
     {
-        String date = request.getSession().getAttribute("errorinfo").toString();
-
-        return "login";
+        ServletWebRequest servletWebRequest=new ServletWebRequest(request,response);
+        SessionStrategy sessionStrategy=new HttpSessionSessionStrategy();
+        Object err=sessionStrategy.getAttribute(servletWebRequest,"errorinfo");
+        if (err!=null)
+        {
+            //只是测试有没有值
+        }
+        return "mobilelogin";//手机号短信验证码模式
+        //return "login"; //用户名密码图片验证码模式
     }
 }
