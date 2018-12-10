@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户登录</title>
+<link rel="stylesheet" type="text/css" th:href="@{/loginfile/css/style.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/loginfile/css/body.css}"/>
+</head>
+<body>
+<div class="container">
+	<section id="content">
+		<form action="/authentication/mobile" method="post">
+			<h1>用户登录</h1>
+			<div>
+				<input type="text" placeholder="手机号" required="" name="mobile" value="13659856987" id="username" />
+			</div>
+			<div>
+				<input type="text" placeholder="短信验证码" required="" name="smsCode" id="smsCode" />
+			</div>
+			<div>
+				<a href="/code/sms?mobile=13659856987">发送验证码</a>
+			</div>
+			 <div class="">
+				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>
+				<input type="submit" value="登录" class="btn btn-primary" id="js-btn-login"/>
+			</div>
+			<div>
+				<span th:text="${#session.getAttribute('errorinfo')}" th:if="${not #strings.isEmpty(#session.getAttribute('errorinfo'))}"></span>
+			</div>
+		</form><!-- form -->
+
+	</section><!-- content -->
+</div>
+<!-- container -->
+
+
+<br><br><br><br>
+<div style="text-align:center;">
+<p>研制单位：成都九洲电子信息系统有限责任公司</p>
+</div>
+</body>
+</html>

@@ -65,7 +65,7 @@
             <artifactId>commons-beanutils</artifactId>
         </dependency>
         <!--
-      由于一些注解和API从spring security5.0中移除，所以需要导入下面的依赖包
+      由于一些注解和API从spring security5.0中移除，所以需要导入下面的依赖包-->
        <dependency>
           <groupId>org.springframework.security.oauth.boot</groupId>
           <artifactId>spring-security-oauth2-autoconfigure</artifactId>
@@ -78,7 +78,7 @@
        <dependency>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-configuration-processor</artifactId>
-       </dependency>-->
+       </dependency>
     </dependencies>
 
 </project>

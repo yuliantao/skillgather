@@ -39,7 +39,7 @@ public class yltAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		logger.info("登录成功");
-		if (LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginResponseType())) {
+		if (LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginType())) {
 			response.setContentType("application/json;charset=UTF-8");
 			response.getWriter().write(objectMapper.writeValueAsString(authentication));
 		} else {

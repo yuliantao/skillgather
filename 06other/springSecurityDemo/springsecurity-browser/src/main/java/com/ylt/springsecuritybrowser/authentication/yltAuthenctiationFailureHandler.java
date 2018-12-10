@@ -43,7 +43,7 @@ public class yltAuthenctiationFailureHandler extends SimpleUrlAuthenticationFail
 			AuthenticationException exception) throws IOException, ServletException {
 		
 		logger.info("登录失败");
-		if (LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginResponseType())) {
+		if (LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginPage())) {
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			response.setContentType("application/json;charset=UTF-8");
 			response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(exception.getMessage())));
