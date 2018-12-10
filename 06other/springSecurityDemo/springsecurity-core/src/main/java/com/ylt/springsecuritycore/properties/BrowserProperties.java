@@ -12,6 +12,8 @@ public class BrowserProperties {
 	private SessionProperties session = new SessionProperties();
 	
 	private String signUpUrl = "/imooc-signUp.html";
+
+	private String SignOutUrl ="/authentication/require";
 	
 	private String loginPage = SecurityConstants.DEFAULT_LOGIN_PAGE_URL;
 	
@@ -57,5 +59,13 @@ public class BrowserProperties {
 
 	public void setSession(SessionProperties session) {
 		this.session = session;
+	}
+
+	public String getSignOutUrl() {
+		return SignOutUrl;
+	}
+
+	public void setSignOutUrl(String signOutUrl) {
+		SignOutUrl = signOutUrl;
 	}
 }

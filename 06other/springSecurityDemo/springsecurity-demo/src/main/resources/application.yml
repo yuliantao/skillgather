@@ -28,4 +28,4 @@ ylt:
 server:
   servlet:
     session:
-      timeout: 10
+      timeout: 60

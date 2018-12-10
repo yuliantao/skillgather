@@ -16,6 +16,7 @@ import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -106,6 +107,18 @@ public class SecurityController{
             //只是测试有没有值
         }
         return "mobilelogin";//手机号短信验证码模式
+        //return "login"; //用户名密码图片验证码模式
+    }
+
+    @RequestMapping("/session/invalid")
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public String sessionInvalid(HttpServletRequest request,HttpServletResponse response)
+    {
+        String message="session失效";
+        WebRequest webRequest=new ServletWebRequest(request,response);
+        SessionStrategy sessionStrategy=new HttpSessionSessionStrategy();
+        sessionStrategy.setAttribute(webRequest,"errorinfo",message);//传递传输到页面
+         return "mobilelogin";//手机号短信验证码模式
         //return "login"; //用户名密码图片验证码模式
     }
 }
