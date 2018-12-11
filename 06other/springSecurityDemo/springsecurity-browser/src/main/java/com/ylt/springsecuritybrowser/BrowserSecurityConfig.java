@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import com.ylt.springsecuritycore.authentication.AbstractChannelSecurityConfig;
 import com.ylt.springsecuritycore.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.ylt.springsecuritycore.authorize.AuthorizeConfigManger;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
 import com.ylt.springsecuritycore.properties.SecurityConstants;
 import com.ylt.springsecuritycore.validate.code.ValidateCodeSecurityConfig;
@@ -59,6 +60,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 	@Autowired
 	LogoutSuccessHandler logoutSuccessHandler;
 
+	@Autowired
+	private AuthorizeConfigManger authorizeConfigManger;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
@@ -89,24 +93,8 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 				//.logoutSuccessUrl(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
 				.deleteCookies("JSESSIONID")
 				.and()
-			.authorizeRequests()
-				.antMatchers(
-					SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
-					SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,
-					securityProperties.getBrowser().getLoginPage(),
-					SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*",
-					securityProperties.getBrowser().getSignUpUrl(),
-					/*securityProperties.getBrowser().getSession().getSessionInvalidUrl()+".json",
-					securityProperties.getBrowser().getSession().getSessionInvalidUrl()+".html",*/
-					"/user/regist",
-						"/error/**","**/favicon.ico",
-						"/webjars/**","/asserts/**","/session/invalid"
-						,"/loginfile/**")
-					.permitAll()
-				.anyRequest()
-				.authenticated()
-				.and()
 			.csrf().disable();
+			authorizeConfigManger.config(http.authorizeRequests());//此处配置了所有权限
 		
 	}
 
