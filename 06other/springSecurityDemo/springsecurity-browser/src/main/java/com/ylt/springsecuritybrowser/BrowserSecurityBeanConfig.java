@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.session.InvalidSessionStrategy;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
@@ -44,5 +45,11 @@ public class BrowserSecurityBeanConfig {
 	{
 		return  new yltLogoutSuccessHandler(securityProperties);
 	}
-	
+
+	@Bean
+	@ConditionalOnMissingBean(UserDetailsService.class)
+	public UserDetailsService getUserDetailsService()
+	{
+		return new  MyUserDetailsService();
+	}
 }

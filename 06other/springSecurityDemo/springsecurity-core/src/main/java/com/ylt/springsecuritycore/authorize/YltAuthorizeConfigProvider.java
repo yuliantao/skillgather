@@ -20,10 +20,9 @@ public class YltAuthorizeConfigProvider implements AuthorizeConfigProvider {
                 SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,
                 securityProperties.getBrowser().getLoginPage(),
                 SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*",
-                securityProperties.getBrowser().getSignUpUrl(),
 					/*securityProperties.getBrowser().getSession().getSessionInvalidUrl()+".json",
 					securityProperties.getBrowser().getSession().getSessionInvalidUrl()+".html",*/
-                "/user/regist",
+                "/user/regist","/signOut",
                 "/error/**","**/favicon.ico",
                 "/webjars/**","/asserts/**","/session/invalid"
                 ,"/loginfile/**").permitAll();

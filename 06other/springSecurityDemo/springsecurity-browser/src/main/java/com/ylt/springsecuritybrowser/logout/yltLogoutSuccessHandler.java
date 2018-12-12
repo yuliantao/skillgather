@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import javax.servlet.ServletException;
@@ -31,6 +32,7 @@ public class yltLogoutSuccessHandler implements LogoutSuccessHandler {
             //如果没有配置跳转链接就返回自定义的json对象，让前端根据内容进行判断出来
         }else {
             httpServletResponse.sendRedirect(signOutUrl);
+            new DefaultRedirectStrategy().sendRedirect(httpServletRequest, httpServletResponse, mySecurityProperties.getBrowser().getLoginPage());
         }
     }
 }

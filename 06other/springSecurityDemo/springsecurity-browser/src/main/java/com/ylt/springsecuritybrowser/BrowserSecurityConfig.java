@@ -41,16 +41,20 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
+
+	//短信登录认证
 	@Autowired
 	private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
-	
+
+	//验证码（图片和手机短信2种方式）
 	@Autowired
 	private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 	
 /*	@Autowired
 	private SpringSocialConfigurer imoocSocialSecurityConfig;
 	*/
+
+	//注入session处理逻辑
 	@Autowired
 	private SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
 	
@@ -65,30 +69,36 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
+
+		//配置认证信息
 		applyPasswordAuthenticationConfig(http);
-		
-		http.apply(validateCodeSecurityConfig)
-				.and()
-			.apply(smsCodeAuthenticationSecurityConfig)
+
+
+		http
+				//关闭验证码
+				/*.apply(validateCodeSecurityConfig)
+				.and()*/
+				//关闭短信登录功能
+				/*.apply(smsCodeAuthenticationSecurityConfig)*/
 				/*.and()
-			.apply(imoocSocialSecurityConfig)*/
-				.and()
-			.rememberMe()
-				.tokenRepository(persistentTokenRepository())
-				.tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())
-				.userDetailsService(userDetailsService)
-				.and()
+				.apply(imoocSocialSecurityConfig)*/
+				//关闭记住我功能
+				/*.and()
+				.rememberMe()
+					.tokenRepository(persistentTokenRepository())
+					.tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())
+					.userDetailsService(userDetailsService)
+					.and()*/
 			.sessionManagement()
-				.invalidSessionStrategy(invalidSessionStrategy)
-				.maximumSessions(securityProperties.getBrowser().getSession().getMaximumSessions())
+				.invalidSessionStrategy(invalidSessionStrategy)//过期策略
+				.maximumSessions(securityProperties.getBrowser().getSession().getMaximumSessions())//最大session数
 				//.maxSessionsPreventsLogin(true)
-				.maxSessionsPreventsLogin(securityProperties.getBrowser().getSession().isMaxSessionsPreventsLogin())
-				.expiredSessionStrategy(sessionInformationExpiredStrategy)
+				.maxSessionsPreventsLogin(securityProperties.getBrowser().getSession().isMaxSessionsPreventsLogin())//是否阻止新登录
+				.expiredSessionStrategy(sessionInformationExpiredStrategy)//并发策略
 				.and()
 				.and()
 			.logout()
-				.logoutUrl("/signOut")
+				.logoutUrl("/signOut")//默认是/logout，当security发现是这个链接自动退出
 				.logoutSuccessHandler(logoutSuccessHandler)
 				//.logoutSuccessUrl(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
 				.deleteCookies("JSESSIONID")
@@ -115,5 +125,4 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 //		tokenRepository.setCreateTableOnStartup(true);
 		return tokenRepository;
 	}
-	
 }

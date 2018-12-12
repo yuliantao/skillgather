@@ -46,24 +46,27 @@ public class SecurityController{
     /**
      * 需要身份认证时跳转到这里，可以判断是HTML跳转还是app方式
      */
-    @RequestMapping("/authentication/require")
+    @RequestMapping(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
     @ResponseBody
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws IOException
     {
-        SavedRequest savedRequest = requestCache.getRequest(request, response);
-        if (savedRequest != null)
+        if (!LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginType()))
         {
-            String targetUrl = savedRequest.getRedirectUrl();
-            logger.info("引发跳转的请求是:" + targetUrl);
-            //if (!JudgeIsMoblie(request))//判断是否是手机发出，以后可以升级判断是不是app发出
-            if (!LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginType()))
-            {
+            SavedRequest savedRequest = requestCache.getRequest(request, response);
+            if (savedRequest != null) {
+                String targetUrl = savedRequest.getRedirectUrl();
+                logger.info("引发跳转的请求是:" + targetUrl);
+                //if (!JudgeIsMoblie(request))//判断是否是手机发出，以后可以升级判断是不是app发出
                 redirectStrategy.sendRedirect(request, response, mySecurityProperties.getBrowser().getLoginPage());
             }
+            return null;
         }
-        return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页");
+        else
+        {
+            return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页");
+        }
     }
 
     //判断是否为手机浏览器
@@ -106,8 +109,8 @@ public class SecurityController{
         {
             //只是测试有没有值
         }
-        return "mobilelogin";//手机号短信验证码模式
-        //return "login"; //用户名密码图片验证码模式
+        //return "mobilelogin";//手机号短信验证码模式
+        return "login"; //用户名密码图片验证码模式
     }
 
     @RequestMapping("/session/invalid")
@@ -118,7 +121,7 @@ public class SecurityController{
         WebRequest webRequest=new ServletWebRequest(request,response);
         SessionStrategy sessionStrategy=new HttpSessionSessionStrategy();
         sessionStrategy.setAttribute(webRequest,"errorinfo",message);//传递传输到页面
-         return "mobilelogin";//手机号短信验证码模式
-        //return "login"; //用户名密码图片验证码模式
+         //return "mobilelogin";//手机号短信验证码模式
+        return "login"; //用户名密码图片验证码模式
     }
 }

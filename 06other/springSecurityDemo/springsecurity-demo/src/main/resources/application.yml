@@ -25,7 +25,7 @@ ylt:
         expirIn: 60
         url: /user*,/u
 
-server:
-  servlet:
-    session:
-      timeout: 60
+#server:
+#  servlet:
+#    session:
+#      timeout: 60
