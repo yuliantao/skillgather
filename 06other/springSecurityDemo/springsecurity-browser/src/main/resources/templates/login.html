@@ -17,21 +17,14 @@
 			<div>
 				<input type="password" placeholder="密码" required="" name="password" id="password" />
 			</div>
-			<div>
-				<input type="text"  placeholder="验证码" required="" name="imageCode"
-					   style="width: 59.5%;"/>
-				<img  th:src="@{/code/image}"/>
-			</div>
 			 <div class="">
 				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>
-				<!-- <input type="submit" value="Log in" /> -->
 				<input type="submit" value="登录" class="btn btn-primary" id="js-btn-login"/>
-				<a href="#">忘记密码?</a>
-				<input name="remember-me" type="checkbox" value="true"/>记住我
+				<!--<input name="remember-me" type="checkbox" value="true"/>记住我-->
 				<!-- <a href="#">Register</a> -->
 			</div>
 			<div>
-				<span th:text="${#session.getAttribute('errorinfo')}" th:if="${not #strings.isEmpty(#session.getAttribute('errorinfo'))}"></span>
+				<span th:text="${session.errorinfo}"></span>
 			</div>
 		</form><!-- form -->
 

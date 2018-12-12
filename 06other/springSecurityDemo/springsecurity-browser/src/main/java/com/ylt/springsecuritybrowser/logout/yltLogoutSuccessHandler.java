@@ -31,7 +31,6 @@ public class yltLogoutSuccessHandler implements LogoutSuccessHandler {
         {
             //如果没有配置跳转链接就返回自定义的json对象，让前端根据内容进行判断出来
         }else {
-            httpServletResponse.sendRedirect(signOutUrl);
             new DefaultRedirectStrategy().sendRedirect(httpServletRequest, httpServletResponse, mySecurityProperties.getBrowser().getLoginPage());
         }
     }
