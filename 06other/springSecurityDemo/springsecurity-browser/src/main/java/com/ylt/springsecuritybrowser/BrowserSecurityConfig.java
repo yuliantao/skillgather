@@ -72,8 +72,6 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 
 		//配置认证信息
 		applyPasswordAuthenticationConfig(http);
-
-
 		http
 				//关闭验证码
 				/*.apply(validateCodeSecurityConfig)
