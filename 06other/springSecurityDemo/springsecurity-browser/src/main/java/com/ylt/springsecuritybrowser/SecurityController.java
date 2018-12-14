@@ -124,4 +124,11 @@ public class SecurityController{
          //return "mobilelogin";//手机号短信验证码模式
         return "login"; //用户名密码图片验证码模式
     }
+
+    @RequestMapping("/")
+    @ResponseStatus(code = HttpStatus.OK)
+    public String home(HttpServletRequest request,HttpServletResponse response)
+    {
+        return "home"; //用户名密码图片验证码模式
+    }
 }

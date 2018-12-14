@@ -37,7 +37,6 @@ public class yltAuthenctiationFailureHandler extends SimpleUrlAuthenticationFail
 	private MySecurityProperties mySecurityProperties;
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-	
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {

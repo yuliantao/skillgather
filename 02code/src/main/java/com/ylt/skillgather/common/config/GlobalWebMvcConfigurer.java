@@ -44,7 +44,6 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
                 //放行的资源
                 excludePathPatterns(OtherUtils.getStaticSource());
-
     }
 
     /*
@@ -52,14 +51,12 @@ public class GlobalWebMvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-
         //region -- 页面展示映射 --
         //ace风格，动态获取url匹配到映射
         List<CoreframeUrltoview> list = iCoreframeUrltoviewService.list(null);
         for (CoreframeUrltoview systemUrltoview:list) {
             registry.addViewController(systemUrltoview.getShowUrl()).setViewName(systemUrltoview.getMapingUrl());
         }
-
         //gentelella风格
         registry.addViewController("/userinfo2").setViewName("gentelella/production/userinfo2");
         //endregion
