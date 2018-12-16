@@ -63,7 +63,8 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
 	 * @param validateCode
 	 */
 	private void save(ServletWebRequest request, C validateCode) {
-		sessionStrategy.setAttribute(request, getSessionKey(request), validateCode);
+		ValidateCode code=new ValidateCode(validateCode.getCode(),validateCode.getExpireTime());
+		sessionStrategy.setAttribute(request, getSessionKey(request), code);
 	}
 
 	/**
@@ -99,6 +100,7 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
 	@SuppressWarnings("unchecked")
 	@Override
 	public void validate(ServletWebRequest request) {
+		//此处重新生成一个ValidateCodeType，防止图片不能序列化到Redis中
 		ValidateCodeType processorType = getValidateCodeType(request);
 		String sessionKey = getSessionKey(request);
 		C codeInSession = (C) sessionStrategy.getAttribute(request, sessionKey);

@@ -1,6 +1,5 @@
 package com.ylt.springsecuritydemo.validator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

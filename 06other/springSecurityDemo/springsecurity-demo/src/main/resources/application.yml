@@ -4,9 +4,25 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/skilldemo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: sa
     password: 123456
+    #启用redis管理Session:方法一开启store-type=redis。方法二：启用注解@EnableRedisHttpSession
   session:
-    store-type: none
-  #临时设置用户名和密码
+    store-type: redis
+    redis:
+      namespace: app1 #配置应用程序使用的session标识，其他的都可以默认
+
+  #redis基本设置
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+    database: 0
+    jedis:
+      pool:
+        max-active: 8 #最大链接数(负数没有限制)
+        max-wait: -1 #最大阻塞时间（负数没有限制）
+        max-idle: 5 #连接池最大空闲链接
+        min-idle: 0 #连接池最小空闲链接
+    timeout: 10000 #链接超时时间
 #  security:
 ##    user:
 ##      name: sa
@@ -28,4 +44,5 @@ ylt:
 server:
   servlet:
     session:
-      timeout: 60
+      timeout: 60 #配置有效期（秒）
+  port: 8081

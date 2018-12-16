@@ -3,9 +3,12 @@ package com.ylt.springsecuritycore.authorize;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
 import com.ylt.springsecuritycore.properties.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Method;
 
 @Component
 public class YltAuthorizeConfigProvider implements AuthorizeConfigProvider {
@@ -26,5 +29,6 @@ public class YltAuthorizeConfigProvider implements AuthorizeConfigProvider {
                 "/error/**","**/favicon.ico",
                 "/webjars/**","/asserts/**","/session/invalid"
                 ,"/loginfile/**").permitAll();
+
     }
 }

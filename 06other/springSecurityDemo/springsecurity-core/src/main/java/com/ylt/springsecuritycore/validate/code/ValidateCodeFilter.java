@@ -103,9 +103,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 				return;
 			}
 		}
-
 		chain.doFilter(request, response);
-
 	}
 
 	/**
@@ -128,5 +126,4 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 		}
 		return result;
 	}
-
 }

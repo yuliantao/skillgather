@@ -15,6 +15,7 @@
         <module>../springsecurity-browser</module>
         <module>../springsecurity-core</module>
         <module>../springsecurity-demo</module>
+        <module>../Test</module>
     </modules>
     <name>springSecurity</name>
     <description>Practice the learned code</description>
