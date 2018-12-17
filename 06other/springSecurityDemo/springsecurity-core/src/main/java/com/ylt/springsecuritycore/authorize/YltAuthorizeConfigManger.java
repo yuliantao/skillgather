@@ -22,5 +22,6 @@ public class YltAuthorizeConfigManger implements AuthorizeConfigManger {
             provider.config(config);
         }
         config.anyRequest().authenticated();//除了上面的配置剩下的都需要认证访问
+        //因为要自定义权限所以先注释掉
     }
 }

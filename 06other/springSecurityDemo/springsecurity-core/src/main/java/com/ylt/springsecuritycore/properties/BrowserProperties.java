@@ -11,9 +11,9 @@ public class BrowserProperties {
 	
 	private SessionProperties session = new SessionProperties();
 
-	private String SignOutUrl =SecurityConstants.DEFAULT_LOGIN_PAGE_URL;// "/authentication/require";
-	
-	private String loginPage = SecurityConstants.DEFAULT_LOGIN_PAGE_URL;
+	private String loginPage = "login";
+
+	private String logoutPage = "login";//默认退出直接跳转到登录页，用户可以自定义
 	
 	private LoginResponseType loginType = LoginResponseType.REDIRECT;
 	
@@ -51,11 +51,11 @@ public class BrowserProperties {
 		this.session = session;
 	}
 
-	public String getSignOutUrl() {
-		return SignOutUrl;
+	public String getLogoutPage() {
+		return logoutPage;
 	}
 
-	public void setSignOutUrl(String signOutUrl) {
-		SignOutUrl = signOutUrl;
+	public void setLogoutPage(String logoutPage) {
+		this.logoutPage = logoutPage;
 	}
 }

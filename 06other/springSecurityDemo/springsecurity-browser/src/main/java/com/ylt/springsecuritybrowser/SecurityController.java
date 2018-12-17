@@ -59,7 +59,7 @@ public class SecurityController{
                 String targetUrl = savedRequest.getRedirectUrl();
                 logger.info("引发跳转的请求是:" + targetUrl);
                 //if (!JudgeIsMoblie(request))//判断是否是手机发出，以后可以升级判断是不是app发出
-                redirectStrategy.sendRedirect(request, response, mySecurityProperties.getBrowser().getLoginPage());
+                redirectStrategy.sendRedirect(request, response,SecurityConstants.DEFAULT_LOGIN_PAGE_URL);
             }
             return null;
         }
@@ -99,7 +99,7 @@ public class SecurityController{
         return isMoblie;
     }
 
-    @RequestMapping("/authenticationlogin")
+    @RequestMapping(SecurityConstants.DEFAULT_LOGIN_PAGE_URL)
     public String login(HttpServletRequest request,HttpServletResponse response)
     {
         ServletWebRequest servletWebRequest=new ServletWebRequest(request,response);
@@ -110,10 +110,10 @@ public class SecurityController{
             //只是测试有没有值
         }
         //return "mobilelogin";//手机号短信验证码模式
-        return "login"; //用户名密码图片验证码模式
+        return mySecurityProperties.getBrowser().getLoginPage(); //用户名密码图片验证码模式
     }
 
-    @RequestMapping("/session/invalid")
+    @RequestMapping(SecurityConstants.DEFAULT_SESSION_INVALID_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public String sessionInvalid(HttpServletRequest request,HttpServletResponse response)
     {
@@ -122,7 +122,14 @@ public class SecurityController{
         SessionStrategy sessionStrategy=new HttpSessionSessionStrategy();
         sessionStrategy.setAttribute(webRequest,"errorinfo",message);//传递传输到页面
          //return "mobilelogin";//手机号短信验证码模式
-        return "login"; //用户名密码图片验证码模式
+        return mySecurityProperties.getBrowser().getLoginPage(); //用户名密码图片验证码模式
+    }
+
+    @RequestMapping(SecurityConstants.DEFAULT_LOGOUT_PAGE_URL)
+    public String loginOut(HttpServletRequest request,HttpServletResponse response)
+    {
+        //return "mobilelogout";//手机号短信验证码模式
+        return mySecurityProperties.getBrowser().getLogoutPage(); //用户名密码图片验证码模式
     }
 
     @RequestMapping("/")

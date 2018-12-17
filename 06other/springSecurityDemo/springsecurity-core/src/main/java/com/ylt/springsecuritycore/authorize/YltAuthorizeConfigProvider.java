@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import java.util.Collections;
+import java.util.List;
 
 @Component
 public class YltAuthorizeConfigProvider implements AuthorizeConfigProvider {
@@ -18,17 +20,18 @@ public class YltAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
-        config.antMatchers(
-        SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
-                SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,
-                securityProperties.getBrowser().getLoginPage(),
-                SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*",
-					/*securityProperties.getBrowser().getSession().getSessionInvalidUrl()+".json",
-					securityProperties.getBrowser().getSession().getSessionInvalidUrl()+".html",*/
-                "/user/regist","/signOut",
-                "/error/**","**/favicon.ico",
-                "/webjars/**","/asserts/**","/session/invalid"
-                ,"/loginfile/**").permitAll();
-
+        List<String> excludeUrl = securityProperties.getExcludeUrl();
+        excludeUrl.add(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL);
+        excludeUrl.add(SecurityConstants.DEFAULT_SESSION_INVALID_URL);
+        excludeUrl.add(SecurityConstants.DEFAULT_LOGIN_PAGE_URL);
+        excludeUrl.add(SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*");
+        excludeUrl.add(SecurityConstants.DEFAULT_LOGOUT_PAGE_URL);
+        excludeUrl.add("/error/**");
+        excludeUrl.add("**/favicon.ico");
+        excludeUrl.add("/webjars/**");
+        excludeUrl.add("/signOut");
+        excludeUrl.add("/loginfile/**");
+        String[] arry=excludeUrl.toArray(new String[excludeUrl.size()]);
+        config.antMatchers(arry).permitAll();
     }
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ylt.springsecuritybrowser.support.SimpleResponse;
 import com.ylt.springsecuritycore.properties.LoginResponseType;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
+import com.ylt.springsecuritycore.properties.SecurityConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class yltAuthenctiationFailureHandler extends SimpleUrlAuthenticationFail
 			AuthenticationException exception) throws IOException, ServletException {
 		
 		logger.info("登录失败");
-		if (LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginPage())) {
+		if (LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginType())) {
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			response.setContentType("application/json;charset=UTF-8");
 			response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(exception.getMessage())));
@@ -50,7 +51,7 @@ public class yltAuthenctiationFailureHandler extends SimpleUrlAuthenticationFail
 			//跳转到登录页继续登录(带上错误信息)
 			//super.onAuthenticationFailure(request, response, exception);
 			request.getSession().setAttribute("errorinfo",exception.getMessage());
-			redirectStrategy.sendRedirect(request, response, mySecurityProperties.getBrowser().getLoginPage());
+			redirectStrategy.sendRedirect(request, response, SecurityConstants.DEFAULT_LOGIN_PAGE_URL);
 		}
 		
 		

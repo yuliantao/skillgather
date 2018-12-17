@@ -3,6 +3,9 @@ package com.ylt.springsecuritycore.properties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author yuliantao
  * @create 2018-12-03 21:23
@@ -15,7 +18,11 @@ public class MySecurityProperties {
 
     private ValidateCodeProperties code =new ValidateCodeProperties();
 
+    private List<String> excludeUrl = new ArrayList<>();
+
     //private SocialProperties social = new SocialProperties();
+
+    //region -- 基本的get，set 方法 --
 
     public BrowserProperties getBrowser() {
         return browser;
@@ -40,4 +47,14 @@ public class MySecurityProperties {
     public void setSocial(SocialProperties social) {
         this.social = social;
     }*/
+
+    public List<String> getExcludeUrl() {
+        return excludeUrl;
+    }
+
+    public void setExcludeUrl(List<String> excludeUrl) {
+        this.excludeUrl = excludeUrl;
+    }
+
+    //endregion
 }
