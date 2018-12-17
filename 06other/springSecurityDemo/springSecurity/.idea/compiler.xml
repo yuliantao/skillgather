@@ -8,7 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="DemoTest" />
         <module name="springsecurity-app" />
-        <module name="springsecurity-authorize" />
+        <module name="springsecurity-authority" />
         <module name="springsecurity-browser" />
         <module name="springsecurity-core" />
         <module name="springsecurity-demo" />
@@ -16,6 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="springsecurity-authorize" target="1.8" />
       <module name="test" target="1.8" />
     </bytecodeTargetLevel>
   </component>

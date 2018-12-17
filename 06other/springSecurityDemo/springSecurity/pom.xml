@@ -16,7 +16,7 @@
         <module>../springsecurity-core</module>
         <module>../springsecurity-demo</module>
         <module>../Test</module>
-        <module>../springsecurity-authorize</module>
+        <module>../springsecurity-authority</module>
     </modules>
     <name>springSecurity</name>
     <description>Practice the learned code</description>

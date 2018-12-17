@@ -3,6 +3,7 @@ package com.ylt.springsecuritycore.authorize;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
 import com.ylt.springsecuritycore.properties.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
@@ -13,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Component
+@Order(Integer.MIN_VALUE)
 public class YltAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     @Autowired
@@ -23,9 +25,10 @@ public class YltAuthorizeConfigProvider implements AuthorizeConfigProvider {
         List<String> excludeUrl = securityProperties.getExcludeUrl();
         excludeUrl.add(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL);
         excludeUrl.add(SecurityConstants.DEFAULT_SESSION_INVALID_URL);
-        excludeUrl.add(SecurityConstants.DEFAULT_LOGIN_PAGE_URL);
         excludeUrl.add(SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*");
         excludeUrl.add(SecurityConstants.DEFAULT_LOGOUT_PAGE_URL);
+        excludeUrl.add(SecurityConstants.DEFAULT_DENIED_PAGE_URL);
+        excludeUrl.add(SecurityConstants.DEFAULT_JSONTOVIEW_PAGE_URL);
         excludeUrl.add("/error/**");
         excludeUrl.add("**/favicon.ico");
         excludeUrl.add("/webjars/**");

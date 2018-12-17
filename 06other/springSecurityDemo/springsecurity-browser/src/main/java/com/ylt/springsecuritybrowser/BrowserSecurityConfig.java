@@ -5,6 +5,7 @@ package com.ylt.springsecuritybrowser;
 
 import javax.sql.DataSource;
 
+import com.ylt.springsecuritybrowser.authorize.YltAccessDeniedHandler;
 import com.ylt.springsecuritycore.authentication.AbstractChannelSecurityConfig;
 import com.ylt.springsecuritycore.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.ylt.springsecuritycore.authorize.AuthorizeConfigManger;
@@ -65,6 +66,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 	LogoutSuccessHandler logoutSuccessHandler;
 
 	@Autowired
+	YltAccessDeniedHandler yltAccessDeniedHandler;
+
+	@Autowired
 	private AuthorizeConfigManger authorizeConfigManger;
 
 	@Override
@@ -101,7 +105,11 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 				//.logoutSuccessUrl(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
 				.deleteCookies("JSESSIONID")
 				.and()
-			.csrf().disable();
+			.csrf().disable()
+			//配置权限拒绝处理类
+			.exceptionHandling()
+				.accessDeniedHandler(yltAccessDeniedHandler);
+
 			authorizeConfigManger.config(http.authorizeRequests());//此处配置了所有权限
 		
 	}

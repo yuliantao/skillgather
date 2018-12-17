@@ -14,8 +14,10 @@ public class BrowserProperties {
 	private String loginPage = "login";
 
 	private String logoutPage = "login";//默认退出直接跳转到登录页，用户可以自定义
+
+	private String accessDeniedPage = "denied";
 	
-	private LoginResponseType loginType = LoginResponseType.REDIRECT;
+	private ResponseType loginType = ResponseType.REDIRECT;
 	
 	private int rememberMeSeconds = 3600*24*7;
 
@@ -27,11 +29,11 @@ public class BrowserProperties {
 		this.loginPage = loginPage;
 	}
 
-	public LoginResponseType getLoginType() {
+	public ResponseType getLoginType() {
 		return loginType;
 	}
 
-	public void setLoginType(LoginResponseType loginType) {
+	public void setLoginType(ResponseType loginType) {
 		this.loginType = loginType;
 	}
 
@@ -57,5 +59,13 @@ public class BrowserProperties {
 
 	public void setLogoutPage(String logoutPage) {
 		this.logoutPage = logoutPage;
+	}
+
+	public String getAccessDeniedPage() {
+		return accessDeniedPage;
+	}
+
+	public void setAccessDeniedPage(String accessDeniedPage) {
+		this.accessDeniedPage = accessDeniedPage;
 	}
 }

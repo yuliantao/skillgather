@@ -27,10 +27,6 @@ public interface SecurityConstants {
 	 */
 	public static final String DEFAULT_LOGIN_PROCESSING_URL_MOBILE = "/authentication/mobile";
 	/**
-	 * 默认登录页面
-	 */
-	public static final String DEFAULT_LOGIN_PAGE_URL = "/authenticationlogin";
-	/**
 	 * 验证图片验证码时，http请求中默认的携带图片验证码信息的参数的名称
 	 */
 	public static final String DEFAULT_PARAMETER_NAME_CODE_IMAGE = "imageCode";
@@ -50,5 +46,13 @@ public interface SecurityConstants {
 	 * 默认退出后默认的跳转地址
 	 */
 	public static final String DEFAULT_LOGOUT_PAGE_URL = "/authenticationlogout";
+	/**
+	 * 默认拒绝访问跳转地址
+	 */
+	public static final String DEFAULT_DENIED_PAGE_URL = "/accessdenied";
+	/**
+	 * 跳转的公共处理地址（json直接返回，其他返回对应的视图）
+ 	 */
+	public static final String DEFAULT_JSONTOVIEW_PAGE_URL = "/jsontoview";
 
 }

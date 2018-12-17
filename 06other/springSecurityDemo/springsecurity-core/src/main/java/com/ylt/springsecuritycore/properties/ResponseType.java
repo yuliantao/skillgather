@@ -7,7 +7,7 @@ package com.ylt.springsecuritycore.properties;
  * @author zhailiang
  *
  */
-public enum LoginResponseType {
+public enum ResponseType {
 	
 	/**
 	 * 跳转

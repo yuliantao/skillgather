@@ -1,7 +1,7 @@
 package com.ylt.springsecuritybrowser;
 
 import com.ylt.springsecuritybrowser.support.SimpleResponse;
-import com.ylt.springsecuritycore.properties.LoginResponseType;
+import com.ylt.springsecuritycore.properties.ResponseType;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
 import com.ylt.springsecuritycore.properties.SecurityConstants;
 import org.slf4j.Logger;
@@ -16,14 +16,12 @@ import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 
-import javax.jws.WebResult;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -43,6 +41,8 @@ public class SecurityController{
     @Autowired
     private MySecurityProperties mySecurityProperties;
 
+    //region  --  配置未登录时返回json还是页面  ---
+
     /**
      * 需要身份认证时跳转到这里，可以判断是HTML跳转还是app方式
      */
@@ -52,21 +52,13 @@ public class SecurityController{
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws IOException
     {
-        if (!LoginResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginType()))
-        {
             SavedRequest savedRequest = requestCache.getRequest(request, response);
             if (savedRequest != null) {
                 String targetUrl = savedRequest.getRedirectUrl();
-                logger.info("引发跳转的请求是:" + targetUrl);
-                //if (!JudgeIsMoblie(request))//判断是否是手机发出，以后可以升级判断是不是app发出
-                redirectStrategy.sendRedirect(request, response,SecurityConstants.DEFAULT_LOGIN_PAGE_URL);
+                logger.info("跳转请求:" + targetUrl);
             }
-            return null;
-        }
-        else
-        {
-            return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页");
-        }
+        return jumpUtil(request, response,"访问的服务需要身份认证，请引导用户到登录页",
+                mySecurityProperties.getBrowser().getLoginPage());
     }
 
     //判断是否为手机浏览器
@@ -99,37 +91,76 @@ public class SecurityController{
         return isMoblie;
     }
 
-    @RequestMapping(SecurityConstants.DEFAULT_LOGIN_PAGE_URL)
+/*    @RequestMapping(SecurityConstants.DEFAULT_LOGIN_PAGE_URL)
     public String login(HttpServletRequest request,HttpServletResponse response)
     {
-        ServletWebRequest servletWebRequest=new ServletWebRequest(request,response);
-        SessionStrategy sessionStrategy=new HttpSessionSessionStrategy();
-        Object err=sessionStrategy.getAttribute(servletWebRequest,"errorinfo");
-        if (err!=null)
-        {
-            //只是测试有没有值
-        }
-        //return "mobilelogin";//手机号短信验证码模式
         return mySecurityProperties.getBrowser().getLoginPage(); //用户名密码图片验证码模式
-    }
+    }*/
+
+    //endregion
 
     @RequestMapping(SecurityConstants.DEFAULT_SESSION_INVALID_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-    public String sessionInvalid(HttpServletRequest request,HttpServletResponse response)
-    {
+    @ResponseBody
+    public SimpleResponse sessionInvalid(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String message="session失效";
         WebRequest webRequest=new ServletWebRequest(request,response);
         SessionStrategy sessionStrategy=new HttpSessionSessionStrategy();
         sessionStrategy.setAttribute(webRequest,"errorinfo",message);//传递传输到页面
-         //return "mobilelogin";//手机号短信验证码模式
-        return mySecurityProperties.getBrowser().getLoginPage(); //用户名密码图片验证码模式
+        return jumpUtil(request, response,message,
+                mySecurityProperties.getBrowser().getLoginPage());
     }
 
     @RequestMapping(SecurityConstants.DEFAULT_LOGOUT_PAGE_URL)
-    public String loginOut(HttpServletRequest request,HttpServletResponse response)
+    @ResponseBody
+    @ResponseStatus(code = HttpStatus.OK)
+    public SimpleResponse loginOut(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        return jumpUtil(request, response,
+                "退出成功，请引导用户到登录页",
+                mySecurityProperties.getBrowser().getLogoutPage());
+    }
+
+    @RequestMapping(SecurityConstants.DEFAULT_DENIED_PAGE_URL)
+    @ResponseBody
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
+    public SimpleResponse accessdenied (HttpServletRequest request,HttpServletResponse response) throws IOException {
+       return jumpUtil(request, response,
+               "访问的服务没有权限，请引导用户到授权页",
+               mySecurityProperties.getBrowser().getAccessDeniedPage());
+
+    }
+
+    /**
+     * 非json交互返回视图
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(SecurityConstants.DEFAULT_JSONTOVIEW_PAGE_URL)
+    public  String commonReturnUrl(HttpServletRequest request,HttpServletResponse response)
     {
-        //return "mobilelogout";//手机号短信验证码模式
-        return mySecurityProperties.getBrowser().getLogoutPage(); //用户名密码图片验证码模式
+        Object url=request.getAttribute("jumpurl");
+        if (url!=null) {
+            return url.toString();
+        }
+        else
+        {
+           return mySecurityProperties.getBrowser().getLoginPage();
+        }
+    }
+
+
+    public SimpleResponse jumpUtil(HttpServletRequest request,HttpServletResponse response,String msg,String url) throws IOException {
+        if (!ResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginType()))
+        {
+            request.setAttribute("jumpurl",url);
+            redirectStrategy.sendRedirect(request, response,SecurityConstants.DEFAULT_JSONTOVIEW_PAGE_URL);
+            return  null;
+        }
+        else
+        {
+            return new SimpleResponse(msg);
+        }
     }
 
     @RequestMapping("/")
@@ -138,4 +169,6 @@ public class SecurityController{
     {
         return "home"; //用户名密码图片验证码模式
     }
+
+
 }
