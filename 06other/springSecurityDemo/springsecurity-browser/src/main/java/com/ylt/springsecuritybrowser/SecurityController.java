@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -36,7 +37,6 @@ public class SecurityController{
 
     private Logger logger = LoggerFactory.getLogger(getClass());
     private RequestCache requestCache = new HttpSessionRequestCache();//此类存储跳转之前的链接
-    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Autowired
     private MySecurityProperties mySecurityProperties;
@@ -91,12 +91,6 @@ public class SecurityController{
         return isMoblie;
     }
 
-/*    @RequestMapping(SecurityConstants.DEFAULT_LOGIN_PAGE_URL)
-    public String login(HttpServletRequest request,HttpServletResponse response)
-    {
-        return mySecurityProperties.getBrowser().getLoginPage(); //用户名密码图片验证码模式
-    }*/
-
     //endregion
 
     @RequestMapping(SecurityConstants.DEFAULT_SESSION_INVALID_URL)
@@ -139,7 +133,7 @@ public class SecurityController{
     @RequestMapping(SecurityConstants.DEFAULT_JSONTOVIEW_PAGE_URL)
     public  String commonReturnUrl(HttpServletRequest request,HttpServletResponse response)
     {
-        Object url=request.getAttribute("jumpurl");
+        Object url = request.getAttribute("jumpurl");
         if (url!=null) {
             return url.toString();
         }
@@ -154,7 +148,11 @@ public class SecurityController{
         if (!ResponseType.JSON.equals(mySecurityProperties.getBrowser().getLoginType()))
         {
             request.setAttribute("jumpurl",url);
-            redirectStrategy.sendRedirect(request, response,SecurityConstants.DEFAULT_JSONTOVIEW_PAGE_URL);
+            try {
+                request.getRequestDispatcher(SecurityConstants.DEFAULT_JSONTOVIEW_PAGE_URL).forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
             return  null;
         }
         else

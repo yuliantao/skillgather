@@ -42,7 +42,7 @@ public class LoginControler {
                 //获取菜单列表
                 List<CoreframeMenuEx> list= ListToJsonTree.listCoreUrlMaping(iCoreframeMenuService.list(null));
                 session.setAttribute("urllist",list);
-                return "redirect:/main.html";
+                return "redirect:/home.html";
             }
             else {
                 //登陆失败
