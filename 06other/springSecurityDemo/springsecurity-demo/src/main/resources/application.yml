@@ -45,10 +45,11 @@ ylt:
 server:
   servlet:
     session:
-      timeout: 60 #配置有效期（秒）
+      timeout: 600 #配置有效期（秒）
   port: 8081
 security:
   oauth2:
     client:
-      client-id: ylt
-      client-secret: yltsecret
+      client-id: ylt #分配给第三方用户程序id
+      client-secret: yltsecret #分配第三方用户程序密码
+      registered-redirect-uri: http://xxyy.com #当授权码生成后提供给第三方程序地址（附在URL后）
