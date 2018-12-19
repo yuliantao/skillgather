@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ylt.springsecuritybrowser.support;
+package com.ylt.springsecuritycore.support;
 
 /**
  * @author ylt

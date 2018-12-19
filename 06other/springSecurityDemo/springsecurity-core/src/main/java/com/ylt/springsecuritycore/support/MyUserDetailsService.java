@@ -1,4 +1,4 @@
-package com.ylt.springsecuritybrowser;
+package com.ylt.springsecuritycore.support;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

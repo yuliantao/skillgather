@@ -12,9 +12,14 @@
         <relativePath>../springSecurity/pom.xml</relativePath>
     </parent>
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.ylt</groupId>
             <artifactId>springsecurity-browser</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.ylt</groupId>
+            <artifactId>springsecurity-app</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

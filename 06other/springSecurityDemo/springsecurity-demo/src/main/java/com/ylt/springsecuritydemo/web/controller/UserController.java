@@ -1,6 +1,6 @@
 package com.ylt.springsecuritydemo.web.controller;
 
-import com.ylt.springsecuritybrowser.authentication.yltAuthenctiationFailureHandler;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

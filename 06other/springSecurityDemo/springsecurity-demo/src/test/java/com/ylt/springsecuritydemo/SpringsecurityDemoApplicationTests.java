@@ -1,6 +1,7 @@
 package com.ylt.springsecuritydemo;
 
-import com.ylt.springsecuritybrowser.MyUserDetailsService;
+
+import com.ylt.springsecuritycore.support.MyUserDetailsService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,15 +1,13 @@
 package com.ylt.springsecuritybrowser;
 
-import com.ylt.springsecuritybrowser.support.SimpleResponse;
 import com.ylt.springsecuritycore.properties.ResponseType;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
 import com.ylt.springsecuritycore.properties.SecurityConstants;
+import com.ylt.springsecuritycore.support.SimpleResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.web.DefaultRedirectStrategy;
-import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;

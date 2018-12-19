@@ -1,15 +1,11 @@
 /**
  * 
  */
-package com.ylt.springsecuritybrowser.authentication;
+package com.ylt.springsecurityapp.authentication;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.ylt.springsecuritycore.properties.ResponseType;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
+import com.ylt.springsecuritycore.properties.ResponseType;
 import com.ylt.springsecuritycore.properties.SecurityConstants;
 import com.ylt.springsecuritycore.support.SimpleResponse;
 import org.slf4j.Logger;
@@ -21,7 +17,10 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @author zhailiang

@@ -8,6 +8,7 @@ import com.ylt.springsecuritybrowser.logout.yltLogoutSuccessHandler;
 import com.ylt.springsecuritybrowser.session.ImoocExpiredSessionStrategy;
 import com.ylt.springsecuritybrowser.session.ImoocInvalidSessionStrategy;
 import com.ylt.springsecuritycore.properties.MySecurityProperties;
+import com.ylt.springsecuritycore.support.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -54,10 +55,4 @@ public class BrowserSecurityBeanConfig {
 		return  new YltAccessDeniedHandler(securityProperties);
 	}
 
-	@Bean
-	@ConditionalOnMissingBean(UserDetailsService.class)
-	public UserDetailsService getUserDetailsService()
-	{
-		return new  MyUserDetailsService();
-	}
 }
