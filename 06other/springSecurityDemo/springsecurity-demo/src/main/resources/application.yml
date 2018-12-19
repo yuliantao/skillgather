@@ -47,3 +47,8 @@ server:
     session:
       timeout: 60 #配置有效期（秒）
   port: 8081
+security:
+  oauth2:
+    client:
+      client-id: ylt
+      client-secret: yltsecret
