@@ -116,14 +116,15 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+		auth.userDetailsService(userDetailsService);//.passwordEncoder(new BCryptPasswordEncoder());因为数据库中密码已经定位了那种加密解密方式
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
+	//此处主要是用于remenberme功能
 	@Bean
 	public PersistentTokenRepository persistentTokenRepository() {
 		JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();

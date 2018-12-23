@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class ValidateCodeSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
 	@Autowired
-	private Filter validateCodeFilter;
+	private ValidateCodeFilter validateCodeFilter;
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {

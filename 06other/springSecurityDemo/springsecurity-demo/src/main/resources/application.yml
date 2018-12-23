@@ -2,7 +2,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/skilldemo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-    username: sa
+    username: root
     password: 123456
     #启用redis管理Session:方法一开启store-type=redis。方法二：启用注解@EnableRedisHttpSession
   session:
@@ -47,9 +47,9 @@ server:
     session:
       timeout: 600 #配置有效期（秒）
   port: 8081
-security:
-  oauth2:
-    client:
-      client-id: ylt #分配给第三方用户程序id
-      client-secret: yltsecret #分配第三方用户程序密码
-      registered-redirect-uri: http://xxyy.com #当授权码生成后提供给第三方程序地址（附在URL后）
+#security:
+#  oauth2:
+#    client:
+#      client-id: ylt #分配给第三方用户程序id
+#      client-secret: yltsecret #分配第三方用户程序密码
+#      registered-redirect-uri: http://xxyy.com #当授权码生成后提供给第三方程序地址（附在URL后）

@@ -20,6 +20,8 @@ public class MySecurityProperties {
 
     private List<String> excludeUrl = new ArrayList<>();
 
+    private OAuth2Properties oauth2 =new OAuth2Properties();
+
     //private SocialProperties social = new SocialProperties();
 
     //region -- 基本的get，set 方法 --
@@ -57,4 +59,13 @@ public class MySecurityProperties {
     }
 
     //endregion
+
+
+    public OAuth2Properties getOauth2() {
+        return oauth2;
+    }
+
+    public void setOauth2(OAuth2Properties oauth2) {
+        this.oauth2 = oauth2;
+    }
 }
