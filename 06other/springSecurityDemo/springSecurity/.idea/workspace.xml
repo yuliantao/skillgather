@@ -20,10 +20,11 @@
     <session id="811341109">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="188" />
+          <entry key="class" value="191" />
           <entry key="css" value="2" />
           <entry key="html" value="23" />
-          <entry key="java" value="640" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="646" />
           <entry key="pom" value="9" />
           <entry key="properties" value="1" />
           <entry key="xml" value="20" />
@@ -32,10 +33,11 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="188" />
+          <entry key="CLASS" value="191" />
           <entry key="CSS" value="2" />
           <entry key="HTML" value="23" />
-          <entry key="JAVA" value="640" />
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="646" />
           <entry key="Properties" value="1" />
           <entry key="XML" value="29" />
           <entry key="YAML" value="21" />
@@ -45,7 +47,7 @@
         <counts>
           <entry key="class" value="5" />
           <entry key="html" value="200" />
-          <entry key="java" value="5030" />
+          <entry key="java" value="5032" />
           <entry key="xml" value="149" />
           <entry key="yml" value="250" />
         </counts>
@@ -54,16 +56,17 @@
         <counts>
           <entry key="CLASS" value="5" />
           <entry key="HTML" value="200" />
-          <entry key="JAVA" value="5030" />
+          <entry key="JAVA" value="5032" />
           <entry key="XML" value="149" />
           <entry key="YAML" value="250" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.36" value="2" />
           <entry key="project.open.time.43" value="1" />
+          <entry key="project.open.time.49" value="1" />
           <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.56" value="1" />
           <entry key="project.open.time.59" value="1" />
@@ -71,7 +74,7 @@
           <entry key="project.open.time.63" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.83" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
     </session>
@@ -150,37 +153,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/yltAuthorizationServerConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="69" column="31" lean-forward="true" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
-              <folding>
-                <element signature="method#configure#1;class#yltAuthorizationServerConfig#0" />
-              </folding>
+            <state relative-caret-position="371">
+              <caret line="102" column="43" lean-forward="true" selection-start-line="102" selection-start-column="10" selection-end-line="102" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/jwt/YltJwtTokenEnhancer.java">
+        <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/validate/code/impl/RedisValidateCodeRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-254">
+              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/appSecurityConfig.java">
+        <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/AppSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+            <state relative-caret-position="100">
+              <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#1012#1013#0" expanded="true" />
                 <element signature="e#1053#1054#0" expanded="true" />
               </folding>
@@ -189,22 +185,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/yltResourceServerConfig.java">
+        <entry file="file://$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/authentication/AbstractChannelSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="70" column="43" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="50">
+              <caret line="18" column="79" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="79" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../springsecurity-authority/pom.xml">
+        <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/yltResourceServerConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            <state relative-caret-position="382">
+              <caret line="61" column="46" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -212,10 +205,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/TokenStoreConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="44" selection-start-line="44" selection-end-line="63" selection-end-column="9" />
+            <state relative-caret-position="-600">
+              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1406#1407#0" expanded="true" />
+                <element signature="e#1472#1473#0" expanded="true" />
                 <element signature="e#1856#1857#0" expanded="true" />
                 <element signature="e#1931#1932#0" expanded="true" />
                 <element signature="e#2521#2522#0" expanded="true" />
@@ -228,17 +222,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../springsecurity-browser/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="825">
               <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../springsecurity-demo/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="49" column="9" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="9" />
+            <state relative-caret-position="446">
+              <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -246,7 +240,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../springsecurity-demo/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-60">
+            <state relative-caret-position="475">
               <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
             </state>
           </provider>
@@ -255,7 +249,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../springsecurity-core/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2130">
+            <state relative-caret-position="1775">
               <caret line="71" column="14" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
             </state>
           </provider>
@@ -335,7 +329,6 @@
         <option value="$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/SecurityCoreConfig.java" />
         <option value="$PROJECT_DIR$/../springsecurity-authority/src/main/java/com/ylt/security/rbac/RbacServiceImpl.java" />
         <option value="$PROJECT_DIR$/../springsecurity-browser/src/main/java/com/ylt/springsecuritybrowser/BrowserSecurityBeanConfig.java" />
-        <option value="$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/AppSecurityConfig.java" />
         <option value="$PROJECT_DIR$/../springsecurity-browser/src/main/java/com/ylt/springsecuritybrowser/authorize/RbacAuthorizeConfigProvider.java" />
         <option value="$PROJECT_DIR$/../springsecurity-browser/src/main/java/com/ylt/springsecuritybrowser/testcontroler.java" />
         <option value="$PROJECT_DIR$/../springsecurity-demo/src/main/resources/templates/loginapp.html" />
@@ -367,6 +360,7 @@
         <option value="$PROJECT_DIR$/../springsecurity-app/pom.xml" />
         <option value="$PROJECT_DIR$/../springsecurity-demo/src/main/java/com/ylt/springsecuritydemo/web/controller/UserController.java" />
         <option value="$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/yltAuthorizationServerConfig.java" />
+        <option value="$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/AppSecurityConfig.java" />
       </list>
     </option>
   </component>
@@ -409,10 +403,10 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-21" />
-    <option name="y" value="380" />
+    <option name="x" value="602" />
+    <option name="y" value="285" />
     <option name="width" value="1300" />
-    <option name="height" value="1044" />
+    <option name="height" value="655" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -420,7 +414,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
@@ -433,6 +426,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -524,7 +518,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545581530160" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../renren-security" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sso/ssodemo/pom.xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.25721455" />
@@ -724,6 +718,7 @@
       <workItem from="1545450642087" duration="13625000" />
       <workItem from="1545473688026" duration="7559000" />
       <workItem from="1545575404533" duration="5325000" />
+      <workItem from="1545623196601" duration="5583000" />
     </task>
     <servers />
   </component>
@@ -754,7 +749,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="389023000" />
+    <option name="totallyTimeSpent" value="394606000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -766,7 +761,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="UI Designer" order="1" />
@@ -774,7 +769,7 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info id="Designer" order="5" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.17954816" visible="true" weight="0.2645631" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.17954816" visible="true" weight="0.2730711" />
       <window_info id="Structure" order="7" sideWeight="0.82045186" side_tool="true" weight="0.3066343" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.2782402" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32741934" />
@@ -910,27 +905,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/authorize/YltAuthorizeConfigManger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/authorize/AuthorizeConfigManger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/config/annotation/configurers/ClientDetailsServiceConfigurer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="24" column="46" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/boot/spring-security-oauth2-autoconfigure/2.1.0.RELEASE/spring-security-oauth2-autoconfigure-2.1.0.RELEASE.jar!/org/springframework/boot/autoconfigure/security/oauth2/client/OAuth2SsoDefaultConfiguration.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-52">
@@ -966,13 +940,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/properties/OAuth2ClientProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/properties/OAuth2ClientProperties.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.1.RELEASE/spring-security-config-5.1.1.RELEASE.jar!/org/springframework/security/config/annotation/authentication/builders/AuthenticationManagerBuilder.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1068,13 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/authentication/AbstractChannelSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/config/annotation/web/configuration/ResourceServerConfigurerAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -1142,9 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1162,28 +1120,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/properties/OAuth2Properties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding>
-            <element signature="e#510#511#0" expanded="true" />
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/validate/code/impl/RedisValidateCodeRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="34" column="65" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/properties/OAuth2Properties.java" />
     <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/authentication/yltAuthenticationSuccessHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
@@ -1205,46 +1142,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-authority/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-browser/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-demo/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2130">
-          <caret line="71" column="14" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/appSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1012#1013#0" expanded="true" />
-            <element signature="e#1053#1054#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/provider/token/TokenStore.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1252,22 +1149,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../springsecurity-authority/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../springsecurity-browser/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../springsecurity-demo/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../springsecurity-core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1775">
+          <caret line="71" column="14" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sso/ssodemo/ssodemo.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/config/annotation/web/configurers/AuthorizationServerEndpointsConfigurer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="266" column="50" selection-start-line="266" selection-start-column="50" selection-end-line="266" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/validate/code/impl/RedisValidateCodeRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-254">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/provider/token/store/redis/RedisTokenStore.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/jwt/YltJwtTokenEnhancer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="132">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/TokenStoreConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="44" selection-start-line="44" selection-end-line="63" selection-end-column="9" />
+        <state relative-caret-position="-600">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1406#1407#0" expanded="true" />
+            <element signature="e#1472#1473#0" expanded="true" />
             <element signature="e#1856#1857#0" expanded="true" />
             <element signature="e#1931#1932#0" expanded="true" />
             <element signature="e#2521#2522#0" expanded="true" />
@@ -1276,30 +1223,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/yltAuthorizationServerConfig.java">
+    <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/yltResourceServerConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="69" column="31" lean-forward="true" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
+        <state relative-caret-position="382">
+          <caret line="61" column="46" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/AppSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
           <folding>
-            <element signature="method#configure#1;class#yltAuthorizationServerConfig#0" />
+            <element signature="e#1012#1013#0" expanded="true" />
+            <element signature="e#1053#1054#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/yltResourceServerConfig.java">
+    <entry file="file://$PROJECT_DIR$/../springsecurity-core/src/main/java/com/ylt/springsecuritycore/authentication/AbstractChannelSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="70" column="43" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="50">
+          <caret line="18" column="79" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="79" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../springsecurity-demo/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="49" column="9" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="9" />
+        <state relative-caret-position="446">
+          <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../springsecurity-app/src/main/java/com/ylt/springsecurityapp/yltAuthorizationServerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="102" column="43" lean-forward="true" selection-start-line="102" selection-start-column="10" selection-end-line="102" selection-end-column="43" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,8 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /server
+spring:
+  security:
+    user:
+      password: 123456 #此处的作用是在client1登录时需要服务端进行认证时输入的用户名密码

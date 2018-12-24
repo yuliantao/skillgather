@@ -27,7 +27,20 @@ import java.util.List;
 public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+
         clients.inMemory()
+                .withClient("ylt1")
+                .secret("ylt1screct")
+                .authorizedGrantTypes("authorization_code", "refresh_token")
+                .scopes("all")
+                .redirectUris("http://127.0.0.1:8080/client1/index.html")
+                .and()
+                .withClient("ylt2")
+                .secret("ylt2screct")
+                .authorizedGrantTypes("authorization_code", "refresh_token")
+                .scopes("all")
+                .redirectUris("http://127.0.0.1:8060/client2/index.html");
+        /*clients.inMemory()
                 .withClient("ylt1").secret("{bcrypt}"+new BCryptPasswordEncoder().encode("ylt1secret"))//指定应用的id和密码
                 .accessTokenValiditySeconds(600)//令牌有效时间
                 .refreshTokenValiditySeconds(2592000)//刷新令牌有效期
@@ -40,7 +53,7 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
                 .refreshTokenValiditySeconds(2592000)//刷新令牌有效期
                 .authorizedGrantTypes("authorization_code","refresh_token")
                 .scopes("all","read","write","sy")
-                .redirectUris("http://xxyy.com");
+                .redirectUris("http://xxyy.com");*/
     }
 
     @Override
