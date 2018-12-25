@@ -70,7 +70,6 @@ private UserDetailsService userDetailsService;
 				.anyRequest().authenticated()
 				.and()
 				.csrf().disable();
-//        http.formLogin().and().authorizeRequests().anyRequest().authenticated();
 	}
 
 	@Override
