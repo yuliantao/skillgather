@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-@EnableOAuth2Sso //使该配置实现单点登录
+@EnableOAuth2Sso//使该配置实现单点登录
 public class SsoClient2Application {
 
     @GetMapping("/user")
     public Authentication user(Authentication user)
     {
         return user;
+    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     public static void main(String[] args) {

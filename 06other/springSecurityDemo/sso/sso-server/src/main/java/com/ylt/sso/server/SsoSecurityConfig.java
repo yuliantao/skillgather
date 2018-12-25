@@ -17,17 +17,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-/**
- * @author zhailiang
- *
- */
 @EnableWebSecurity
 public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	/*@Autowired
-	private UserDetailsService userDetailsService;
-*/
 
+/*
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -37,9 +31,6 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-
-		//此处设置的security只是作为spring默认的几种方式配置，自定义的
-		//安全配置在资源服务器中
 		http.httpBasic();
 	}
 
@@ -53,5 +44,37 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 				.roles("user")
 		;
 
+	}*/
+@Autowired
+private UserDetailsService userDetailsService;
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.formLogin().loginPage("/authentication/require")
+				.loginProcessingUrl("/authentication/form")
+				.and().authorizeRequests()
+				.antMatchers("/authentication/require",
+						"/authentication/form",
+						"/**/*.js",
+						"/**/*.css",
+						"/**/*.jpg",
+						"/**/*.png",
+						"/**/*.woff2"
+				)
+				.permitAll()
+				.anyRequest().authenticated()
+				.and()
+				.csrf().disable();
+//        http.formLogin().and().authorizeRequests().anyRequest().authenticated();
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 }
