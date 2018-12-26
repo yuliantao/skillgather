@@ -5,6 +5,7 @@ security:
       client-secret: ylt2
       user-authorization-uri: http://127.0.0.1:9999/server/oauth/authorize
       access-token-uri: http://127.0.0.1:9999/server/oauth/token
+      registered-redirect-uri: [http://127.0.0.1:8082/client2/login,http://127.0.0.1:8082/client2/index.html]
     resource:
       jwt:
         key-uri: http://127.0.0.1:9999/server/oauth/token_key

@@ -1,7 +1,9 @@
 package cn.ylt.sso.server;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.Ordered;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @author yuliantao
@@ -36,28 +39,18 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.httpBasic();
-//        http.formLogin()
-//                .loginPage("/authentication/require")
-//                .loginProcessingUrl("/authentication/form")
-//                .and().authorizeRequests()
-//                .antMatchers("/authentication/require",
-//                        "/authentication/form",
-//                        "/**/*.js",
-//                        "/**/*.css",
-//                        "/**/*.jpg",
-//                        "/**/*.png",
-//                        "/**/*.woff2"
-//                )
-//                .permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .csrf().disable();
+        //http.httpBasic().and().csrf().disable();
+        http.formLogin().and().authorizeRequests()
+                .antMatchers("http://127.0.0.1:8082/client2/login",
+                        "http://127.0.0.1:8082/client2/index.html").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .csrf().disable();
     }
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
 }

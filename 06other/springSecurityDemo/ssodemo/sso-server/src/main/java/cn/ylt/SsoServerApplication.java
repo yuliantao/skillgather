@@ -3,6 +3,7 @@ package cn.ylt;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author yuliantao
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Controller;
  * @description 功能描述
  */
 @SpringBootApplication
-@Controller
 public class SsoServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(SsoServerApplication.class,args);
