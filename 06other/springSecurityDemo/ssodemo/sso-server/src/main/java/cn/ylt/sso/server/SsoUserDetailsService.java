@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @author zlf
  * @since 1.0
  */
-@Component
+//@Component
 public class SsoUserDetailsService implements UserDetailsService {
 
     @Autowired

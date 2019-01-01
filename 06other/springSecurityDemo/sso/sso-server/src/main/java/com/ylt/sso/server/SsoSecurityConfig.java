@@ -45,8 +45,8 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 		;
 
 	}*/
-@Autowired
-private UserDetailsService userDetailsService;
+	@Autowired
+	private UserDetailsService userDetailsService;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -58,7 +58,9 @@ private UserDetailsService userDetailsService;
 		http.formLogin().loginPage("/authentication/require")
 				.loginProcessingUrl("/authentication/form")
 				.and().authorizeRequests()
-				.antMatchers("/authentication/require",
+				.antMatchers(
+						"/oauth/**","/login/**", "/logout",
+						"/authentication/require",
 						"/authentication/form",
 						"/**/*.js",
 						"/**/*.css",

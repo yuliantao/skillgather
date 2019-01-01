@@ -10,6 +10,9 @@
         <module>sso-server</module>
         <module>sso-client1</module>
         <module>sso-client2</module>
+        <module>sso5-server</module>
+        <module>sso5-client3</module>
+        <module>sso5-client4</module>
     </modules>
     <packaging>pom</packaging>
 

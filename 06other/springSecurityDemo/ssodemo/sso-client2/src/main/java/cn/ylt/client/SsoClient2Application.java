@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @SpringBootApplication
 @RestController
-@EnableOAuth2Sso
 public class SsoClient2Application {
     public static void main(String[] args) {
         SpringApplication.run(SsoClient2Application.class,args);
@@ -27,15 +27,12 @@ public class SsoClient2Application {
         return user;
     }
 
-    @GetMapping("/login")
-    public String test()
+    @RequestMapping("/test")
+    public String test(Authentication user)
     {
-        return  "get的";
-    }
-
-    @PostMapping("/login")
-    public String test2()
-    {
-        return  "post的";
+        int d=3;
+        d=d+9;
+        System.out.println(d);
+        return "tes";
     }
 }

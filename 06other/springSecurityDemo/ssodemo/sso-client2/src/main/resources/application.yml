@@ -5,14 +5,19 @@ security:
       client-secret: ylt2
       user-authorization-uri: http://127.0.0.1:9999/server/oauth/authorize
       access-token-uri: http://127.0.0.1:9999/server/oauth/token
-      registered-redirect-uri: [http://127.0.0.1:8082/client2/login,http://127.0.0.1:8082/client2/index.html]
+      registered-redirect-uri: http://127.0.0.1:8082/client2/index.html
     resource:
       jwt:
         key-uri: http://127.0.0.1:9999/server/oauth/token_key
+#    sso:
+#      login-path: /test
 server:
   port: 8082
   servlet:
     context-path: /client2
+    session:
+      cookie:
+        name: UISESSIONMEMBER
 #
 #auth-server: http://127.0.0.1:8083/uaa # sso-server地址
 #server:

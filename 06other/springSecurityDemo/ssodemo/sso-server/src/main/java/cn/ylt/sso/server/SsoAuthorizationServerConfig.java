@@ -24,16 +24,18 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("ylt1")
-                .secret(new BCryptPasswordEncoder().encode("ylt1"))
+                .secret("{bcrypt}"+new BCryptPasswordEncoder().encode("ylt1"))
                 .authorizedGrantTypes("authorization_code","refresh_token")
                 .scopes("all")
-                .redirectUris("http://127.0.0.1:8081/client1/index.html","http://127.0.0.1:8081/client1/login")
+                .redirectUris("http://127.0.0.1:8081/client1/index.html")
+                .autoApprove(true)
                 .and()
                 .withClient("ylt2")
-                .secret(new BCryptPasswordEncoder().encode("ylt2"))
+                .secret("{bcrypt}"+new BCryptPasswordEncoder().encode("ylt2"))
                 .authorizedGrantTypes("authorization_code","refresh_token")
                 .scopes("all")
-                .redirectUris("http://127.0.0.1:8082/client2/index.html","http://127.0.0.1:8082/client2/login")
+                .redirectUris("http://127.0.0.1:8082/client2/index.html")
+                .autoApprove(true)
                 ;
     }
 
