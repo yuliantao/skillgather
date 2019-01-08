@@ -3,12 +3,12 @@ security:
     client:
       client-id: ylt4
       client-secret: ylt4
-      user-authorization-uri: http://127.0.0.1:8888/server2/oauth/authorize
-      access-token-uri: http://127.0.0.1:8888/server2/oauth/token
+      user-authorization-uri: http://127.0.0.1:7777/server2/oauth/authorize
+      access-token-uri: http://127.0.0.1:7777/server2/oauth/token
       registered-redirect-uri: http://127.0.0.1:8084/client4/index.html
     resource:
       jwt:
-        key-uri: http://127.0.0.1:8888/server2/oauth/token_key
+        key-uri: http://127.0.0.1:7777/server2/oauth/token_key
 server:
   port: 8084
   servlet:
