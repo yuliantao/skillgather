@@ -56,6 +56,15 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+      /*  auth.inMemoryAuthentication()
+                .withUser("qq")
+                .password(new BCryptPasswordEncoder().encode("123")).authorities("ROLE_ADMIN")
+                .and()
+                .withUser("xx")
+                .password(new  BCryptPasswordEncoder().encode("123")).authorities("ROLE_ADMIN")
+                .and().passwordEncoder( passwordEncoder());*/
+
+
         auth.userDetailsService(ssoUserDetailsService).passwordEncoder(passwordEncoder());
 //        auth.parentAuthenticationManager(authenticationManagerBean())
 //                .inMemoryAuthentication()
